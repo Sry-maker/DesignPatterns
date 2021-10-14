@@ -7,6 +7,8 @@
 
 #include "FactoryMethod/factoryMethod.h"
 #include "AbstractFactory/abstractFactory.h"
+#include "TemplateMethod/Template_test.h"
+#include "Visitor/Visitor_test.h"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
@@ -14,5 +16,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     factoryMethod();
     abstractFactory();
+    Template();
+    Visitor();
     return 0;
 }
