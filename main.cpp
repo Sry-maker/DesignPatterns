@@ -9,6 +9,7 @@
 #include "AbstractFactory/abstractFactory.h"
 #include "TemplateMethod/Template_test.h"
 #include "Visitor/Visitor_test.h"
+#include "Command/CommandTest.h"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
@@ -18,5 +19,6 @@ int main(int argc, const char * argv[]) {
     abstractFactory();
     Template();
     Visitor();
+    Command();
     return 0;
 }
