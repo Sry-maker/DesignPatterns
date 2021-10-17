@@ -1,11 +1,10 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<vector>
 #include"CoR.h"
 
-using namespace std;
 
-//Éí·ÝºËÑé-°²¼ì-ÑéÆ±
+//èº«ä»½æ ¸éªŒ-å®‰æ£€-éªŒç¥¨
 
 
 /**
@@ -16,11 +15,11 @@ class IdentityAuthenticationHandler : public AbstractHandler {
 public:
     void Handle(audience request) override {
         if (request.ID == "1"&&request.name=="1") {
-            cout << "Éí·ÝºËÑéÍ¨¹ý" << endl;
+            std::cout << "èº«ä»½æ ¸éªŒé€šè¿‡" << std::endl;
             AbstractHandler::Handle(request);
         }
         else {
-            cout << "Éí·ÝºËÑé²»Í¨¹ý" << endl;
+            std::cout << "èº«ä»½æ ¸éªŒä¸é€šè¿‡" << std::endl;
         }
         
     }
@@ -29,11 +28,11 @@ class SecurityCheckHandler : public AbstractHandler {
 public:
     void Handle(audience request) override {
         if (request.dangerous_articles == false) {
-            cout << "°²¼ìÍ¨¹ý" << endl;
+            std::cout << "å®‰æ£€é€šè¿‡" << std::endl;
             AbstractHandler::Handle(request);
         }
         else {
-            cout << "°²¼ì²»Í¨¹ý" << endl;
+            std::cout << "å®‰æ£€ä¸é€šè¿‡" << std::endl;
         }
         
     }
@@ -42,11 +41,11 @@ class TicketCheckHandler : public AbstractHandler {
 public:
     void Handle(audience request) override {
         if (request.ticketID == "1") {
-            cout << "ÑéÆ±Í¨¹ý" << endl;
+            std::cout << "éªŒç¥¨é€šè¿‡" << std::endl;
             AbstractHandler::Handle(request);
         }
         else {
-            cout << "ÑéÆ±²»Í¨¹ý" << endl;
+            std::cout << "éªŒç¥¨ä¸é€šè¿‡" << std::endl;
         }
         
     }
@@ -59,23 +58,16 @@ void ClientCode(Handler& handler) {
     std::vector<audience> audiences = { {"1", "1", "1", 0 } ,{"2","1","1",0} ,{"1","1","2",0} ,{"1","1","1",1} };
     int count = 0;
     for (const audience& i : audiences) {
-        //cout << "Client: Who wants a " << f << "?\n";
-        //audience i = { "1","1","2",0 };
         count += 1;
-        cout << endl << endl << "µÚ" << count << "Î»¹ÛÖÚÕýÔÚÈë³¡" << endl << endl;
+        std::cout << std::endl << std::endl << "ç¬¬" << count << "ä½è§‚ä¼—æ­£åœ¨å…¥åœº" << std::endl << std::endl;
         handler.Handle(i);
-        //if (!result.empty()) {
-            //cout << "  " << result;
-        //}
-        /*else {
-            cout << "  " << f << " was left untouched.\n";
-        }*/
+        
     }
 }
 /**
  * The other part of the client code constructs the actual chain.
  */
-int main() {
+void chainOfResponsibilityTest() {
     IdentityAuthenticationHandler* IdentityAuthentication = new IdentityAuthenticationHandler;
     SecurityCheckHandler* SecurityCheck = new SecurityCheckHandler;
     TicketCheckHandler* TicketCheck = new TicketCheckHandler;
@@ -85,16 +77,15 @@ int main() {
      * The client should be able to send a request to any handler, not just the
      * first one in the chain.
      */
-    cout << "±¾³ÌÐòÄ£Äâ°ÂÁÖÆ¥¿ËÔË¶¯»á¹ÛÖÚÈë³¡³¡¾°£¬Ê¹ÓÃÁËCoR--ÔðÈÎÁ´Ä£Ê½" << endl << endl;
-    cout << "¹ÛÖÚ¿ªÊ¼Èë³¡"<<endl<<endl;
+    std::cout << "æœ¬ç¨‹åºæ¨¡æ‹Ÿå¥¥æž—åŒ¹å…‹è¿åŠ¨ä¼šè§‚ä¼—èº«ä»½æ ¸éªŒ-å®‰æ£€-éªŒç¥¨å…¥åœºåœºæ™¯ï¼Œä½¿ç”¨äº†CoR--è´£ä»»é“¾æ¨¡å¼" << std::endl << std::endl;
+    std::cout << "è§‚ä¼—å¼€å§‹å…¥åœº" << std::endl << std::endl;
     ClientCode(*IdentityAuthentication);
-    //cout << "\n";
-    //cout << "Subchain: Squirrel > Dog\n\n";
-    //ClientCode(*squirrel);
+    
 
     delete IdentityAuthentication;
     delete SecurityCheck;
     delete TicketCheck;
 
-    return 0;
+    std::cout << std::endl << "***************  CoR(è´£ä»»é“¾)è®¾è®¡æ¨¡å¼ç»“æŸ  **************************************" << std::endl << std::endl;
+
 }

@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 #include<iostream>
 #include<queue>
-#include"Command.h"
+#include"Cmd.h"
 
 
-void CommandTest()
+void commandTest()
 {
 	Invoker* invoker=new Invoker;
 	VipPassage vip_passage;

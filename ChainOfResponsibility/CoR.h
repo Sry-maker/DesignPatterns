@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /**
 * The audience class represents people who are the audience of the Olympic Games.
 */
@@ -45,8 +45,7 @@ public:
     Handler* SetNext(Handler* handler) override {
         this->next_handler_ = handler;
         // Returning a handler from here will let us link handlers in a convenient
-        // way like this:
-        // $monkey->setNext($squirrel)->setNext($dog);
+        // way
         return handler;
     }
     void Handle(audience request) override {
