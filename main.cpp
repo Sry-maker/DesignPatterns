@@ -18,6 +18,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     factoryMethodTest();
     abstractFactoryTest();
+    MVCTest();
     Template();
     Visitor();
     chainOfResponsibilityTest();
