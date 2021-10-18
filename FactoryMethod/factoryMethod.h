@@ -13,7 +13,7 @@
 #include "badmintonEvents.h"
 
 // 工厂设计模式测试接口函数
-void factoryMethod(){
+void factoryMethodTest(){
     EventsCreator* creator1 = new PingpongEventsCreator();
     creator1->EventsOperation();
     

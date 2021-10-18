@@ -12,7 +12,7 @@
 
 
 // 抽象工厂模式测试接口函数
-void abstractFactory() {
+void abstractFactoryTest() {
     AbstractFactory* factory1 = new BasketballSuppliesFactory(); // 创建一个新的篮球运动相关工厂
     AbstractBall* ball1 = factory1->makeBall();                  // 生产相关的产品
     AbstractShoes* shoes1 = factory1->makeShoes();
