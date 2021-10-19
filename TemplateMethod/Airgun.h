@@ -13,14 +13,14 @@ protected:
         Name = "气枪";
         std::cout << "Airgun：气枪:\n";
     }
-    void PlayerSet() override {
+    void PlayerSet() override{
         std::cout << "Airgun：请输入运动员ID:";
-        std::cin >> player;
+        player="1001";
         std::cout << "Airgun：运动员已设定\n";
     }
-    void RuleSet() override {
+    void RuleSet(std::string Rule) override{
         std::cout << "Airgun：请输入比赛规则:";
-        std::cin >> rule;
+        rule=Rule;
         std::cout << "Airgun：比赛规则已设定\n";
     }
     void ShowInfo() override {
