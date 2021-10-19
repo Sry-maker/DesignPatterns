@@ -17,6 +17,8 @@
 #include "./Callback/callBackTest.h"
 #include "./Composite/compositeTest.h"
 #include "./Decorator/decoratorTest.h"
+#include"Adapter.h"
+#include"Bridge.h"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
@@ -35,5 +37,7 @@ int main(int argc, const char * argv[]) {
     callBackTest();
     compositeTest();
     decoratorTest();
+    adapterTest();
+    bridgeTest();
     return 0;
 }
