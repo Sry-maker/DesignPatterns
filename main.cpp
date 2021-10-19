@@ -11,6 +11,9 @@
 #include "Visitor/Visitor_test.h"
 #include "ChainOfResponsibility/chainOfResponsibility.h"
 #include "Command/command.h"
+#include "facade.h"
+#include "flyweight.h"
+#include "proxy.h"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
@@ -23,5 +26,8 @@ int main(int argc, const char * argv[]) {
     Visitor();
     chainOfResponsibilityTest();
     commandTest();
+    facadeTest();
+    flyweightTest();
+    proxyTest();
     return 0;
 }
