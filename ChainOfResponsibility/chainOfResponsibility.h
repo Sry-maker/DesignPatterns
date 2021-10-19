@@ -13,6 +13,7 @@
  */
 class IdentityAuthenticationHandler : public AbstractHandler {
 public:
+    //进行身份核验处理
     void Handle(audience request) override {
         if (request.ID == "1"&&request.name=="1") {
             std::cout << "身份核验通过" << std::endl;
@@ -26,6 +27,7 @@ public:
 };
 class SecurityCheckHandler : public AbstractHandler {
 public:
+    //进行安检处理
     void Handle(audience request) override {
         if (request.dangerous_articles == false) {
             std::cout << "安检通过" << std::endl;
@@ -39,6 +41,7 @@ public:
 };
 class TicketCheckHandler : public AbstractHandler {
 public:
+    //进行验票处理
     void Handle(audience request) override {
         if (request.ticketID == "1") {
             std::cout << "验票通过" << std::endl;
@@ -54,6 +57,7 @@ public:
  * The client code is usually suited to work with a single handler. In most
  * cases, it is not even aware that the handler is part of a chain.
  */
+//用户代码，向chain中提供request
 void ClientCode(Handler& handler) {
     std::vector<audience> audiences = { {"1", "1", "1", 0 } ,{"2","1","1",0} ,{"1","1","2",0} ,{"1","1","1",1} };
     int count = 0;
@@ -67,6 +71,7 @@ void ClientCode(Handler& handler) {
 /**
  * The other part of the client code constructs the actual chain.
  */
+//设计模式测试代码
 void chainOfResponsibilityTest() {
     IdentityAuthenticationHandler* IdentityAuthentication = new IdentityAuthenticationHandler;
     SecurityCheckHandler* SecurityCheck = new SecurityCheckHandler;

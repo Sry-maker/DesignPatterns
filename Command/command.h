@@ -3,7 +3,7 @@
 #include<queue>
 #include"Cmd.h"
 
-
+//设计模式测试代码
 void commandTest()
 {
 	Invoker* invoker=new Invoker;
