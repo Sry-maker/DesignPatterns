@@ -1,90 +1,90 @@
-#pragma once
+ï»¿#pragma once
 #define DELETE_OBJECT(p) {if(NULL != (p)){delete (p); (p) = NULL;}}
 #include<iostream>
 
 using namespace std;
 
 /*
-Îª±íÏÖÓÅÒìµÄÔË¶¯Ô±°ä·¢ÔŞÖúÉÌÌá¹©µÄÊÖ»ú×÷Îª½±Æ·¡£
-ÔŞÖúÉÌÆ·ÅÆÓĞSamsungÓëApple£¬Ã¿¸öÆ·ÅÆ¸÷Ìá¹©ÁËÁ½ÖÖĞÍºÅµÄÆì½¢ÊÖ»ú;
-ÊÖ»úµÄ²Ù×÷ÏµÍ³ÓĞiOSÓëAndroid£¬ÓÉÓÚ³ö³§Ê±¼ä²»Í¬£¬²»Í¬ÊÖ»úÔ¤×°²Ù×÷ÏµÍ³µÄ°æ±¾ÓĞÇø±ğ¡£
+ä¸ºè¡¨ç°ä¼˜å¼‚çš„è¿åŠ¨å‘˜é¢å‘èµåŠ©å•†æä¾›çš„æ‰‹æœºä½œä¸ºå¥–å“ã€‚
+èµåŠ©å•†å“ç‰Œæœ‰Samsungä¸Appleï¼Œæ¯ä¸ªå“ç‰Œå„æä¾›äº†ä¸¤ç§å‹å·çš„æ——èˆ°æ‰‹æœº;
+æ‰‹æœºçš„æ“ä½œç³»ç»Ÿæœ‰iOSä¸Androidï¼Œç”±äºå‡ºå‚æ—¶é—´ä¸åŒï¼Œä¸åŒæ‰‹æœºé¢„è£…æ“ä½œç³»ç»Ÿçš„ç‰ˆæœ¬æœ‰åŒºåˆ«ã€‚
  */
 
- //³éÏóµÄ²Ù×÷ÏµÍ³Àà£º
+ //æŠ½è±¡çš„æ“ä½œç³»ç»Ÿç±»ï¼š
 class OS
 {
 public:
     virtual std::string GetOS() = 0;
 };
 
-//iOSÀàµÄÊµÏÖ
+//iOSç±»çš„å®ç°
 class iOS : public OS
 {
 public:
     virtual std::string GetOS()
     {
-        return "iOS²Ù×÷ÏµÍ³";
+        return "iOSæ“ä½œç³»ç»Ÿ";
     }
 };
 
-//AndroidÀàµÄÊµÏÖ
+//Androidç±»çš„å®ç°
 class Android : public OS
 {
 public:
     virtual std::string GetOS()
     {
-        return "Android²Ù×÷ÏµÍ³";
+        return "Androidæ“ä½œç³»ç»Ÿ";
     }
 };
 
-//iOSÄ³¸ö°æ±¾µÄÊµÏÖ
+//iOSæŸä¸ªç‰ˆæœ¬çš„å®ç°
 class iOSSubSystem1 : public iOS
 {
 public:
     virtual std::string GetOS()
     {
-        return "iOS 13²Ù×÷ÏµÍ³";
+        return "iOS 13æ“ä½œç³»ç»Ÿ";
     }
 };
 
-//iOSÄ³¸ö°æ±¾µÄÊµÏÖ
+//iOSæŸä¸ªç‰ˆæœ¬çš„å®ç°
 class iOSSubSystem2 : public iOS
 {
 public:
     virtual std::string GetOS()
     {
-        return "iOS 14²Ù×÷ÏµÍ³";
+        return "iOS 14æ“ä½œç³»ç»Ÿ";
     }
 };
 
-//AndroidÏµÍ³Ä³¸öÀàµÄÊµÏÖ
+//Androidç³»ç»ŸæŸä¸ªç±»çš„å®ç°
 class AndroidSubSystem1 : public Android
 {
 public:
     virtual std::string GetOS()
     {
-        return "Android 11²Ù×÷ÏµÍ³";
+        return "Android 11æ“ä½œç³»ç»Ÿ";
     }
 };
 
-//AndroidÏµÍ³Ä³¸öÀàµÄÊµÏÖ
+//Androidç³»ç»ŸæŸä¸ªç±»çš„å®ç°
 class AndroidSubSystem2 : public Android
 {
 public:
     virtual std::string GetOS()
     {
-        return "Android 12²Ù×÷ÏµÍ³";
+        return "Android 12æ“ä½œç³»ç»Ÿ";
     }
 };
 
-//³éÏóµÄÊÖ»úÀà
+//æŠ½è±¡çš„æ‰‹æœºç±»
 class Phone
 {
 public:
     virtual void SetOS() = 0;
 };
 
-//AppleÊÖ»úÀà£¬ÒÀÀµ³éÏóµÄ²Ù×÷ÏµÍ³
+//Appleæ‰‹æœºç±»ï¼Œä¾èµ–æŠ½è±¡çš„æ“ä½œç³»ç»Ÿ
 class iPhone : public Phone
 {
 public:
@@ -98,13 +98,13 @@ public:
     }
     virtual void SetOS()
     {
-        cout << "ÊÖ»úµÄÔ¤×°ÏµÍ³Îª: " << m_pOS->GetOS().c_str() <<"¡£"<< endl;
+        cout << "æ‰‹æœºçš„é¢„è£…ç³»ç»Ÿä¸º: " << m_pOS->GetOS().c_str() <<"ã€‚"<< endl;
     }
 private:
     OS* m_pOS;
 };
 
-//SamsungÊÖ»úÀà£¬ÒÔÀ´³éÏóµÄ²Ù×÷ÏµÍ³
+//Samsungæ‰‹æœºç±»ï¼Œä»¥æ¥æŠ½è±¡çš„æ“ä½œç³»ç»Ÿ
 class Samsung : public Phone
 {
 public:
@@ -119,7 +119,7 @@ public:
 
     virtual void SetOS()
     {
-        cout << "ÊÖ»úµÄÔ¤×°ÏµÍ³Îª: " << m_pOS->GetOS().c_str() << "¡£" << endl;
+        cout << "æ‰‹æœºçš„é¢„è£…ç³»ç»Ÿä¸º: " << m_pOS->GetOS().c_str() << "ã€‚" << endl;
     }
 private:
     OS* m_pOS;
@@ -130,33 +130,33 @@ void bridgeTest() {
     
     cout << "BridgeTest:" << endl<<endl;
 
-    cout<<"ÏÂÃæÎª½üÆÚ±ÈÈü±íÏÖÓÅÒìµÄËÄÎ»Ñ¡ÊÖ°ä·¢½±Æ·£º"<<endl << endl;
+    cout<<"ä¸‹é¢ä¸ºè¿‘æœŸæ¯”èµ›è¡¨ç°ä¼˜å¼‚çš„å››ä½é€‰æ‰‹é¢å‘å¥–å“ï¼š"<<endl << endl;
 
-    OS* piOS1 = new iOSSubSystem1(); //´´½¨Ò»¸ö²Ù×÷ÏµÍ³
-    Phone* iPhone13Pro = new iPhone(piOS1);//Ó¦ÓÃµ½¸ÃÊÖ»úÉÏ
-    cout << "µÚÒ»Î»Ñ¡ÊÖµÄ½±Æ·ÎªiPhone13Pro£¬"<<endl;
+    OS* piOS1 = new iOSSubSystem1(); //åˆ›å»ºä¸€ä¸ªæ“ä½œç³»ç»Ÿ
+    Phone* iPhone13Pro = new iPhone(piOS1);//åº”ç”¨åˆ°è¯¥æ‰‹æœºä¸Š
+    cout << "ç¬¬ä¸€ä½é€‰æ‰‹çš„å¥–å“ä¸ºiPhone13Proï¼Œ"<<endl;
     iPhone13Pro->SetOS();
     cout << endl;
 
     OS* piOS2 = new iOSSubSystem2();
     Phone* iPhone13ProMax = new iPhone(piOS2);
-    cout << "µÚ¶şÎ»Ñ¡ÊÖµÄ½±Æ·ÎªiPhone13ProMax£¬" << endl;
+    cout << "ç¬¬äºŒä½é€‰æ‰‹çš„å¥–å“ä¸ºiPhone13ProMaxï¼Œ" << endl;
     iPhone13ProMax->SetOS();
     cout << endl;
 
     OS* pAndroid1 = new AndroidSubSystem1();
     Phone* SamsungS21 = new Samsung(pAndroid1);
-    cout << "µÚÈıÎ»Ñ¡ÊÖµÄ½±Æ·ÎªSamsungS21£¬" << endl;
+    cout << "ç¬¬ä¸‰ä½é€‰æ‰‹çš„å¥–å“ä¸ºSamsungS21ï¼Œ" << endl;
     SamsungS21->SetOS();
     cout << endl;
 
     OS* pAndroid2 = new AndroidSubSystem2();
     Phone* SamsungS21Ultra = new Samsung(pAndroid2);
-    cout << "µÚËÄÎ»Ñ¡ÊÖµÄ½±Æ·ÎªSamsungS21Ultra£¬" << endl;
+    cout << "ç¬¬å››ä½é€‰æ‰‹çš„å¥–å“ä¸ºSamsungS21Ultraï¼Œ" << endl;
     SamsungS21Ultra->SetOS();
     cout << endl;
 
-    cout<<"ÔÙ´Î×£ºØÕâËÄÎ»Ñ¡ÊÖ£¡"<<endl;
+    cout<<"å†æ¬¡ç¥è´ºè¿™å››ä½é€‰æ‰‹ï¼"<<endl;
 
     DELETE_OBJECT(iPhone13Pro);
     DELETE_OBJECT(iPhone13ProMax);

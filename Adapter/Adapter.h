@@ -1,21 +1,21 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include<algorithm>
 
 using namespace std;
 
-//Target¶¨ÒåÒ»ÖÖĞĞÎªµÄ½Ó¿Ú£¬ÕâÀïÖ¸»úÆ÷ÈËÕı³£µÄÓïÑÔÏµÍ³£º
+//Targetå®šä¹‰ä¸€ç§è¡Œä¸ºçš„æ¥å£ï¼Œè¿™é‡ŒæŒ‡æœºå™¨äººæ­£å¸¸çš„è¯­è¨€ç³»ç»Ÿï¼š
 class Target {
 public:
     virtual ~Target() = default;
 
     virtual string Request() const {
-        return "»úÆ÷ÈËA: I'm very glad that I won this game.";
+        return "æœºå™¨äººA: I'm very glad that I won this game.";
     }
 };
 
-//Adaptee°üº¬ÁËÁíÒ»ÖÖĞĞÎªµÄ½Ó¿Ú£¬µ«½Ó¿Ú²»ÄÜ±»Ç°Ò»ÖÖĞĞÎªµÄÖ÷ÌâÊ¶±ğ£¬ĞèÒªÒ»¸öAdapter
-//ÕâÀïÖ¸»úÆ÷ÈË³ö¹ÊÕÏµÄÓïÑÔÏµÍ³£º
+//AdapteeåŒ…å«äº†å¦ä¸€ç§è¡Œä¸ºçš„æ¥å£ï¼Œä½†æ¥å£ä¸èƒ½è¢«å‰ä¸€ç§è¡Œä¸ºçš„ä¸»é¢˜è¯†åˆ«ï¼Œéœ€è¦ä¸€ä¸ªAdapter
+//è¿™é‡ŒæŒ‡æœºå™¨äººå‡ºæ•…éšœçš„è¯­è¨€ç³»ç»Ÿï¼š
 class Adaptee {
 public:
     string SpecificRequest() const {
@@ -23,7 +23,7 @@ public:
     }
 };
 
-//AdapterÊ¹Á½ÖÖ²»Í¬µÄ½Ó¿ÚÖ®¼äÄÜ¹»»¥Ïà½»Á÷£¬ÕâÀï¼´Îª½«µ¹ÖÃµÄÓïÑÔ×ª»»ÎªÕı³££º
+//Adapterä½¿ä¸¤ç§ä¸åŒçš„æ¥å£ä¹‹é—´èƒ½å¤Ÿäº’ç›¸äº¤æµï¼Œè¿™é‡Œå³ä¸ºå°†å€’ç½®çš„è¯­è¨€è½¬æ¢ä¸ºæ­£å¸¸ï¼š
 class Adapter : public Target {
 private:
     Adaptee* adaptee_;
@@ -33,7 +33,7 @@ public:
     string Request() const override {
         string to_reverse = this->adaptee_->SpecificRequest();
         reverse(to_reverse.begin(), to_reverse.end());
-        return "»úÆ÷ÈËB:(×ª»»ºó)" + to_reverse;
+        return "æœºå™¨äººB:(è½¬æ¢å)" + to_reverse;
     }
 };
 
@@ -45,19 +45,19 @@ void AdapterClientCode(const Target* target) {
 void adapterTest() {
 	std::cout << "AdapterTest:\n\n";
 	
-	std::cout <<"¼ÇÕß£º»¶Ó­À´µ½»úÆ÷ÈËÈ­»÷´óÈüµÄÈüºó²É·Ã¡£"<< "\n";
-	std::cout << "ÏÖÔÚÊÇ»ñÊ¤·½µÄ²É·ÃÊ±¼ä:\n";
+	std::cout <<"è®°è€…ï¼šæ¬¢è¿æ¥åˆ°æœºå™¨äººæ‹³å‡»å¤§èµ›çš„èµ›åé‡‡è®¿ã€‚"<< "\n";
+	std::cout << "ç°åœ¨æ˜¯è·èƒœæ–¹çš„é‡‡è®¿æ—¶é—´:\n";
 	Target* target = new Target;
 	AdapterClientCode(target);
 	std::cout << "\n\n";
 	Adaptee* adaptee = new Adaptee;
 	
-	std::cout << "¼ÇÕß£ºÏÖÔÚÊÇ°Ü·½»úÆ÷ÈËÑ¡ÊÖ²É·ÃÊ±¼ä£¬µ«ËüÓÉÓÚÔâµ½KO£¬Í·²¿µÄÓïÑÔÏµÍ³³öÁËÒ»µã¹ÊÕÏ£¬ÏÔÊ¾µÄ¾ä×ÓÊÇÊ×Î²µ¹ÖÃµÄ£¬ÎÒºÜÄÑ¿´¶®:\n";
+	std::cout << "è®°è€…ï¼šç°åœ¨æ˜¯è´¥æ–¹æœºå™¨äººé€‰æ‰‹é‡‡è®¿æ—¶é—´ï¼Œä½†å®ƒç”±äºé­åˆ°KOï¼Œå¤´éƒ¨çš„è¯­è¨€ç³»ç»Ÿå‡ºäº†ä¸€ç‚¹æ•…éšœï¼Œæ˜¾ç¤ºçš„å¥å­æ˜¯é¦–å°¾å€’ç½®çš„ï¼Œæˆ‘å¾ˆéš¾çœ‹æ‡‚:\n";
 	
-	std::cout << "»úÆ÷ÈËB: " << adaptee->SpecificRequest();
+	std::cout << "æœºå™¨äººB: " << adaptee->SpecificRequest();
 	std::cout << "\n\n";
 	
-	std::cout << "¼ÇÕß: µ«ÏÖÔÚÓĞÊÊÅäÆ÷Ä£Ê½µÄ°ïÖú£¬ÎÒÄÜ¹»Àí½âÕâÎ»Ñ¡ÊÖËù±í´ïµÄÁË:\n";
+	std::cout << "è®°è€…: ä½†ç°åœ¨æœ‰é€‚é…å™¨æ¨¡å¼çš„å¸®åŠ©ï¼Œæˆ‘èƒ½å¤Ÿç†è§£è¿™ä½é€‰æ‰‹æ‰€è¡¨è¾¾çš„äº†:\n";
 	Adapter* adapter = new Adapter(adaptee);
 	AdapterClientCode(adapter);
 
