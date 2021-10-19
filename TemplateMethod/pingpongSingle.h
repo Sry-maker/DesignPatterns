@@ -14,16 +14,16 @@ protected:
         Name = "乒乓球单打";
         std::cout << "Pingpong_single：乒乓球单打:\n";
     }
-    void PlayerSet() override {
+    void PlayerSet()override {
         std::cout << "Pingpong_single：请输入第一位运动员ID:";
-        std::cin >> player1;
+        player1="1002";
         std::cout << "Pingpong_single：请输入第二位运动员ID:";
-        std::cin >> player2;
+        player2="1003";
         std::cout << "Pingpong_single：运动员已设定\n";
     }
-    void RuleSet() override {
+    void RuleSet(std::string Rule) override{
         std::cout << "Pingpong_single：请输入比赛规则:";
-        std::cin >> rule;
+        rule=Rule;
         std::cout << "Pingpong_single：比赛规则已设定\n";
     }
     void ShowInfo() override {

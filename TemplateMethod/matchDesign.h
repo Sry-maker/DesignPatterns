@@ -8,30 +8,20 @@ public:
     std::string Time;
     std::string Name;
     std::string Area;
-protected:
-    void TimeSet() {
+    void TimeSet(std::string time) {
         std::cout << "MatchDesign：请输入比赛时间：";
-        std::cin >> Time;
+        Time=time;
         std::cout << "MatchDesign：比赛时间已设定\n";
     }
-    void AreaSet() {
+    void AreaSet(std::string area) {
         std::cout << "MatchDesign：请输入比赛场地：";
-        std::cin >> Area;
+        Area=area;
         std::cout << "MatchDesign：比赛场地已设定\n";
     }
     virtual void NameSet() = 0;
     virtual void PlayerSet() = 0;
-    virtual void RuleSet() = 0;
+    virtual void RuleSet(std::string Rule) = 0;
     virtual void ShowInfo() = 0;
-public:
-    void TemplateMethod() {
-        this->NameSet();
-        this->TimeSet();
-        this->AreaSet();
-        this->PlayerSet();
-        this->RuleSet();
-        this->ShowInfo();
-    }
 
 };
 #endif
