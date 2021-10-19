@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include < unordered_map >
 
@@ -58,19 +58,19 @@ public:
 	}
 	void Operation(const UniqueState& unique_state) const
 	{
-		std::cout << "Flyweight: Õ¹Ê¾¹²ÏíÊý¾Ý (" << *shared_state_ << ") Ë½ÓÐÊý¾Ý (" << unique_state << ")\n";
+		std::cout << "Flyweight: å±•ç¤ºå…±äº«æ•°æ® (" << *shared_state_ << ") ç§æœ‰æ•°æ® (" << unique_state << ")\n";
 	}
 };
 
 class FlyweightFactory
 {
-	
+
 private:
 	std::unordered_map<std::string, Flyweight> flyweights_;
-	
+
 	std::string GetKey(const SharedState& ss) const
 	{
-		return ss.nationality_ + "_" + ss.type_ ;
+		return ss.nationality_ + "_" + ss.type_;
 	}
 
 public:
@@ -90,19 +90,19 @@ public:
 		std::string key = this->GetKey(shared_state);
 		if (this->flyweights_.find(key) == this->flyweights_.end())
 		{
-			std::cout << "FlyweightFactory: ÕÒ²»µ½ flyweight½¨Ò»¸öÐÂµÄ.\n";
+			std::cout << "FlyweightFactory: æ‰¾ä¸åˆ° flyweightå»ºä¸€ä¸ªæ–°çš„.\n";
 			this->flyweights_.insert(std::make_pair(key, Flyweight(&shared_state)));
 		}
 		else
 		{
-			std::cout << "FlyweightFactory: ÖØ¸´ÀûÓÃÒÑ¾­ÓÐµÄ flyweight.\n";
+			std::cout << "FlyweightFactory: é‡å¤åˆ©ç”¨å·²ç»æœ‰çš„ flyweight.\n";
 		}
 		return this->flyweights_.at(key);
 	}
 	void ListFlyweights() const
 	{
 		size_t count = this->flyweights_.size();
-		std::cout << "\nFlyweightFactory: ¹²ÓÐ " << count << " ¸öflyweight£º\n";
+		std::cout << "\nFlyweightFactory: å…±æœ‰ " << count << " ä¸ªflyweightï¼š\n";
 		for (std::pair<std::string, Flyweight> pair : this->flyweights_)
 		{
 			std::cout << pair.first << "\n";
@@ -115,30 +115,30 @@ void AddAthleteToPoliceDatabase(
 	FlyweightFactory& ff, const std::string& name, const std::string& number,
 	const std::string& nationality, const std::string& type)
 {
-	std::cout << "\nÌí¼ÓÒ»¸öÔË¶¯Ô±µ½Êý¾Ý¿â.\n";
+	std::cout << "\næ·»åŠ ä¸€ä¸ªè¿åŠ¨å‘˜åˆ°æ•°æ®åº“.\n";
 	const Flyweight& flyweight = ff.GetFlyweight({ nationality, type });
 	flyweight.Operation({ name, number });
 }
 int flyweightTest() {
-	
-	FlyweightFactory* factory = new FlyweightFactory({ {"ÓÎÓ¾", "ÖÐ¹ú"}, {"»÷½£", "ÖÐ¹ú"}, {"ÓÎÓ¾", "ÃÀ¹ú"}, {"»÷½£", "ÃÀ¹ú"} });
+
+	FlyweightFactory* factory = new FlyweightFactory({ {"æ¸¸æ³³", "ä¸­å›½"}, {"å‡»å‰‘", "ä¸­å›½"}, {"æ¸¸æ³³", "ç¾Žå›½"}, {"å‡»å‰‘", "ç¾Žå›½"} });
 	factory->ListFlyweights();
 
 	AddAthleteToPoliceDatabase(*factory,
-		"ÕÅÈý",
+		"å¼ ä¸‰",
 		"30256",
-		"ÓÎÓ¾",
-		"ÖÐ¹ú");
+		"æ¸¸æ³³",
+		"ä¸­å›½");
 
 	AddAthleteToPoliceDatabase(*factory,
-		"Õ²Ä·Ë¹",
+		"è©¹å§†æ–¯",
 		"33654",
-		"»÷½£",
-		"ÃÀ¹ú");
+		"å‡»å‰‘",
+		"ç¾Žå›½");
 	factory->ListFlyweights();
 	delete factory;
 
-	
+
 	return 0;
 }
 
