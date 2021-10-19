@@ -5,7 +5,7 @@ using namespace std;
 //球拍制造
 //球拍制造说明
 
-class  Racket {
+class  Racket {     //球拍
 public:
     vector<std::string> pro;
     void process()const {
@@ -23,7 +23,7 @@ public:
 };
 
 
-class Manual {
+class Manual {     //球拍制作说明
 public:
     vector<std::string> con;
     void content()const {
@@ -40,9 +40,9 @@ public:
     }
 };
 
-class Builder {
+class Builder {    //生成器
 public:
-    virtual ~Builder() {}
+    virtual ~Builder() {}//析构函数
     virtual void frame() const = 0;//球拍框架
     virtual void face() const = 0;//球拍面
     virtual void handle() const = 0;//球拍柄
@@ -50,174 +50,175 @@ public:
     
 };
 
-class tabletennisBatsBuilder : public Builder {
+class tabletennisBatsBuilder : public Builder {  //乒乓球拍生成器
 private:
 
     Racket* racket;
 public:
 
-    tabletennisBatsBuilder() {
+    tabletennisBatsBuilder() {//构造函数
         this->Reset();
     }
 
-    ~tabletennisBatsBuilder() {
+    ~tabletennisBatsBuilder() {//析构函数
         delete racket;
     }
 
-    void Reset() {
+    void Reset() {//动态申请Racket
         this->racket = new Racket();
     }
 
-    void frame() const override {
+    void frame() const override {//制作乒乓球框架
         this->racket->pro.push_back("制作乒乓球框架");
     }
-    void face() const override {
+    void face() const override {//制作乒乓球拍面
         this->racket->pro.push_back("制作乒乓球拍面");
     }
-    void handle() const override {
+    void handle() const override {//制作乒乓球拍柄
         this->racket->pro.push_back("制作乒乓球拍柄");
     }
-    void bond() const override {
+    void bond() const override {//粘合乒乓球球拍
         this->racket->pro.push_back("粘合乒乓球球拍");
     
     }
 
-    Racket* GetProduct() {
-        Racket* result = this->racket;
-        this->Reset();
-        return result;
+    void Get() {//取得乒乓球拍制作过程
+
+        racket->process();
+
     }
 };
 
-class badmintonBuilder : public Builder {
+class badmintonBuilder : public Builder {//羽毛球拍生成器
 private:
 
     Racket* racket;
 public:
 
-    badmintonBuilder() {
+    badmintonBuilder() {//构造函数
         this->Reset();
     }
 
-    ~badmintonBuilder() {
+    ~badmintonBuilder() {//析构函数
         delete racket;
     }
 
-    void Reset() {
+    void Reset() {//动态申请
         this->racket = new Racket();
     }
 
-    void frame() const override {
+    void frame() const override {//制作羽毛球框架
         this->racket->pro.push_back("制作羽毛球框架");
     }
-    void face() const override {
+    void face() const override {//制作羽毛球拍面
         this->racket->pro.push_back("制作羽毛球拍面");
     }
-    void handle() const override {
+    void handle() const override {//制作羽毛球拍柄
         this->racket->pro.push_back("制作羽毛球拍柄");
     }
-    void bond() const override {
+    void bond() const override {//粘合羽毛球球拍
         this->racket->pro.push_back("粘合羽毛球球拍");
 
     }
 
-    Racket* GetProduct() {
-        Racket* result = this->racket;
-        this->Reset();
-        return result;
+    void Get() {//取得羽毛球拍制作过程
+
+        racket->process();
+
     }
 };
-class tabletennisBatsmanualBuilder : public Builder {
+class tabletennisBatsmanualBuilder : public Builder {//乒乓球拍手册生成器
 private:
 
     Manual* manual;
 public:
 
-    tabletennisBatsmanualBuilder() {
+    tabletennisBatsmanualBuilder() {//构造函数
         this->Reset();
     }
 
-    ~tabletennisBatsmanualBuilder() {
+    ~tabletennisBatsmanualBuilder() {//析构函数
         delete manual;
     }
 
-    void Reset() {
+    void Reset() {//动态申请
         this->manual = new Manual();
     }
 
-    void frame() const override {
+    void frame() const override {//制作乒乓球框架说明
         this->manual->con.push_back("制作乒乓球框架说明......");
     }
-    void face() const override {
+    void face() const override {//制作乒乓球拍面说明
         this->manual->con.push_back("制作乒乓球拍面说明......");
     }
-    void handle() const override {
+    void handle() const override {//制作乒乓球拍柄说明
         this->manual->con.push_back("制作乒乓球拍柄说明......");
     }
-    void bond() const override {
+    void bond() const override {//粘合乒乓球球拍说明
         this->manual->con.push_back("粘合乒乓球球拍说明......");
 
     }
 
-    Manual* GetProduct() {
-        Manual* result = this->manual;
-        this->Reset();
-        return result;
+
+    void Get() {//取得乒乓球拍说明
+
+        manual->content();
+
     }
 };
 
-class badmintonmanualBuilder : public Builder {
+class badmintonmanualBuilder : public Builder {//羽毛球拍说明
 private:
 
     Manual* manual;
 public:
 
-    badmintonmanualBuilder() {
+    badmintonmanualBuilder() {//构造函数
         this->Reset();
     }
 
-    ~badmintonmanualBuilder() {
+    ~badmintonmanualBuilder() {//析构函数
         delete manual;
     }
 
-    void Reset() {
+    void Reset() {//动态申请
         this->manual = new Manual();
     }
 
-    void frame() const override {
+    void frame() const override {//制作羽毛球框架说明
         this->manual->con.push_back("制作羽毛球框架说明......");
     }
-    void face() const override {
+    void face() const override {//制作羽毛球拍面说明
         this->manual->con.push_back("制作羽毛球拍面说明......");
     }
-    void handle() const override {
+    void handle() const override {//制作羽毛球拍柄说明
         this->manual->con.push_back("制作羽毛球拍柄说明......");
     }
-    void bond() const override {
+    void bond() const override {//粘合羽毛球球拍说明
         this->manual->con.push_back("粘合羽毛球球拍说明......");
 
     }
 
-    Manual* GetProduct() {
-        Manual* result = this->manual;
-        this->Reset();
-        return result;
+    void Get() {//取得羽毛球拍说明
+        
+        manual->content();
+      
     }
 };
 
 
 
-class Director {
+class Director {//主管负责按照特定顺序执行生成步骤
 
 private:
     Builder* builder;
 public:
 
-    void set_builder(Builder* builder) {
+    void set_builder(Builder* builder) {//取得生成器
         this->builder = builder;
     }
 
-    void BuildRacket() {
+    void BuildRacket() {//顺序生成步骤
 
         this->builder->frame();
         this->builder->face();
@@ -229,54 +230,55 @@ public:
 };
 
 
-void ClientCode(Director& director)
+void ClientCode(Director& director)//测试函数
 {
+    //测试乒乓球拍制作过程
     tabletennisBatsBuilder* pingpong = new tabletennisBatsBuilder();
     director.set_builder(pingpong);
     cout << "乒乓球拍制作过程:\n";
     director.BuildRacket();
 
-    Racket* p = pingpong->GetProduct();
-    p->process();
-    delete p;
+    pingpong->Get();
+
     delete pingpong;
 
-
+    //测试羽毛球拍制作过程
     badmintonBuilder* badminton = new  badmintonBuilder();
     director.set_builder(badminton);
     cout << "羽毛球拍制作过程:\n";
     director.BuildRacket();
 
-    Racket* b = badminton->GetProduct();
-    b->process();
-    delete b;
+    badminton->Get();
+ 
     delete  badminton;
 
-
+    //测试乒乓球拍制作过程说明
     tabletennisBatsmanualBuilder* pingpongm = new tabletennisBatsmanualBuilder();
     director.set_builder(pingpongm);
     cout << "乒乓球拍制作过程说明:\n";
     director.BuildRacket();
 
-    Manual* pm = pingpongm->GetProduct();
-    pm->content();
-    delete pm;
+    pingpongm->Get();
     delete pingpongm;
 
+
+    //测试羽毛球拍制作过程说明
     badmintonmanualBuilder* badmintonm = new  badmintonmanualBuilder();
     director.set_builder(badmintonm);
     cout << "羽毛球拍制作过程说明:\n";
     director.BuildRacket();
-
-    Manual* bm = badmintonm->GetProduct();
-    bm->content();
-    delete bm;
+    badmintonm->Get();
     delete  badmintonm;
 }
 
-int main() {
+void builderTest() {//测试接口
     Director* director = new Director();
     ClientCode(*director);
     delete director;
+}
+
+
+int main() {
+    builderTest();
     return 0;
 }
