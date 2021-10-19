@@ -13,20 +13,29 @@
 
 using namespace std;
 
+
+// 奖牌榜的模型（Model）
 class MedalTableModel {
-    
+
+    // 将控制器设置为友元类
     friend class MedalTableController;
     
 private:
+    
+    // 奖牌榜的数据
     vector<string> national_names;
     vector<int> gold_medal_num;
     vector<int> silver_medal_num;
     vector<int> bronze_medal_num;
     
+// 各种接口以供控制器调用
+
+    // 获取奖牌榜大小接口
     int getTableSize() {
         return static_cast<int>(national_names.size());
     }
     
+    // 获取国家名称接口
     string getNationalNames(int index) {
         if (index < 0 || index > this->national_names.size() - 1) {
             return string("null");
@@ -36,6 +45,7 @@ private:
         }
     }
     
+    // 获取金牌数接口
     int getGoldMedalNum(int index) {
         if (index < 0 || index > this->gold_medal_num.size() - 1) {
             return -1;
@@ -45,6 +55,7 @@ private:
         }
     }
     
+    // 获取银牌数接口
     int getSilverMedalNum(int index) {
         if (index < 0 || index > this->silver_medal_num.size() - 1) {
             return -1;
@@ -54,6 +65,7 @@ private:
         }
     }
     
+    // 获取铜牌数接口
     int getBronzeMedalNum(int index) {
         if (index < 0 || index > this->bronze_medal_num.size() - 1) {
             return -1;
@@ -63,6 +75,7 @@ private:
         }
     }
     
+    // 设置金牌数接口
     bool setGoldMedalNum(int index, int num) {
         if (index < 0 || index > this->gold_medal_num.size() - 1) {
             return false;
@@ -73,6 +86,7 @@ private:
         }
     }
     
+    // 设置银牌数接口
     bool setSilverMedalNum(int index, int num) {
         if (index < 0 || index > this->silver_medal_num.size() - 1) {
             return false;
@@ -83,6 +97,7 @@ private:
         }
     }
     
+    // 设置铜牌数接口
     bool setBronzeMedalNum(int index, int num) {
         if (index < 0 || index > this->bronze_medal_num.size() - 1) {
             return false;
