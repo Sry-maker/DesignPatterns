@@ -10,14 +10,14 @@ public:
     std::string Area;
 protected:
     void TimeSet() {
-        std::cout << "MatchDesign£ºÇëÊäÈë±ÈÈüÊ±¼ä£º";
+        std::cout << "MatchDesignï¼šè¯·è¾“å…¥æ¯”èµ›æ—¶é—´ï¼š";
         std::cin >> Time;
-        std::cout << "MatchDesign£º±ÈÈüÊ±¼äÒÑÉè¶¨\n";
+        std::cout << "MatchDesignï¼šæ¯”èµ›æ—¶é—´å·²è®¾å®š\n";
     }
     void AreaSet() {
-        std::cout << "MatchDesign£ºÇëÊäÈë±ÈÈü³¡µØ£º";
+        std::cout << "MatchDesignï¼šè¯·è¾“å…¥æ¯”èµ›åœºåœ°ï¼š";
         std::cin >> Area;
-        std::cout << "MatchDesign£º±ÈÈü³¡µØÒÑÉè¶¨\n";
+        std::cout << "MatchDesignï¼šæ¯”èµ›åœºåœ°å·²è®¾å®š\n";
     }
     virtual void NameSet() = 0;
     virtual void PlayerSet() = 0;

@@ -7,8 +7,8 @@
 
 #include "FactoryMethod/factoryMethod.h"
 #include "AbstractFactory/abstractFactory.h"
-#include "TemplateMethod/Template_test.h"
-#include "Visitor/Visitor_test.h"
+#include "TemplateMethod/TemplateTest.h"
+#include "Visitor/VisitorTest.h"
 #include "ChainOfResponsibility/chainOfResponsibility.h"
 #include "Command/command.h"
 #include "facade.h"
@@ -22,8 +22,8 @@ int main(int argc, const char * argv[]) {
     factoryMethodTest();
     abstractFactoryTest();
     MVCTest();
-    Template();
-    Visitor();
+    templateTest();
+    visitorTest();
     chainOfResponsibilityTest();
     commandTest();
     facadeTest();

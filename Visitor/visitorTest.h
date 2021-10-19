@@ -1,11 +1,11 @@
 #pragma once
 #ifndef _Visitor_test_H
 #define _Visitor_test_H
-#include "Grant_authorization_Visitor.h"
-#include "Permit_verify_Visitor.h"
-#include "Permit.h"
+#include "grantAuthorizationVisitor.h"
+#include "permitVerifyVisitor.h"
+#include "permit.h"
 
-void Visitor() {
+void visitorTest() {
 
 	Grant_authorization_Visitor* M1 = new Grant_authorization_Visitor;
 	Permit_verify_Visitor* M2 = new Permit_verify_Visitor;

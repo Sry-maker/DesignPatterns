@@ -2,7 +2,7 @@
 #ifndef _Airgun_H
 #define _Airgun_H
 
-#include "Match_design.h"
+#include "matchDesign.h"
 
 class Airgun : public MatchDesign {
 private:
@@ -10,18 +10,18 @@ private:
     std::string rule;
 protected:
     void NameSet() override {
-        Name = "ÆøÇ¹";
-        std::cout << "Airgun£ºÆøÇ¹:\n";
+        Name = "æ°”æžª";
+        std::cout << "Airgunï¼šæ°”æžª:\n";
     }
     void PlayerSet() override {
-        std::cout << "Airgun£ºÇëÊäÈëÔË¶¯Ô±ID:";
+        std::cout << "Airgunï¼šè¯·è¾“å…¥è¿åŠ¨å‘˜ID:";
         std::cin >> player;
-        std::cout << "Airgun£ºÔË¶¯Ô±ÒÑÉè¶¨\n";
+        std::cout << "Airgunï¼šè¿åŠ¨å‘˜å·²è®¾å®š\n";
     }
     void RuleSet() override {
-        std::cout << "Airgun£ºÇëÊäÈë±ÈÈü¹æÔò:";
+        std::cout << "Airgunï¼šè¯·è¾“å…¥æ¯”èµ›è§„åˆ™:";
         std::cin >> rule;
-        std::cout << "Airgun£º±ÈÈü¹æÔòÒÑÉè¶¨\n";
+        std::cout << "Airgunï¼šæ¯”èµ›è§„åˆ™å·²è®¾å®š\n";
     }
     void ShowInfo() override {
         std::cout << "Airgun: name:"<< Name<< "\n";

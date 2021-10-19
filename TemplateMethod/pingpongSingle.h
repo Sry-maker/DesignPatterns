@@ -2,7 +2,7 @@
 #ifndef _Pingpong_single_H
 #define _Pingpong_single_H
 
-#include "Match_design.h"
+#include "matchDesign.h"
 
 class Pingpong_single : public MatchDesign {
 private:
@@ -11,20 +11,20 @@ private:
     std::string rule;
 protected:
     void NameSet() override {
-        Name = "∆π≈“«Úµ•¥Ú";
-        std::cout << "Pingpong_single£∫∆π≈“«Úµ•¥Ú:\n";
+        Name = "‰πí‰πìÁêÉÂçïÊâì";
+        std::cout << "Pingpong_singleÔºö‰πí‰πìÁêÉÂçïÊâì:\n";
     }
     void PlayerSet() override {
-        std::cout << "Pingpong_single£∫«Î ‰»Îµ⁄“ªŒª‘À∂Ø‘±ID:";
+        std::cout << "Pingpong_singleÔºöËØ∑ËæìÂÖ•Á¨¨‰∏Ä‰ΩçËøêÂä®ÂëòID:";
         std::cin >> player1;
-        std::cout << "Pingpong_single£∫«Î ‰»Îµ⁄∂˛Œª‘À∂Ø‘±ID:";
+        std::cout << "Pingpong_singleÔºöËØ∑ËæìÂÖ•Á¨¨‰∫å‰ΩçËøêÂä®ÂëòID:";
         std::cin >> player2;
-        std::cout << "Pingpong_single£∫‘À∂Ø‘±“—…Ë∂®\n";
+        std::cout << "Pingpong_singleÔºöËøêÂä®ÂëòÂ∑≤ËÆæÂÆö\n";
     }
     void RuleSet() override {
-        std::cout << "Pingpong_single£∫«Î ‰»Î±»»¸πÊ‘Ú:";
+        std::cout << "Pingpong_singleÔºöËØ∑ËæìÂÖ•ÊØîËµõËßÑÂàô:";
         std::cin >> rule;
-        std::cout << "Pingpong_single£∫±»»¸πÊ‘Ú“—…Ë∂®\n";
+        std::cout << "Pingpong_singleÔºöÊØîËµõËßÑÂàôÂ∑≤ËÆæÂÆö\n";
     }
     void ShowInfo() override {
         std::cout << "Pingpong_single: name:"<< Name<< "\n";

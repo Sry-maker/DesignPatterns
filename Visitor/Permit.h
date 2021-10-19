@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _Permit_H
 #define _Permit_H
-#include "Visitor.h"
+#include "visitor.h"
 class Permit {
 public:
     virtual ~Permit() {}
@@ -13,7 +13,7 @@ public:
         visitor->Visit(this);
     }
     std::string Method_Customer_ticket() {
-        return "����ƾ֤";
+        return "观众凭证";
     }
 };
 
@@ -23,7 +23,7 @@ public:
         visitor->Visit(this);
     }
     std::string Method_Athlete_pass() {
-        return "�˶�Աƾ֤";
+        return "运动员凭证";
     }
 };
 
@@ -33,7 +33,7 @@ public:
         visitor->Visit(this);
     }
     std::string Method_Referee_evidence() {
-        return "����ƾ֤";
+        return "裁判凭证";
     }
 };
 #endif
