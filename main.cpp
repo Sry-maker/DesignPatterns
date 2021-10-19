@@ -14,6 +14,9 @@
 #include "facade.h"
 #include "flyweight.h"
 #include "proxy.h"
+#include "./Callback/callBackTest.h"
+#include "./Composite/compositeTest.h"
+#include "./Decorator/decoratorTest.h"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
@@ -29,5 +32,8 @@ int main(int argc, const char * argv[]) {
     facadeTest();
     flyweightTest();
     proxyTest();
+    callBackTest();
+    compositeTest();
+    decoratorTest();
     return 0;
 }
