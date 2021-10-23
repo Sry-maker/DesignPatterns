@@ -4,19 +4,20 @@
 #include <iostream>
 #include <string>
 class MatchDesign {
+    MatchDesign(){
+       std::cout << "MatchDesign::MatchDesign : created a template, name is MatchDesign\n"; 
+    }
 public:
     std::string Time;
     std::string Name;
     std::string Area;
-    void TimeSet(std::string time) {
-        std::cout << "MatchDesign：请输入比赛时间：";
+    void TimeSet(std::string time) {     
         Time=time;
-        std::cout << "MatchDesign：比赛时间已设定\n";
+        std::cout << "MatchDesign::TimeSet : 比赛时间已设定,为:"<<Time<<"\n";
     }
     void AreaSet(std::string area) {
-        std::cout << "MatchDesign：请输入比赛场地：";
         Area=area;
-        std::cout << "MatchDesign：比赛场地已设定\n";
+        std::cout << "MatchDesign::AreaSet : 比赛场地已设定,为:"<<Area<<"\n";
     }
     virtual void NameSet() = 0;
     virtual void PlayerSet() = 0;
