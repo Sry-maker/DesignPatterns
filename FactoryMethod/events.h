@@ -8,6 +8,8 @@
 #ifndef events_h
 #define events_h
 
+#include <iostream>
+
 // 比赛项目基类
 class Events {
 protected:
@@ -38,6 +40,7 @@ public:
     // 通过new一个比赛来执行流程
     void EventsOperation() {
         Events * event = this->FactoryMethod();
+        std::cout << "EventsCreator::EventsOperation : " << "创建" << typeid(*event).name() << std::endl;
         event->excuteEvent();
         delete event;
     }
