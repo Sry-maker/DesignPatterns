@@ -15,6 +15,7 @@ class IdentityAuthenticationHandler : public AbstractHandler {
 public:
     //进行身份核验处理
     void Handle(audience request) override {
+        std::cout << std::endl << "IdentityAuthenticationHandler:: Handle : 进行身份核验处理" << std::endl;
         if (request.ID == "1"&&request.name=="1") {
             std::cout << "身份核验通过" << std::endl;
             AbstractHandler::Handle(request);
@@ -29,6 +30,7 @@ class SecurityCheckHandler : public AbstractHandler {
 public:
     //进行安检处理
     void Handle(audience request) override {
+        std::cout << std::endl << "SecurityCheckHandler:: Handle : 进行安检处理" << std::endl;
         if (request.dangerous_articles == false) {
             std::cout << "安检通过" << std::endl;
             AbstractHandler::Handle(request);
@@ -43,6 +45,7 @@ class TicketCheckHandler : public AbstractHandler {
 public:
     //进行验票处理
     void Handle(audience request) override {
+        std::cout << std::endl << "TicketCheckHandler:: Handle : 进行验票处理" << std::endl;
         if (request.ticketID == "1") {
             std::cout << "验票通过" << std::endl;
             AbstractHandler::Handle(request);
