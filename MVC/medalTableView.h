@@ -22,6 +22,11 @@ class MedalTableView {
     // 将控制器设置为友元类
     friend class MedalTableController;
     
+public:
+    MedalTableView() {
+        std::cout << "MedalTableView::MedalTableView : 创建视图（View）" << std::endl;
+    }
+    
 private:
     
     // 打印奖牌榜（控制器调用 显示模型）

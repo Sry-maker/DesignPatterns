@@ -42,15 +42,18 @@ void MVCTest() {
         17,
         22
     };
+    std::cout << "***************  以下为MVC(模型-视图-控制器)设计模式  **************************************" << std::endl << std::endl;
     
     // 建立模型和视图，并且和控制器关联起来
-    MedalTableModel model = MedalTableModel(national_names, gold_medal_num,
+    MedalTableModel* model = new MedalTableModel(national_names, gold_medal_num,
                                             silver_medal_num, bronze_medal_num);
-    MedalTableView view = MedalTableView();
+    MedalTableView* view = new MedalTableView();
     MedalTableController controller = MedalTableController(model, view);
     
     // 显示视图
     controller.updateView();
+    
+    std::cout << std::endl << "***************  MVC(模型-视图-控制器)设计模式结束  **************************************" << std::endl << std::endl;
 }
 
 
