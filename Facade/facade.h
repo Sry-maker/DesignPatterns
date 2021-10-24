@@ -1,47 +1,47 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 using namespace std;
 /***************************************************************************
-  Àà  Ãû³Æ£ºFencing
-  ¹¦    ÄÜ£ºÓÃÀ´Íê³É»÷½£±ÈÈü
-  Ëµ    Ã÷£º
+  ç±»  åç§°ï¼šFencing
+  åŠŸ    èƒ½ï¼šç”¨æ¥å®Œæˆå‡»å‰‘æ¯”èµ›
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 class Fencing {
 public:
 	std::string enterAthlete() const {
-		return "Fencing::enterAthlete:Â¼Èë»÷½£±ÈÈüÑ¡ÊÖÐÅÏ¢!\n";
+		return "Fencing::enterAthlete:å½•å…¥å‡»å‰‘æ¯”èµ›é€‰æ‰‹ä¿¡æ¯!\n";
 	}
 	std::string generateCompetition() const {
-		return "Fencing::generateCompetition:Éú³É»÷½£±ÈÈü!\n";
+		return "Fencing::generateCompetition:ç”Ÿæˆå‡»å‰‘æ¯”èµ›!\n";
 	}
 	// ...
 	std::string settlement() const {
-		return "Fencing::settlement:±ÈÈüÍê³É£¬¼ÇÂ¼Ãû´Î!\n";
+		return "Fencing::settlement:æ¯”èµ›å®Œæˆï¼Œè®°å½•åæ¬¡!\n";
 	}
 };
 /***************************************************************************
-  Àà  Ãû³Æ£ºSwimming
-  ¹¦    ÄÜ£ºÓÃÀ´Íê³ÉÓÎÓ¾±ÈÈü
-  Ëµ    Ã÷£º
+  ç±»  åç§°ï¼šSwimming
+  åŠŸ    èƒ½ï¼šç”¨æ¥å®Œæˆæ¸¸æ³³æ¯”èµ›
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 class Swimming {
 public:
 	std::string enterAthlete() const {
-		return "Swimming::enterAthlete:Â¼ÈëÓÎÓ¾Ñ¡ÊÖÐÅÏ¢!\n";
+		return "Swimming::enterAthlete:å½•å…¥æ¸¸æ³³é€‰æ‰‹ä¿¡æ¯!\n";
 	}
 	std::string generateCompetition() const {
-		return "Swimming::generateCompetition:Éú³ÉÓÎÓ¾±ÈÈü!\n";
+		return "Swimming::generateCompetition:ç”Ÿæˆæ¸¸æ³³æ¯”èµ›!\n";
 	}
 	// ...
 	std::string settlement() const {
-		return "Swimming::settlement:±ÈÈüÍê³É£¬¼ÇÂ¼Ãû´Î!\n";
+		return "Swimming::settlement:æ¯”èµ›å®Œæˆï¼Œè®°å½•åæ¬¡!\n";
 	}
 };
 
 /***************************************************************************
-  Àà  Ãû³Æ£ºFacade
-  ¹¦    ÄÜ£ºÀûÓÃFacadeÍê³É±ÈÈüÏîÄ¿µÄ³õÊ¼»¯¹¤×÷
-  Ëµ    Ã÷£ºInit ¶ÔËùÓÐÏîÄ¿½øÐÐ³õÊ¼»¯£¬Ö»ÁÐ¾ÙÁËÓÎÓ¾ºÍ»÷½£±ÈÈü
+  ç±»  åç§°ï¼šFacade
+  åŠŸ    èƒ½ï¼šåˆ©ç”¨Facadeå®Œæˆæ¯”èµ›é¡¹ç›®çš„åˆå§‹åŒ–å·¥ä½œ
+  è¯´    æ˜Žï¼šInit å¯¹æ‰€æœ‰é¡¹ç›®è¿›è¡Œåˆå§‹åŒ–ï¼Œåªåˆ—ä¸¾äº†æ¸¸æ³³å’Œå‡»å‰‘æ¯”èµ›
 ***************************************************************************/
 class Facade {
 protected:
@@ -62,7 +62,7 @@ public:
 	}
 	
 	std::string Init() {
-		std::string result = "Facade::Init: ³õÊ¼»¯±ÈÈüÏîÄ¿:\n";
+		std::string result = "Facade::Init: åˆå§‹åŒ–æ¯”èµ›é¡¹ç›®:\n";
 		result += this->fencing_->enterAthlete();
 		result += this->swimming_->enterAthlete();
 		result += this->fencing_->generateCompetition();
@@ -78,7 +78,7 @@ void Init(Facade* facade) {
 	// ...
 }
 int facadeTest() {
-	std::cout << "*************** facadeÄ£Ê½Õ¹Ê¾:*************************************\n";
+	std::cout << "*************** facadeæ¨¡å¼å±•ç¤º:*************************************\n";
 	Fencing* fencing = new Fencing;
 	Swimming* swimming = new Swimming;
 	Facade* facade = new Facade(fencing, swimming);
