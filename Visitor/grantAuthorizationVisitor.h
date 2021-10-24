@@ -3,11 +3,13 @@
 #define _Grant_authorization_Visitor_H
 #include "visitor.h"
 #include "permit.h"
+//授予入场凭证的访问者子类
 class Grant_authorization_Visitor : public Visitor {
     Grant_authorization_Visitor(){
         std::cout << "Grant_authorization_Visitor::Grant_authorization_Visitor : Visitor name is Grant_authorization_Visitor\n"; 
     }
 public:
+    //不同类型入场凭证的访问
     void Visit(Customer_ticket* element) override {
         std::cout << "Grant_authorization_Visitor::Visit : " << element->Method_Customer_ticket() << " 授予\n";
     }
