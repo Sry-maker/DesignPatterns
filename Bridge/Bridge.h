@@ -82,14 +82,6 @@ class Phone
 {
 public:
     virtual void SetOS() = 0;
-    virtual std::string SetiPhone()
-    {
-        return "Phone::SetiPhone:";
-    }
-    virtual std::string SetSamsung()
-    {
-        return "Phone::SetSamsung:";
-    }
 };
 
 //Apple手机类，依赖抽象的操作系统
@@ -142,25 +134,25 @@ void bridgeTest() {
 
     OS* piOS1 = new iOSSubSystem1(); //创建一个操作系统
     Phone* iPhone13Pro = new iPhone(piOS1);//应用到该手机上
-    cout << "第一位选手的奖品为：Phone::SetiPhone:iPhone13Pro，" << endl;
+    cout << "第一位选手的奖品为：iPhone13Pro，" << endl;
     iPhone13Pro->SetOS();
     cout << endl;
 
     OS* piOS2 = new iOSSubSystem2();
     Phone* iPhone13ProMax = new iPhone(piOS2);
-    cout << "第二位选手的奖品为：Phone::SetiPhone:iPhone13ProMax，" << endl;
+    cout << "第二位选手的奖品为：iPhone13ProMax，" << endl;
     iPhone13ProMax->SetOS();
     cout << endl;
 
     OS* pAndroid1 = new AndroidSubSystem1();
     Phone* SamsungS21 = new Samsung(pAndroid1);
-    cout << "第三位选手的奖品为：Phone::SetSamsung:SamsungS21，" << endl;
+    cout << "第三位选手的奖品为：SamsungS21，" << endl;
     SamsungS21->SetOS();
     cout << endl;
 
     OS* pAndroid2 = new AndroidSubSystem2();
     Phone* SamsungS21Ultra = new Samsung(pAndroid2);
-    cout << "第四位选手的奖品为：Phone::SetSamsung:SamsungS21Ultra，" << endl;
+    cout << "第四位选手的奖品为：SamsungS21Ultra，" << endl;
     SamsungS21Ultra->SetOS();
     cout << endl;
 
