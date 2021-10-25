@@ -29,19 +29,19 @@ public:
 class BasketballSuppliesFactory : public AbstractFactory {
 public:
     AbstractBall* makeBall() override {
-        std::cout << "生产一个篮球" << std::endl;
+        std::cout << "BasketballSuppliesFactory::makeBall : " << "生产一个篮球" << std::endl;
         return new Basketball();
     }
     AbstractShoes* makeShoes() override {
-        std::cout << "生产一双篮球鞋" << std::endl;
+        std::cout << "BasketballSuppliesFactory::makeShoes : " << "生产一双篮球鞋" << std::endl;
         return new BasketballShoes();
     }
     AbstractClothes* makeClothes() override {
-        std::cout << "生产一件篮球衣" << std::endl;
+        std::cout << "BasketballSuppliesFactory::makeClothes : " << "生产一件篮球衣" << std::endl;
         return new BasketballClothes();
     }
     BasketballSuppliesFactory() {
-        std::cout << "篮球相关产品工厂" << std::endl;
+        std::cout << "BasketballSuppliesFactory::BasketballSuppliesFactory : " << "创建篮球相关产品工厂" << std::endl;
     }
 };
 
@@ -50,19 +50,19 @@ public:
 class SoccerballSuppliesFactory : public AbstractFactory {
 public:
     AbstractBall* makeBall() override {
-        std::cout << "生产一个足球" << std::endl;
+        std::cout << "SoccerballSuppliesFactory::makeBall : " << "生产一个足球" << std::endl;
         return new Soccerball();
     }
     AbstractShoes* makeShoes() override {
-        std::cout << "生产一双足球鞋" << std::endl;
+        std::cout << "SoccerballSuppliesFactory::makeShoes : " << "生产一双足球鞋" << std::endl;
         return new SoccerShoes();
     }
     AbstractClothes* makeClothes() override {
-        std::cout << "生产一件足球衣" << std::endl;
+        std::cout << "SoccerballSuppliesFactory::makeClothes : " << "生产一件足球衣" << std::endl;
         return new SoccerClothes();
     }
     SoccerballSuppliesFactory() {
-        std::cout << "足球相关产品工厂" << std::endl;
+        std::cout << "SoccerballSuppliesFactory::SoccerballSuppliesFactory : " <<"创建足球相关产品工厂" << std::endl;
     }
 };
 

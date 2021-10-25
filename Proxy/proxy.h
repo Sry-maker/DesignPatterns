@@ -1,66 +1,79 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
-
-class Subject {
+/***************************************************************************
+  类  名称：Handle
+  功    能：处理请求的基类
+  说    明：
+***************************************************************************/
+class Handle {
 public:
 	virtual void Request() const = 0;
 };
-
-class RealSubject : public Subject {
+/***************************************************************************
+  类  名称：RealHandle
+  功    能：继承了处理请求的基类，真正处理请求的类
+  说    明：
+***************************************************************************/
+class RealHandle : public Handle {
 public:
 	void Request() const override {
-		std::cout << "RealSubject: �����˶�Ա����.\n";
+		std::cout << "RealHandle::Request: 处理运动员请求.\n";
 	}
 };
-
-class Proxy : public Subject {
+/***************************************************************************
+  类  名称：Proxy
+  功    能：利用proxy来处理来自运动员的请求
+  说    明：CheckAccess在发出真实请求之前检查访问权限
+            LogAccess记录请求时间
+***************************************************************************/
+class Proxy : public Handle {
 	
 private:
-	RealSubject* real_subject_;
+	RealHandle* real_handle_;
 
 	bool CheckAccess() const {
 	
-		std::cout << "Proxy: �ڷ�����ʵ����֮ǰ������Ȩ��\n";
+		std::cout << "Proxy::CheckAccess: 在发出真实请求之前检查访问权限\n";
 		return true;
 	}
 	void LogAccess() const {
-		std::cout << "Proxy: ��¼����ʱ��\n";
+		std::cout << "Proxy::LogAccess: 记录请求时间\n";
 	}
 
 	
 public:
-	Proxy(RealSubject* real_subject) : real_subject_(new RealSubject(*real_subject)) {
+	Proxy(RealHandle* real_handle) : real_handle_(new RealHandle(*real_handle)) {
 	}
 
 	~Proxy() {
-		delete real_subject_;
+		delete real_handle_;
 	}
 	
 	void Request() const override {
 		if (this->CheckAccess()) {
-			this->real_subject_->Request();
+			this->real_handle_->Request();
 			this->LogAccess();
 		}
 	}
 };
 
-void ClientCode(const Subject& subject) {
+void Client(const Handle& handle) {
 	// ...
-	subject.Request();
+	handle.Request();
 	// ...
 }
 
 int proxyTest() {
-	
-	std::cout << "ֱ�Ӵ����ͻ�������:\n";
-	RealSubject* real_subject = new RealSubject;
-	ClientCode(*real_subject);
+	std::cout << "*************** proxy模式展示:*************************************\n";
+	std::cout << "直接处理客户端请求:\n";
+	RealHandle* real_handle = new RealHandle;
+	Client(*real_handle);
 	std::cout << "\n";
-	std::cout << "ͨ��proxy��������:\n";
-	Proxy* proxy = new Proxy(real_subject);
-	ClientCode(*proxy);
+	std::cout << "通过proxy处理请求:\n";
+	Proxy* proxy = new Proxy(real_handle);
+	Client(*proxy);
 
-	delete real_subject;
+	delete real_handle;
 	delete proxy;
 
 	return 0;

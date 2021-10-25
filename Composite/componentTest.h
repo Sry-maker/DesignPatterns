@@ -6,45 +6,48 @@
 using namespace std;
 
 
-void ClientCode(Component* component) {
-    cout << "RESULT: " << component->Operation();
-}
 
-void ClientCode2(Component* component1, Component* component2) {
-    if (component1->IsDepartment()) {
-        component1->Add(component2);
-    }
-    cout << "RESULT: " << component1->Operation();
-}
-
-int componentTest() {
-    Component* simple = new staff;
-    cout << "一个职工\n";
-    ClientCode(simple);
-    cout << "\n\n";
-    Component* tree = new Department;
-    Component* Department1 = new Department;
-    Component* staff_1 = new staff;
-    Component* staff_2 = new staff;
-    Component* staff_3 = new staff;
-    Department1->Add(staff_1);
-    Department1->Add(staff_2);
-    Component* Department2 = new Department;
-    Department2->Add(staff_3);
-    tree->Add(Department1);
-    tree->Add(Department2);
-    cout << "奥组委各部门:\n";
-    ClientCode(tree);
+int componentTest()  {
+    cout << "****************以下为Composite（组合）设计模式****************:\n";
+    Component* Department1 = new Department("国际奥委会");
+    Component* Department2 = new Department("国际奥委会全体委员会");
+    Component* Department3 = new Department("执行委员会");
+    Component* Staff_1 = new Staff("国际奥委会主席");
+    Component* Department4 = new Department("中国奥委会");
+    Component* Staff_2 = new Staff("中国奥委会主席");
+    Component* Staff_3 = new Staff("中国奥委会副主席");
+    Component* Department5 = new Department("日本奥委会");
+    Component* Department6 = new Department("新闻委员会");
+    Component* Department7 = new Department("秘书部");
+    Component* Department8 = new Department("法律事务部");
+    Department1->Add(Department2);
+    Department1->Add(Department3);
+    Department1->Add(Staff_1);
+    Department2->Add(Department4);
+    Department2->Add(Department5);
+    Department4->Add(Staff_1);
+    Department4->Add(Staff_2);
+    Department4->Add(Department6);
+    Department4->Add(Department7);
+    Department4->Add(Department8);
+    cout << "\n\n奥组委部门结构:\n";
+    cout << "component::Operation(): " << Department1->Operation();
     cout << "\n\n";
     cout << "调整部门结构时不需要考虑是部门还是职工:\n";
-    ClientCode2(tree, simple);
+    Department1->Remove(Staff_1);
+    cout << "component::Operation(): " << Department1->Operation();
     cout << "\n";
-    delete simple;
-    delete tree;
     delete Department1;
     delete Department2;
-    delete staff_1;
-    delete staff_2;
-    delete staff_3;
+    delete Department3;
+    delete Department4;
+    delete Department5;
+    delete Department6;
+    delete Department7;
+    delete Department8;
+    delete Staff_1;
+    delete Staff_2;
+    delete Staff_3;
+    cout << "\n****************Composite（组合）设计模式结束****************:\n";
     return 0;
 }

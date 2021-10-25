@@ -117,7 +117,9 @@ public:
     gold_medal_num(gold_medal_num),
     silver_medal_num(silver_medal_num),
     bronze_medal_num(bronze_medal_num)
-    {}
+    {
+        std::cout << "MedalTableModel::MedalTableModel : 创建模型（Model）" << std::endl;
+    }
     
     MedalTableModel() {}
 };

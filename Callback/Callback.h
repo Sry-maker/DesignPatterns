@@ -15,16 +15,16 @@ public:
 //主办城市奥运会组委会,编写呈交给国际奥委会工作报告
 class NOC {
 public:
-	NOC(CallBack* mCallBack2) :mCallBack(mCallBack2) {}
+	NOC(CallBack* mCallBack2) :mCallBack(mCallBack2) {
+	cout<<"NOC::NOC():Create a National Olympic Committees"<<endl;
+	}
 	~NOC() {}
 
 	//编写呈交给国际奥委会工作报告
 	void caculateNOC() {
+		cout << "NOC::caculateNOC():Generates a work report" << endl;
 		mCallBack->setNOCResult("本届奥运会工作报告");
 	}
-
-
-
 private:
 	CallBack* mCallBack;
 };
@@ -34,22 +34,23 @@ private:
 class IOC :public CallBack {
 public:
 	IOC() {
-		mFinace = new NOC(this);
+		cout << "IOC::IOC():Create a International Olympic Committees" << endl;
+		mNOC = new NOC(this);
 	}
 	~IOC() {
-		delete mFinace;
+		delete mNOC;
 	}
 	//查看工作报告
 	void readReport() {
-		cout << "IOC readReport" << endl;
-		mFinace->caculateNOC();
+		cout << "IOC::readReport():Call NOC to build" << endl;
+		mNOC->caculateNOC();
 	}
 	//实现后的回调函数，接收回调的值,即工作报告
 	void setNOCResult(const char* result) const {
-		cout << "result:" << result << endl;
+		cout << "IOC::setNOCResult():" << result << endl;
 	}
 private:
-	NOC* mFinace;
+	NOC* mNOC;
 };
 
 #endif

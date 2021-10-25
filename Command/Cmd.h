@@ -36,6 +36,7 @@ public:
 class VipPassage {
 public:
 	void EnterVipPassage() {
+		std::cout << std::endl << "VipPassage:: EnterVipPassage : 选择进入贵宾通道" << std::endl ;
 		std::cout << "进入贵宾通道" << std::endl << std::endl;
 	}
 };
@@ -44,6 +45,7 @@ class NormalPassage
 {
 public:
 	void EnterNormalPassage() {
+		std::cout << std::endl << "NormalPassage:: EnterNormalPassage : 选择进入普通通道" << std::endl ;
 		std::cout << "进入普通通道" << std::endl << std::endl;
 	}
 };
@@ -52,6 +54,7 @@ class SpecialPassage
 {
 public:
 	void EnterSpecialPassage() {
+		std::cout << std::endl << "SpecialPassage:: EnterSpecialPassage : 选择进入特殊优先通道" << std::endl ;
 		std::cout << "进入特殊优先通道" << std::endl << std::endl;
 	}
 };

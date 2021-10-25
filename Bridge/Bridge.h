@@ -23,7 +23,7 @@ class iOS : public OS
 public:
     virtual std::string GetOS()
     {
-        return "iOS操作系统";
+        return "iOS::GetOS:iOS操作系统";
     }
 };
 
@@ -33,7 +33,7 @@ class Android : public OS
 public:
     virtual std::string GetOS()
     {
-        return "Android操作系统";
+        return "Android::GetOS:Android操作系统";
     }
 };
 
@@ -43,7 +43,7 @@ class iOSSubSystem1 : public iOS
 public:
     virtual std::string GetOS()
     {
-        return "iOS 13操作系统";
+        return "iOSSubSystem1::GetOS:iOS 13操作系统";
     }
 };
 
@@ -53,7 +53,7 @@ class iOSSubSystem2 : public iOS
 public:
     virtual std::string GetOS()
     {
-        return "iOS 14操作系统";
+        return "iOSSubSystem2::GetOS:iOS 14操作系统";
     }
 };
 
@@ -63,7 +63,7 @@ class AndroidSubSystem1 : public Android
 public:
     virtual std::string GetOS()
     {
-        return "Android 11操作系统";
+        return "AndroidSubSystem1::GetOS:Android 11操作系统";
     }
 };
 
@@ -73,7 +73,7 @@ class AndroidSubSystem2 : public Android
 public:
     virtual std::string GetOS()
     {
-        return "Android 12操作系统";
+        return "AndroidSubSystem2::GetOS:Android 12操作系统";
     }
 };
 
@@ -98,7 +98,7 @@ public:
     }
     virtual void SetOS()
     {
-        cout << "手机的预装系统为: " << m_pOS->GetOS().c_str() <<"。"<< endl;
+        cout << "手机的预装系统为: iPhone::SetOS:" << m_pOS->GetOS().c_str() << "。" << endl;
     }
 private:
     OS* m_pOS;
@@ -119,7 +119,7 @@ public:
 
     virtual void SetOS()
     {
-        cout << "手机的预装系统为: " << m_pOS->GetOS().c_str() << "。" << endl;
+        cout << "手机的预装系统为: Samsung::SetOS:" << m_pOS->GetOS().c_str() << "。" << endl;
     }
 private:
     OS* m_pOS;
@@ -127,36 +127,38 @@ private:
 
 
 void bridgeTest() {
-    
-    cout << "BridgeTest:" << endl<<endl;
 
-    cout<<"下面为近期比赛表现优异的四位选手颁发奖品："<<endl << endl;
+    cout << "**********以下为Bridge(桥接)设计模式**********" << endl << endl;
+
+    cout << "下面为近期比赛表现优异的四位选手颁发奖品：" << endl << endl;
 
     OS* piOS1 = new iOSSubSystem1(); //创建一个操作系统
     Phone* iPhone13Pro = new iPhone(piOS1);//应用到该手机上
-    cout << "第一位选手的奖品为iPhone13Pro，"<<endl;
+    cout << "第一位选手的奖品为：iPhone13Pro，" << endl;
     iPhone13Pro->SetOS();
     cout << endl;
 
     OS* piOS2 = new iOSSubSystem2();
     Phone* iPhone13ProMax = new iPhone(piOS2);
-    cout << "第二位选手的奖品为iPhone13ProMax，" << endl;
+    cout << "第二位选手的奖品为：iPhone13ProMax，" << endl;
     iPhone13ProMax->SetOS();
     cout << endl;
 
     OS* pAndroid1 = new AndroidSubSystem1();
     Phone* SamsungS21 = new Samsung(pAndroid1);
-    cout << "第三位选手的奖品为SamsungS21，" << endl;
+    cout << "第三位选手的奖品为：SamsungS21，" << endl;
     SamsungS21->SetOS();
     cout << endl;
 
     OS* pAndroid2 = new AndroidSubSystem2();
     Phone* SamsungS21Ultra = new Samsung(pAndroid2);
-    cout << "第四位选手的奖品为SamsungS21Ultra，" << endl;
+    cout << "第四位选手的奖品为：SamsungS21Ultra，" << endl;
     SamsungS21Ultra->SetOS();
     cout << endl;
 
-    cout<<"再次祝贺这四位选手！"<<endl;
+    cout << "再次祝贺这四位选手！" << endl << endl;
+
+    cout << "**********Bridge(桥接)设计模式结束**********" << endl << endl;
 
     DELETE_OBJECT(iPhone13Pro);
     DELETE_OBJECT(iPhone13ProMax);

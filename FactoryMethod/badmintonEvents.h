@@ -17,16 +17,16 @@ public:
     
     // 重写相关的函数
     void checkIn() override {
-        std::cout << "现在开始羽毛球检录，请各位选手准备好" << std::endl;
+        std::cout << "BadmintonEvents::checkIn : 现在开始羽毛球检录，请各位选手准备好" << std::endl;
     }
     void starting() override {
-        std::cout << "羽毛球比赛正式开始！" << std::endl;
+        std::cout << "BadmintonEvents::starting : 羽毛球比赛正式开始！" << std::endl;
     }
     void ending() override {
-        std::cout << "羽毛球球比赛结束！" << std::endl;
+        std::cout << "BadmintonEvents::ending : 羽毛球球比赛结束！" << std::endl;
     }
     void awarding() override {
-        std::cout << "请羽毛球球比赛获奖人员上台领奖" << std::endl;
+        std::cout << "BadmintonEvents::awarding : 请羽毛球球比赛获奖人员上台领奖" << std::endl;
     }
 };
 
@@ -38,6 +38,11 @@ public:
     // 重写工厂函数
     Events* FactoryMethod() override {
         return new BadmintonEvents();
+    }
+    
+    BadmintonEventsCreator() {
+        std::cout << "BadmintonEventsCreator::BadmintonEventsCreator : create a BadmintonEventsCreator"
+                  << std::endl;
     }
 };
 

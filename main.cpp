@@ -11,6 +11,7 @@
 #include "Visitor/VisitorTest.h"
 #include "ChainOfResponsibility/chainOfResponsibility.h"
 #include "Command/command.h"
+#include "ExtensionObject/extensionObject.h"
 #include "facade.h"
 #include "flyweight.h"
 #include "proxy.h"
@@ -31,6 +32,7 @@ int main(int argc, const char * argv[]) {
     visitorTest();
     chainOfResponsibilityTest();
     commandTest();
+    extensionObjectTest();
     facadeTest();
     flyweightTest();
     proxyTest();

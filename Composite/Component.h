@@ -8,20 +8,10 @@ using namespace std;
 
 //抽象类，既能代表职工，又能代表奥组委各部门
 class Component {
-
 protected:
-    Component* parent_;
-
+    string Name;
 public:
     virtual ~Component() {}
-    // 明确部件从属于哪个部件
-    void SetParent(Component* parent) {
-        this->parent_ = parent;
-    }
-    // 了解部件从属于哪个部件
-    Component* GetParent() const {
-        return this->parent_;
-    }
     //添加部件的从属
     virtual void Add(Component* component) {}
     //移除部件的从属
@@ -34,11 +24,15 @@ public:
     virtual string Operation() const = 0;
 };
 
-class staff : public Component {
+class Staff : public Component {
 public:
+    Staff(string name) {
+        Name = name;
+        cout << "Staff::Staff():create a staff: " << name<<endl;
+    }
     //输出职工身份
     string Operation() const override {
-        return "staff";
+        return "Staff:"+Name;
     }
 };
 
@@ -46,17 +40,18 @@ class Department : public Component {
 
 protected:
     list<Component*> children_;
-
 public:
+    Department(string name) {
+        Name = name;
+        cout << "Department::Department():create a department: " << name<<endl;
+    }
     //添加部件的从属
     void Add(Component* component) override {
         this->children_.push_back(component);
-        component->SetParent(this);
     }
     //移除部件的从属
     void Remove(Component* component) override {
         children_.remove(component);
-        component->SetParent(nullptr);
     }
     //判断是否是奥组委部门
     bool IsDepartment() const override {
@@ -73,6 +68,6 @@ public:
                 result += c->Operation() + "+";
             }
         }
-        return "Department(" + result + ")";
+        return "Department"+Name+"(" + result + ")";
     }
 };
