@@ -10,33 +10,34 @@ void menuWorker();
 void menuCostomer();
 
 void menuMain(){
-    system("cls");
-    std::cout << "---------------欢迎进入奥林匹克运动会！---------------\n";
-    std::cout << "1.选择用户类型\n";
-    std::cout << "2.进行比赛\n";
-    std::cout << "3.退出系统\n";
-    int type;
-    std::cout << "input:";
-    std::cin>>type;
-    switch (type)
+    while (1)
     {
-    case 1:
-        menuRole();
-        break;
-    case 2:
+        std::cout << "\n\n---------------欢迎进入奥林匹克运动会！---------------\n";
+        std::cout << "1.选择用户类型\n";
+        std::cout << "2.进行比赛\n";
+        std::cout << "3.退出系统\n";
+        int type;
+        std::cout << "input:";
+        std::cin>>type;
+        switch (type)
+        {
+        case 1:
+           menuRole();
+            break;
+        case 2:
         //进行比赛
-        break;
-    case 3:
-        return;
-        break;
-    default:
-        break;
-    }
+            break;
+        case 3:
+            return;
+            break;
+        default:
+            break;
+        }
+    } 
     return;
 }
 void menuRole(){
-    system("cls");
-    std::cout << "---------------请选择用户类型---------------\n";
+    std::cout << "\n---------------请选择用户类型---------------\n";
     std::cout << "1.运动员\n";
     std::cout << "2.管理员\n";
     std::cout << "3.观众\n";
@@ -66,8 +67,7 @@ void menuRole(){
     return;
 }
 void menuAthlete(){
-    system("cls");
-    std::cout << "---------------请您要进行的操作---------------\n";
+    std::cout << "\n---------------请您要进行的操作---------------\n";
     std::cout << "1.报名\n";
     std::cout << "2.比赛信息查询\n";
     std::cout << "3.纪念品预定\n";
@@ -88,12 +88,10 @@ void menuAthlete(){
     default:
         break;
     }
-    menuMain();
     return;
 }
 void menuWorker(){
-    system("cls");
-    std::cout << "---------------请您要进行的操作---------------\n";
+    std::cout << "\n---------------请您要进行的操作---------------\n";
     std::cout << "1.提交运动员数据\n";
     std::cout << "2.添加部门\n";
     std::cout << "3.添加职工\n";
@@ -126,12 +124,10 @@ void menuWorker(){
     default:
         break;
     }
-    menuMain();
     return;
 }
 void menuCostomer(){
-    system("cls");
-    std::cout << "---------------请您要进行的操作---------------\n";
+    std::cout << "\n---------------请您要进行的操作---------------\n";
     std::cout << "1.入场\n";
     std::cout << "2.纪念品预定\n";
     int type;
@@ -148,7 +144,6 @@ void menuCostomer(){
     default:
         break;
     }
-    menuMain();
     return;
 }
 int main(int argc, const char * argv[]) {
