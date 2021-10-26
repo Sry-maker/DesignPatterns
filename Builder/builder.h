@@ -3,15 +3,15 @@
 #include <vector>
 
 
-//ÇòÅÄÖÆÔì
-//ÇòÅÄÖÆÔìËµÃ÷
+//çƒæ‹åˆ¶é€ 
+//çƒæ‹åˆ¶é€ è¯´æ˜
 
-class  Racket {     //ÇòÅÄ
+class  Racket {     //çƒæ‹
 public:
 	std::vector<std::string> pro;
 	void process()const {
 		for (size_t i = 0; i < pro.size(); i++) {
-			std::cout << std::endl << "Racket : µÚ" << (i + 1) << "²½: ";
+			std::cout << std::endl << "Racket : ç¬¬" << (i + 1) << "æ­¥: ";
 			if (pro[i] == pro.back()) {
 				std::cout << pro[i];
 			}
@@ -24,12 +24,12 @@ public:
 };
 
 
-class Manual {     //ÇòÅÄÖÆ×÷ËµÃ÷
+class Manual {     //çƒæ‹åˆ¶ä½œè¯´æ˜
 public:
 	std::vector<std::string> con;
 	void content()const {
 		for (size_t i = 0; i < con.size(); i++) {
-			std::cout << std::endl << "Manual : ÊÖ²áÄÚÈİ" << std::endl;
+			std::cout << std::endl << "Manual : æ‰‹å†Œå†…å®¹" << std::endl;
 			if (con[i] == con.back()) {
 				std::cout << "Manual : " << con[i];
 			}
@@ -41,166 +41,166 @@ public:
 	}
 };
 
-class Builder {    //Éú³ÉÆ÷
+class Builder {    //ç”Ÿæˆå™¨
 public:
-	virtual ~Builder() {}//Îö¹¹º¯Êı
-	virtual void frame() const = 0;//ÇòÅÄ¿ò¼Ü
-	virtual void face() const = 0;//ÇòÅÄÃæ
-	virtual void handle() const = 0;//ÇòÅÄ±ú
-	virtual void bond() const = 0;//Õ³ºÏ
+	virtual ~Builder() {}//ææ„å‡½æ•°
+	virtual void frame() const = 0;//çƒæ‹æ¡†æ¶
+	virtual void face() const = 0;//çƒæ‹é¢
+	virtual void handle() const = 0;//çƒæ‹æŸ„
+	virtual void bond() const = 0;//ç²˜åˆ
 
 };
 
-class tabletennisBatsBuilder : public Builder {  //Æ¹ÅÒÇòÅÄÉú³ÉÆ÷
+class tabletennisBatsBuilder : public Builder {  //ä¹’ä¹“çƒæ‹ç”Ÿæˆå™¨
 private:
 
 	Racket* racket;
 public:
 
-	tabletennisBatsBuilder() {//¹¹Ôìº¯Êı
+	tabletennisBatsBuilder() {//æ„é€ å‡½æ•°
 		this->Reset();
 	}
 
-	~tabletennisBatsBuilder() {//Îö¹¹º¯Êı
+	~tabletennisBatsBuilder() {//ææ„å‡½æ•°
 		delete racket;
 	}
 
-	void Reset() {//¶¯Ì¬ÉêÇëRacket
+	void Reset() {//åŠ¨æ€ç”³è¯·Racket
 		this->racket = new Racket();
 	}
 
-	void frame() const override {//ÖÆ×÷Æ¹ÅÒÇò¿ò¼Ü
-		this->racket->pro.push_back("ÖÆ×÷Æ¹ÅÒÇò¿ò¼Ü");
+	void frame() const override {//åˆ¶ä½œä¹’ä¹“çƒæ¡†æ¶
+		this->racket->pro.push_back("åˆ¶ä½œä¹’ä¹“çƒæ¡†æ¶");
 	}
-	void face() const override {//ÖÆ×÷Æ¹ÅÒÇòÅÄÃæ
-		this->racket->pro.push_back("ÖÆ×÷Æ¹ÅÒÇòÅÄÃæ");
+	void face() const override {//åˆ¶ä½œä¹’ä¹“çƒæ‹é¢
+		this->racket->pro.push_back("åˆ¶ä½œä¹’ä¹“çƒæ‹é¢");
 	}
-	void handle() const override {//ÖÆ×÷Æ¹ÅÒÇòÅÄ±ú
-		this->racket->pro.push_back("ÖÆ×÷Æ¹ÅÒÇòÅÄ±ú");
+	void handle() const override {//åˆ¶ä½œä¹’ä¹“çƒæ‹æŸ„
+		this->racket->pro.push_back("åˆ¶ä½œä¹’ä¹“çƒæ‹æŸ„");
 	}
-	void bond() const override {//Õ³ºÏÆ¹ÅÒÇòÇòÅÄ
-		this->racket->pro.push_back("Õ³ºÏÆ¹ÅÒÇòÇòÅÄ");
+	void bond() const override {//ç²˜åˆä¹’ä¹“çƒçƒæ‹
+		this->racket->pro.push_back("ç²˜åˆä¹’ä¹“çƒçƒæ‹");
 
 	}
 
-	void Get() {//È¡µÃÆ¹ÅÒÇòÅÄÖÆ×÷¹ı³Ì
+	void Get() {//å–å¾—ä¹’ä¹“çƒæ‹åˆ¶ä½œè¿‡ç¨‹
 
 		racket->process();
 
 	}
 };
 
-class badmintonBuilder : public Builder {//ÓğÃ«ÇòÅÄÉú³ÉÆ÷
+class badmintonBuilder : public Builder {//ç¾½æ¯›çƒæ‹ç”Ÿæˆå™¨
 private:
 
 	Racket* racket;
 public:
 
-	badmintonBuilder() {//¹¹Ôìº¯Êı
+	badmintonBuilder() {//æ„é€ å‡½æ•°
 		this->Reset();
 	}
 
-	~badmintonBuilder() {//Îö¹¹º¯Êı
+	~badmintonBuilder() {//ææ„å‡½æ•°
 		delete racket;
 	}
 
-	void Reset() {//¶¯Ì¬ÉêÇë
+	void Reset() {//åŠ¨æ€ç”³è¯·
 		this->racket = new Racket();
 	}
 
-	void frame() const override {//ÖÆ×÷ÓğÃ«Çò¿ò¼Ü
-		this->racket->pro.push_back("ÖÆ×÷ÓğÃ«Çò¿ò¼Ü");
+	void frame() const override {//åˆ¶ä½œç¾½æ¯›çƒæ¡†æ¶
+		this->racket->pro.push_back("åˆ¶ä½œç¾½æ¯›çƒæ¡†æ¶");
 	}
-	void face() const override {//ÖÆ×÷ÓğÃ«ÇòÅÄÃæ
-		this->racket->pro.push_back("ÖÆ×÷ÓğÃ«ÇòÅÄÃæ");
+	void face() const override {//åˆ¶ä½œç¾½æ¯›çƒæ‹é¢
+		this->racket->pro.push_back("åˆ¶ä½œç¾½æ¯›çƒæ‹é¢");
 	}
-	void handle() const override {//ÖÆ×÷ÓğÃ«ÇòÅÄ±ú
-		this->racket->pro.push_back("ÖÆ×÷ÓğÃ«ÇòÅÄ±ú");
+	void handle() const override {//åˆ¶ä½œç¾½æ¯›çƒæ‹æŸ„
+		this->racket->pro.push_back("åˆ¶ä½œç¾½æ¯›çƒæ‹æŸ„");
 	}
-	void bond() const override {//Õ³ºÏÓğÃ«ÇòÇòÅÄ
-		this->racket->pro.push_back("Õ³ºÏÓğÃ«ÇòÇòÅÄ");
+	void bond() const override {//ç²˜åˆç¾½æ¯›çƒçƒæ‹
+		this->racket->pro.push_back("ç²˜åˆç¾½æ¯›çƒçƒæ‹");
 
 	}
 
-	void Get() {//È¡µÃÓğÃ«ÇòÅÄÖÆ×÷¹ı³Ì
+	void Get() {//å–å¾—ç¾½æ¯›çƒæ‹åˆ¶ä½œè¿‡ç¨‹
 
 		racket->process();
 
 	}
 };
-class tabletennisBatsmanualBuilder : public Builder {//Æ¹ÅÒÇòÅÄÊÖ²áÉú³ÉÆ÷
+class tabletennisBatsmanualBuilder : public Builder {//ä¹’ä¹“çƒæ‹æ‰‹å†Œç”Ÿæˆå™¨
 private:
 
 	Manual* manual;
 public:
 
-	tabletennisBatsmanualBuilder() {//¹¹Ôìº¯Êı
+	tabletennisBatsmanualBuilder() {//æ„é€ å‡½æ•°
 		this->Reset();
 	}
 
-	~tabletennisBatsmanualBuilder() {//Îö¹¹º¯Êı
+	~tabletennisBatsmanualBuilder() {//ææ„å‡½æ•°
 		delete manual;
 	}
 
-	void Reset() {//¶¯Ì¬ÉêÇë
+	void Reset() {//åŠ¨æ€ç”³è¯·
 		this->manual = new Manual();
 	}
 
-	void frame() const override {//ÖÆ×÷Æ¹ÅÒÇò¿ò¼ÜËµÃ÷
-		this->manual->con.push_back("ÖÆ×÷Æ¹ÅÒÇò¿ò¼ÜËµÃ÷......");
+	void frame() const override {//åˆ¶ä½œä¹’ä¹“çƒæ¡†æ¶è¯´æ˜
+		this->manual->con.push_back("åˆ¶ä½œä¹’ä¹“çƒæ¡†æ¶è¯´æ˜......");
 	}
-	void face() const override {//ÖÆ×÷Æ¹ÅÒÇòÅÄÃæËµÃ÷
-		this->manual->con.push_back("ÖÆ×÷Æ¹ÅÒÇòÅÄÃæËµÃ÷......");
+	void face() const override {//åˆ¶ä½œä¹’ä¹“çƒæ‹é¢è¯´æ˜
+		this->manual->con.push_back("åˆ¶ä½œä¹’ä¹“çƒæ‹é¢è¯´æ˜......");
 	}
-	void handle() const override {//ÖÆ×÷Æ¹ÅÒÇòÅÄ±úËµÃ÷
-		this->manual->con.push_back("ÖÆ×÷Æ¹ÅÒÇòÅÄ±úËµÃ÷......");
+	void handle() const override {//åˆ¶ä½œä¹’ä¹“çƒæ‹æŸ„è¯´æ˜
+		this->manual->con.push_back("åˆ¶ä½œä¹’ä¹“çƒæ‹æŸ„è¯´æ˜......");
 	}
-	void bond() const override {//Õ³ºÏÆ¹ÅÒÇòÇòÅÄËµÃ÷
-		this->manual->con.push_back("Õ³ºÏÆ¹ÅÒÇòÇòÅÄËµÃ÷......");
+	void bond() const override {//ç²˜åˆä¹’ä¹“çƒçƒæ‹è¯´æ˜
+		this->manual->con.push_back("ç²˜åˆä¹’ä¹“çƒçƒæ‹è¯´æ˜......");
 
 	}
 
 
-	void Get() {//È¡µÃÆ¹ÅÒÇòÅÄËµÃ÷
+	void Get() {//å–å¾—ä¹’ä¹“çƒæ‹è¯´æ˜
 
 		manual->content();
 
 	}
 };
 
-class badmintonmanualBuilder : public Builder {//ÓğÃ«ÇòÅÄËµÃ÷
+class badmintonmanualBuilder : public Builder {//ç¾½æ¯›çƒæ‹è¯´æ˜
 private:
 
 	Manual* manual;
 public:
 
-	badmintonmanualBuilder() {//¹¹Ôìº¯Êı
+	badmintonmanualBuilder() {//æ„é€ å‡½æ•°
 		this->Reset();
 	}
 
-	~badmintonmanualBuilder() {//Îö¹¹º¯Êı
+	~badmintonmanualBuilder() {//ææ„å‡½æ•°
 		delete manual;
 	}
 
-	void Reset() {//¶¯Ì¬ÉêÇë
+	void Reset() {//åŠ¨æ€ç”³è¯·
 		this->manual = new Manual();
 	}
 
-	void frame() const override {//ÖÆ×÷ÓğÃ«Çò¿ò¼ÜËµÃ÷
-		this->manual->con.push_back("ÖÆ×÷ÓğÃ«Çò¿ò¼ÜËµÃ÷......");
+	void frame() const override {//åˆ¶ä½œç¾½æ¯›çƒæ¡†æ¶è¯´æ˜
+		this->manual->con.push_back("åˆ¶ä½œç¾½æ¯›çƒæ¡†æ¶è¯´æ˜......");
 	}
-	void face() const override {//ÖÆ×÷ÓğÃ«ÇòÅÄÃæËµÃ÷
-		this->manual->con.push_back("ÖÆ×÷ÓğÃ«ÇòÅÄÃæËµÃ÷......");
+	void face() const override {//åˆ¶ä½œç¾½æ¯›çƒæ‹é¢è¯´æ˜
+		this->manual->con.push_back("åˆ¶ä½œç¾½æ¯›çƒæ‹é¢è¯´æ˜......");
 	}
-	void handle() const override {//ÖÆ×÷ÓğÃ«ÇòÅÄ±úËµÃ÷
-		this->manual->con.push_back("ÖÆ×÷ÓğÃ«ÇòÅÄ±úËµÃ÷......");
+	void handle() const override {//åˆ¶ä½œç¾½æ¯›çƒæ‹æŸ„è¯´æ˜
+		this->manual->con.push_back("åˆ¶ä½œç¾½æ¯›çƒæ‹æŸ„è¯´æ˜......");
 	}
-	void bond() const override {//Õ³ºÏÓğÃ«ÇòÇòÅÄËµÃ÷
-		this->manual->con.push_back("Õ³ºÏÓğÃ«ÇòÇòÅÄËµÃ÷......");
+	void bond() const override {//ç²˜åˆç¾½æ¯›çƒçƒæ‹è¯´æ˜
+		this->manual->con.push_back("ç²˜åˆç¾½æ¯›çƒçƒæ‹è¯´æ˜......");
 
 	}
 
-	void Get() {//È¡µÃÓğÃ«ÇòÅÄËµÃ÷
+	void Get() {//å–å¾—ç¾½æ¯›çƒæ‹è¯´æ˜
 
 		manual->content();
 
@@ -209,17 +209,17 @@ public:
 
 
 
-class Director {//Ö÷¹Ü¸ºÔğ°´ÕÕÌØ¶¨Ë³ĞòÖ´ĞĞÉú³É²½Öè
+class Director {//ä¸»ç®¡è´Ÿè´£æŒ‰ç…§ç‰¹å®šé¡ºåºæ‰§è¡Œç”Ÿæˆæ­¥éª¤
 
 private:
 	Builder* builder;
 public:
 
-	void set_builder(Builder* builder) {//È¡µÃÉú³ÉÆ÷
+	void set_builder(Builder* builder) {//å–å¾—ç”Ÿæˆå™¨
 		this->builder = builder;
 	}
 
-	void BuildRacket() {//Ë³ĞòÉú³É²½Öè
+	void BuildRacket() {//é¡ºåºç”Ÿæˆæ­¥éª¤
 
 		this->builder->frame();
 		this->builder->face();
@@ -231,49 +231,49 @@ public:
 };
 
 
-void ClientCode(Director& director)//²âÊÔº¯Êı
+void ClientCode(Director& director)//æµ‹è¯•å‡½æ•°
 {
-	//²âÊÔÆ¹ÅÒÇòÅÄÖÆ×÷¹ı³Ì
+	//æµ‹è¯•ä¹’ä¹“çƒæ‹åˆ¶ä½œè¿‡ç¨‹
 	tabletennisBatsBuilder* pingpong = new tabletennisBatsBuilder();
 	director.set_builder(pingpong);
-	std::cout << "Æ¹ÅÒÇòÅÄÖÆ×÷¹ı³Ì:\n";
+	std::cout << "ä¹’ä¹“çƒæ‹åˆ¶ä½œè¿‡ç¨‹:\n";
 	director.BuildRacket();
 
 	pingpong->Get();
 
 	delete pingpong;
 
-	//²âÊÔÓğÃ«ÇòÅÄÖÆ×÷¹ı³Ì
+	//æµ‹è¯•ç¾½æ¯›çƒæ‹åˆ¶ä½œè¿‡ç¨‹
 	badmintonBuilder* badminton = new  badmintonBuilder();
 	director.set_builder(badminton);
-	std::cout << "ÓğÃ«ÇòÅÄÖÆ×÷¹ı³Ì:\n";
+	std::cout << "ç¾½æ¯›çƒæ‹åˆ¶ä½œè¿‡ç¨‹:\n";
 	director.BuildRacket();
 
 	badminton->Get();
 
 	delete  badminton;
 
-	//²âÊÔÆ¹ÅÒÇòÅÄÖÆ×÷¹ı³ÌËµÃ÷
+	//æµ‹è¯•ä¹’ä¹“çƒæ‹åˆ¶ä½œè¿‡ç¨‹è¯´æ˜
 	tabletennisBatsmanualBuilder* pingpongm = new tabletennisBatsmanualBuilder();
 	director.set_builder(pingpongm);
-	std::cout << "Æ¹ÅÒÇòÅÄÖÆ×÷¹ı³ÌËµÃ÷:\n";
+	std::cout << "ä¹’ä¹“çƒæ‹åˆ¶ä½œè¿‡ç¨‹è¯´æ˜:\n";
 	director.BuildRacket();
 
 	pingpongm->Get();
 	delete pingpongm;
 
 
-	//²âÊÔÓğÃ«ÇòÅÄÖÆ×÷¹ı³ÌËµÃ÷
+	//æµ‹è¯•ç¾½æ¯›çƒæ‹åˆ¶ä½œè¿‡ç¨‹è¯´æ˜
 	badmintonmanualBuilder* badmintonm = new  badmintonmanualBuilder();
 	director.set_builder(badmintonm);
-	std::cout << "ÓğÃ«ÇòÅÄÖÆ×÷¹ı³ÌËµÃ÷:\n";
+	std::cout << "ç¾½æ¯›çƒæ‹åˆ¶ä½œè¿‡ç¨‹è¯´æ˜:\n";
 	director.BuildRacket();
 	badmintonm->Get();
 	delete  badmintonm;
 }
 
-void builderTest() {//²âÊÔ½Ó¿Ú
-	std::cout << "*****************Builder(Éú³ÉÆ÷)Éè¼ÆÄ£Ê½**********" << std::endl;
+void builderTest() {//æµ‹è¯•æ¥å£
+	std::cout << "*****************Builder(ç”Ÿæˆå™¨)è®¾è®¡æ¨¡å¼**********" << std::endl;
 	Director* director = new Director();
 	ClientCode(*director);
 	delete director;

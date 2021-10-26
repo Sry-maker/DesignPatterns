@@ -4,45 +4,45 @@
 #include <string>
 
 
-//µ¥ÀıÄ£Ê½
+//å•ä¾‹æ¨¡å¼
 class Singleton
 {
 
 private:
 	static Singleton* pinstance;
-	static std::mutex mut;     //Ïß³Ì°²È«
+	static std::mutex mut;     //çº¿ç¨‹å®‰å…¨
 
 protected:
-	std::string Olympicname;   //°ÂÁÖÆ¥¿ËÔË¶¯»áÏîÄ¿
-	std::string recordholder;  //¼ÇÂ¼±£³ÖÕß
-	std::string record;        //¼ÇÂ¼
-	Singleton(const std::string name, const std::string holder, const std::string rec) : Olympicname(name), recordholder(holder), record(rec)//¹¹Ôìº¯Êı
+	std::string Olympicname;   //å¥¥æ—åŒ¹å…‹è¿åŠ¨ä¼šé¡¹ç›®
+	std::string recordholder;  //è®°å½•ä¿æŒè€…
+	std::string record;        //è®°å½•
+	Singleton(const std::string name, const std::string holder, const std::string rec) : Olympicname(name), recordholder(holder), record(rec)//æ„é€ å‡½æ•°
 	{
 	}
-	~Singleton() {}//Îö¹¹º¯Êı
+	~Singleton() {}//ææ„å‡½æ•°
 
 
 public:
 
-	Singleton(Singleton& other) = delete;  //µ¥ÀıÄ£Ê½²»¿ÉÒÔ½øĞĞµÄ²Ù×÷
+	Singleton(Singleton& other) = delete;  //å•ä¾‹æ¨¡å¼ä¸å¯ä»¥è¿›è¡Œçš„æ“ä½œ
 	void operator=(const Singleton&) = delete;
 
-	static Singleton* GetInstance(const std::string& name, const std::string& holder, const std::string& rec);//»ñÈ¡ÊµÀı
+	static Singleton* GetInstance(const std::string& name, const std::string& holder, const std::string& rec);//è·å–å®ä¾‹
 
 
-	void recorddeclaration()   //¼ÇÂ¼´òÓ¡
+	void recorddeclaration()   //è®°å½•æ‰“å°
 	{
-		std::cout << "Singleton::recorddeclaration : " << std::endl << "°ÂÁÖÆ¥¿ËÔË¶¯»áÏîÄ¿: " << Olympicname << std::endl << "¼ÍÂ¼±£³ÖÕß: " << recordholder << std::endl << "¼ÇÂ¼: " << record << std::endl;
+		std::cout << "Singleton::recorddeclaration : " << std::endl << "å¥¥æ—åŒ¹å…‹è¿åŠ¨ä¼šé¡¹ç›®: " << Olympicname << std::endl << "çºªå½•ä¿æŒè€…: " << recordholder << std::endl << "è®°å½•: " << record << std::endl;
 	}
 
 
-	std::string Olympicnamevalue() const {//·µ»Ø°ÂÁÖÆ¥¿ËÔË¶¯»áÏîÄ¿
+	std::string Olympicnamevalue() const {//è¿”å›å¥¥æ—åŒ¹å…‹è¿åŠ¨ä¼šé¡¹ç›®
 		return Olympicname;
 	}
-	std::string recordholdervalue() const {//·µ»Ø¼ÍÂ¼±£³ÖÕß
+	std::string recordholdervalue() const {//è¿”å›çºªå½•ä¿æŒè€…
 		return recordholder;
 	}
-	std::string recordvalue() const {//·µ»Ø¼ÇÂ¼
+	std::string recordvalue() const {//è¿”å›è®°å½•
 		return record;
 	}
 };
@@ -52,27 +52,27 @@ Singleton* Singleton::pinstance{ nullptr };
 std::mutex Singleton::mut;
 
 
-Singleton* Singleton::GetInstance(const std::string& name, const std::string& holder, const std::string& rec)//»ñÈ¡ÊµÀı
+Singleton* Singleton::GetInstance(const std::string& name, const std::string& holder, const std::string& rec)//è·å–å®ä¾‹
 {
 	std::lock_guard<std::mutex> lock(mut);
-	if (pinstance == nullptr)//Èç¹ûÎªnullptrÔò´´½¨£¬·ñÔòÖ±½Ó·µ»ØÒÑ¾­´´½¨ºÃµÄ
+	if (pinstance == nullptr)//å¦‚æœä¸ºnullptråˆ™åˆ›å»ºï¼Œå¦åˆ™ç›´æ¥è¿”å›å·²ç»åˆ›å»ºå¥½çš„
 	{
 		pinstance = new Singleton(name, holder, rec);
 	}
 	return pinstance;
 }
 
-void singletonTest() {//²âÊÔº¯Êı
+void singletonTest() {//æµ‹è¯•å‡½æ•°
 
 
-	std::cout << "*****************Singleton(µ¥Àı)Éè¼ÆÄ£Ê½**********" << std::endl << std::endl;
+	std::cout << "*****************Singleton(å•ä¾‹)è®¾è®¡æ¨¡å¼**********" << std::endl << std::endl;
 
-	std::cout << "¼ÇÂ¼´´½¨" << std::endl;
-	Singleton* singleton = Singleton::GetInstance("ÄĞ×Ó100Ã×", "²©¶ûÌØ", "9Ãë58");
+	std::cout << "è®°å½•åˆ›å»º" << std::endl;
+	Singleton* singleton = Singleton::GetInstance("ç”·å­100ç±³", "åšå°”ç‰¹", "9ç§’58");
 	singleton->recorddeclaration();
 
 	std::cout << std::endl << std::endl << std::endl;
-	std::cout << "¼ÇÂ¼²éÑ¯" << std::endl;
+	std::cout << "è®°å½•æŸ¥è¯¢" << std::endl;
 	Singleton* singl = Singleton::GetInstance("", "", "");
 	singl->recorddeclaration();
 

@@ -4,136 +4,136 @@
 #include <string>
 
 
-//³¡µØÔË¶¯¹æ·¶ ×ãÇò¡¢Æ¹ÅÒÇò¡¢±ùÇò     ÇòÃÅ¡¢ÇòÍø¡¢ÇòÅÄ¹æ·¶¡¢»¤¾ß¡¢Çò¸Ë
+//åœºåœ°è¿åŠ¨è§„èŒƒ è¶³çƒã€ä¹’ä¹“çƒã€å†°çƒ     çƒé—¨ã€çƒç½‘ã€çƒæ‹è§„èŒƒã€æŠ¤å…·ã€çƒæ†
 enum Type {
-	Football = 0,//×ãÇò
-	Pingpong,    //Æ¹ÅÒÇò
-	Icehockey    //±ùÇò
+	Football = 0,//è¶³çƒ
+	Pingpong,    //ä¹’ä¹“çƒ
+	Icehockey    //å†°çƒ
 
 };
 
 
-class Prototype {//Ô­ĞÍ
+class Prototype {//åŸå‹
 protected:
-	std::string prototypename; //ÔË¶¯ÏîÄ¿
-	double length;        //³¡µØ³¤¶È
-	double width;         //³¡µØ¿í¶È
+	std::string prototypename; //è¿åŠ¨é¡¹ç›®
+	double length;        //åœºåœ°é•¿åº¦
+	double width;         //åœºåœ°å®½åº¦
 
 
 public:
-	Prototype() {}//¹¹Ôìº¯Êı
+	Prototype() {}//æ„é€ å‡½æ•°
 	Prototype(std::string prototype_name) {
 		this->prototypename = prototype_name;
 	}
-	virtual ~Prototype() {}//Îö¹¹º¯Êı
-	virtual Prototype* Clone() const = 0;//¸ù¾İÔ­ĞÍ¹¹ÔìĞÂĞÍ
-	virtual void assign(double length, double width) {//¸³Öµ
+	virtual ~Prototype() {}//ææ„å‡½æ•°
+	virtual Prototype* Clone() const = 0;//æ ¹æ®åŸå‹æ„é€ æ–°å‹
+	virtual void assign(double length, double width) {//èµ‹å€¼
 		this->length = length;
 		this->width = width;
 	}
-	virtual void standard() const = 0;//¹æ·¶´òÓ¡
+	virtual void standard() const = 0;//è§„èŒƒæ‰“å°
 };
 
 
-class FootballPrototype : public Prototype {//×ãÇò³¡µØ
+class FootballPrototype : public Prototype {//è¶³çƒåœºåœ°
 private:
-	std::string goalstandard;//×ãÇòÇòÃÅ¹æ·¶
+	std::string goalstandard;//è¶³çƒçƒé—¨è§„èŒƒ
 
 public:
-	FootballPrototype(std::string prototype_name, std::string goal_standard)//¹¹Ôìº¯Êı
+	FootballPrototype(std::string prototype_name, std::string goal_standard)//æ„é€ å‡½æ•°
 		: Prototype(prototype_name), goalstandard(goal_standard) {
 	}
 
-	Prototype* Clone() const override {//¹¹ÔìĞÂĞÍ
+	Prototype* Clone() const override {//æ„é€ æ–°å‹
 		return new  FootballPrototype(*this);
 	}
-	void standard() const override {//¹æ·¶´òÓ¡
+	void standard() const override {//è§„èŒƒæ‰“å°
 		std::cout << "FootballPrototype::standard : " << std::endl << prototypename << ":" << std::endl;
-		std::cout << "³¡µØ³¤¶È:" << length << std::endl << "³¡µØ¿í¶È:" << width << std::endl << "×ãÇòÇòÃÅ¹æ·¶:" << goalstandard << std::endl << std::endl;
+		std::cout << "åœºåœ°é•¿åº¦:" << length << std::endl << "åœºåœ°å®½åº¦:" << width << std::endl << "è¶³çƒçƒé—¨è§„èŒƒ:" << goalstandard << std::endl << std::endl;
 	}
 };
 
 
-class PingpongPrototype : public Prototype {//Æ¹ÅÒ³¡µØ
+class PingpongPrototype : public Prototype {//ä¹’ä¹“åœºåœ°
 private:
-	std::string netstandard;//ÇòÍø¹æ·¶
-	std::string racketstandard;//ÇòÅÄ¹æ·¶
+	std::string netstandard;//çƒç½‘è§„èŒƒ
+	std::string racketstandard;//çƒæ‹è§„èŒƒ
 
 public:
-	PingpongPrototype(std::string prototype_name, std::string net_standard, std::string racket_standard)//¹¹Ôìº¯Êı
+	PingpongPrototype(std::string prototype_name, std::string net_standard, std::string racket_standard)//æ„é€ å‡½æ•°
 		: Prototype(prototype_name), netstandard(net_standard), racketstandard(racket_standard) {
 	}
 
-	Prototype* Clone() const override {//¹¹ÔìĞÂĞÍ
+	Prototype* Clone() const override {//æ„é€ æ–°å‹
 		return new  PingpongPrototype(*this);
 	}
-	void standard() const override {//¹æ·¶´òÓ¡
+	void standard() const override {//è§„èŒƒæ‰“å°
 		std::cout << "PingpongPrototype::standard : " << std::endl << prototypename << ":" << std::endl;
-		std::cout << "³¡µØ³¤¶È:" << length << std::endl << "³¡µØ¿í¶È:" << width << std::endl << "Æ¹ÅÒÇòÇòÍø¹æ·¶:" << netstandard << std::endl << "Æ¹ÅÒÇòÇòÅÄ¹æ·¶:" << racketstandard << std::endl << std::endl;
+		std::cout << "åœºåœ°é•¿åº¦:" << length << std::endl << "åœºåœ°å®½åº¦:" << width << std::endl << "ä¹’ä¹“çƒçƒç½‘è§„èŒƒ:" << netstandard << std::endl << "ä¹’ä¹“çƒçƒæ‹è§„èŒƒ:" << racketstandard << std::endl << std::endl;
 	}
 };
 
-class icehockeyPrototype : public Prototype {//±ùÇò³¡µØ
+class icehockeyPrototype : public Prototype {//å†°çƒåœºåœ°
 private:
-	std::string goalstandard;//ÇòÃÅ¹æ·¶
-	std::string clubstandard;//Çò¸Ë¹æ·¶
+	std::string goalstandard;//çƒé—¨è§„èŒƒ
+	std::string clubstandard;//çƒæ†è§„èŒƒ
 
 public:
-	icehockeyPrototype(std::string prototype_name, std::string goal_standard, std::string club_standard)//¹¹Ôìº¯Êı
+	icehockeyPrototype(std::string prototype_name, std::string goal_standard, std::string club_standard)//æ„é€ å‡½æ•°
 		: Prototype(prototype_name), goalstandard(goal_standard), clubstandard(club_standard) {
 	}
 
-	Prototype* Clone() const override {//¹¹ÔìĞÂĞÍ
+	Prototype* Clone() const override {//æ„é€ æ–°å‹
 		return new  icehockeyPrototype(*this);
 	}
-	void standard() const override {//¹æ·¶´òÓ¡
+	void standard() const override {//è§„èŒƒæ‰“å°
 		std::cout << "icehockeyPrototype::standard : " << std::endl << prototypename << ":" << std::endl;
-		std::cout << "³¡µØ³¤¶È:" << length << std::endl << "³¡µØ¿í¶È:" << width << std::endl << "±ùÇòÇòÍø¹æ·¶:" << goalstandard << std::endl << "±ùÇòÇò¸Ë¹æ·¶:" << clubstandard << std::endl << std::endl;
+		std::cout << "åœºåœ°é•¿åº¦:" << length << std::endl << "åœºåœ°å®½åº¦:" << width << std::endl << "å†°çƒçƒç½‘è§„èŒƒ:" << goalstandard << std::endl << "å†°çƒçƒæ†è§„èŒƒ:" << clubstandard << std::endl << std::endl;
 	}
 };
 
 
-class PrototypeFactory {//Ô­ĞÍ
+class PrototypeFactory {//åŸå‹
 private:
 	std::unordered_map<Type, Prototype*, std::hash<int>> prototypes_;
 
 public:
-	PrototypeFactory() {//¹¹Ôìº¯Êı£¬Èı¸ö¾ßÌåÔ­ĞÍ
-		prototypes_[Type::Football] = new FootballPrototype("×ãÇò¹æ·¶", "×ãÇòÃÅÓ¦ÉèÔÚÃ¿ÌõÇòÃÅÏßµÄÖĞÑë£¬ÓÉÁ½¸ùÏà¾à7.32Ã×¡¢ÓëÎ÷Ãæ½ÇÆìµãÏàµÈ¾àÀë ......");
-		prototypes_[Type::Pingpong] = new PingpongPrototype("Æ¹ÅÒÇò¹æ·¶ ", "ÇòÍø×°ÖÃ°üÀ¨ÇòÍø¡¢ĞüÍøÉş¡¢ÍøÖù¼°½«ËüÃÇ¹Ì¶¨ÔÚÇòÌ¨ÉÏµÄ¼ĞÇ¯²¿·Ö......", "ÇòÅÄµÄ´óĞ¡£¬ĞÎ×´ºÍÖØÁ¿²»ÏŞ£¬µ«µ×°åÓ¦Æ½Õû¡¢¼áÓ²......");
-		prototypes_[Type::Icehockey] = new PingpongPrototype("±ùÇòÇò¹æ·¶ ", "±ùÇòÏîÄ¿ÖĞ£¬ÇòÃÅµÄ¿í¶ÈÊÇ180ÀåÃ×£¬¾ÍÊÇ1Ã×8¿í......", "ÓÃÄ¾ÖÊ²ÄÁÏÖÆ³É£¬´Ó¸ù²¿ÖÁ¸Ë±ú¶Ë²»ÄÜ³¤ÓÚ147ÀåÃ×......");
+	PrototypeFactory() {//æ„é€ å‡½æ•°ï¼Œä¸‰ä¸ªå…·ä½“åŸå‹
+		prototypes_[Type::Football] = new FootballPrototype("è¶³çƒè§„èŒƒ", "è¶³çƒé—¨åº”è®¾åœ¨æ¯æ¡çƒé—¨çº¿çš„ä¸­å¤®ï¼Œç”±ä¸¤æ ¹ç›¸è·7.32ç±³ã€ä¸è¥¿é¢è§’æ——ç‚¹ç›¸ç­‰è·ç¦» ......");
+		prototypes_[Type::Pingpong] = new PingpongPrototype("ä¹’ä¹“çƒè§„èŒƒ ", "çƒç½‘è£…ç½®åŒ…æ‹¬çƒç½‘ã€æ‚¬ç½‘ç»³ã€ç½‘æŸ±åŠå°†å®ƒä»¬å›ºå®šåœ¨çƒå°ä¸Šçš„å¤¹é’³éƒ¨åˆ†......", "çƒæ‹çš„å¤§å°ï¼Œå½¢çŠ¶å’Œé‡é‡ä¸é™ï¼Œä½†åº•æ¿åº”å¹³æ•´ã€åšç¡¬......");
+		prototypes_[Type::Icehockey] = new PingpongPrototype("å†°çƒçƒè§„èŒƒ ", "å†°çƒé¡¹ç›®ä¸­ï¼Œçƒé—¨çš„å®½åº¦æ˜¯180å˜ç±³ï¼Œå°±æ˜¯1ç±³8å®½......", "ç”¨æœ¨è´¨ææ–™åˆ¶æˆï¼Œä»æ ¹éƒ¨è‡³æ†æŸ„ç«¯ä¸èƒ½é•¿äº147å˜ç±³......");
 	}
 
 
-	~PrototypeFactory() {//Îö¹¹º¯Êı
+	~PrototypeFactory() {//ææ„å‡½æ•°
 		delete prototypes_[Type::Football];
 		delete prototypes_[Type::Pingpong];
 		delete prototypes_[Type::Icehockey];
 	}
 
-	Prototype* CreatePrototype(Type type) {//·µ»ØÄ³¸ö¾ßÌåÔ­ĞÍ
+	Prototype* CreatePrototype(Type type) {//è¿”å›æŸä¸ªå…·ä½“åŸå‹
 		return prototypes_[type]->Clone();
 	}
 
 };
 
-void Client(PrototypeFactory& prototype_factory) {//²âÊÔº¯Êı
+void Client(PrototypeFactory& prototype_factory) {//æµ‹è¯•å‡½æ•°
 
-	//²âÊÔ×ãÇò
+	//æµ‹è¯•è¶³çƒ
 	Prototype* prototype = prototype_factory.CreatePrototype(Type::Football);
 	prototype->assign(105, 70);
 	prototype->standard();
 	delete prototype;
 
 	std::cout << std::endl;
-	//²âÊÔÆ¹ÅÒÇò
+	//æµ‹è¯•ä¹’ä¹“çƒ
 	prototype = prototype_factory.CreatePrototype(Type::Pingpong);
 	prototype->assign(2.7, 1.5);
 	prototype->standard();
 	delete prototype;
 
 	std::cout << std::endl;
-	//²âÊÔ±ùÇò
+	//æµ‹è¯•å†°çƒ
 	prototype = prototype_factory.CreatePrototype(Type::Icehockey);
 	prototype->assign(61, 30);
 	prototype->standard();
@@ -142,7 +142,7 @@ void Client(PrototypeFactory& prototype_factory) {//²âÊÔº¯Êı
 
 void prototypeTest()
 {
-	std::cout << "*****************Prototype(Ô­ĞÍ)Éè¼ÆÄ£Ê½**********" << std::endl << std::endl;
+	std::cout << "*****************Prototype(åŸå‹)è®¾è®¡æ¨¡å¼**********" << std::endl << std::endl;
 	PrototypeFactory* prototype_factory = new PrototypeFactory();
 	Client(*prototype_factory);
 	delete prototype_factory;
