@@ -10,6 +10,7 @@
 
 #include "events.h"
 #include <iostream>
+#include "../Adapter/Adapter.h"
 
 // 乒乓球比赛 继承自比赛基类
 class PingpongEvents : public Events {
@@ -27,6 +28,10 @@ public:
     }
     void awarding() override {
         std::cout << "PingpongEvents::awarding : 请乒乓球比赛获奖人员上台领奖" << std::endl;
+    }
+    void interview() override {
+        std::cout << "PingpongEvents::interview : 现在开始乒乓球赛后采访" << std::endl;
+        adapterTest();
     }
 };
 

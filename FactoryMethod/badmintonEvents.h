@@ -28,6 +28,9 @@ public:
     void awarding() override {
         std::cout << "BadmintonEvents::awarding : 请羽毛球球比赛获奖人员上台领奖" << std::endl;
     }
+    void interview() override {
+        
+    }
 };
 
 

@@ -19,6 +19,7 @@ protected:
     virtual void starting() = 0;
     virtual void ending() = 0;
     virtual void awarding() = 0;
+    virtual void interview() = 0;
 public:
     
     // 执行比赛的一般流程
@@ -27,6 +28,7 @@ public:
         starting();
         ending();
         awarding();
+        interview();
     }
     virtual ~Events() {}
 };
