@@ -12,14 +12,14 @@
 #include "ChainOfResponsibility/chainOfResponsibility.h"
 #include "Command/command.h"
 #include "ExtensionObject/extensionObject.h"
-#include "facade.h"
-#include "flyweight.h"
-#include "proxy.h"
-#include "./Callback/callBackTest.h"
-#include "./Composite/compositeTest.h"
-#include "./Decorator/decoratorTest.h"
-#include"Adapter.h"
-#include"Bridge.h"
+#include "Facade/facade.h"
+#include "Flyweight/flyweight.h"
+#include "Proxy/proxy.h"
+#include "Callback/callBackTest.h"
+#include "Composite/componentTest.h"
+#include "Decorator/decoratorTest.h"
+#include "Adapter/Adapter.h"
+#include "Bridge/Bridge.h"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {

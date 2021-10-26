@@ -15,6 +15,7 @@ void setPersonnel(int tp) {
 		Athlete1.nameSet("马小龙");
 		Athlete1.genderSet("男");
 		Athlete1.countrySet("中国");
+		Athlete1.ShowInfo();
 	}
 	if(tp == 2)
 	{
@@ -22,6 +23,7 @@ void setPersonnel(int tp) {
 		Worker1.nameSet("陈小洁");
 		Worker1.genderSet("女");
 		Worker1.typeSet("赛事管理员");
+		Worker1.ShowInfo();
 	}
 	if(tp == 3)
 	{
@@ -29,6 +31,7 @@ void setPersonnel(int tp) {
 		Customer1.nameSet("王小咩");
 		Customer1.genderSet("男");
 		Customer1.typeSet("男单乒乓VIP票");
+		Customer1.ShowInfo();
 	}
 	std::cout << "***************  Template(模板)设计模式结束  ***************\n\n";
 }
