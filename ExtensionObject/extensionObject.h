@@ -3,6 +3,7 @@
 class Extension;
 class Mask;
 
+//PeopleåŸºç±»
 class People {
 public:
 	//...
@@ -12,6 +13,7 @@ public:
 	}
 };
 
+//è§‚ä¼—
 class Audience : public People {
 public:
 	//...
@@ -20,6 +22,7 @@ private:
 	Mask* mask;
 };
 
+//ExtensionåŸºç±»
 class Extension {
 protected:
 	People* _owner;
@@ -30,22 +33,25 @@ public:
 	}
 };
 
+//ç”¨äºé˜²ç–«çš„æ‰©å±•
 class AntiepidemicExtension : public Extension {
 public:
 	AntiepidemicExtension(People* owner) :Extension(owner){}
 };
 
+//ä¸€ç§é˜²ç–«çš„å…·ä½“æªæ–½æ‰©å±•
 class Mask : public AntiepidemicExtension {
 public:
 	Mask(People* owner):AntiepidemicExtension(owner){}
 
 	void putOnMask()
 	{
-		std::cout << std::endl << "Mask:: putOnMask : Í»·¢ÒßÇéĞÂÔö¹¦ÄÜ´÷¿ÚÕÖ" << std::endl;
-		std::cout << std::endl << "¹ÛÖÚ´÷ÉÏÁË¿ÚÕÖ" << std::endl;
+		std::cout << std::endl << "Mask:: putOnMask : çªå‘ç–«æƒ…æ–°å¢åŠŸèƒ½æˆ´å£ç½©" << std::endl;
+		std::cout << std::endl << "è§‚ä¼—æˆ´ä¸Šäº†å£ç½©" << std::endl;
 	}
 };
 
+//æŸ¥è¯¢æŸç±»æ˜¯å¦æ‹¥æœ‰ç‰¹å®šExtensionï¼Œè‹¥æœ‰åˆ™è¿”å›å¯¹åº”Extensionå¯¹è±¡ï¼Œå¦åˆ™è·³è¿‡è¯¥ç±»
 Extension* Audience::GetExtension(const char* name)
 {
 	if (strcmp(name, "Mask") == 0)
@@ -57,9 +63,10 @@ Extension* Audience::GetExtension(const char* name)
 	return People::GetExtension(name);
 }
 
+//æµ‹è¯•å‡½æ•°
 void extensionObjectTest()
 {
-	std::cout << "***************  ÒÔÏÂÎªExtensionObject(À©Õ¹¶ÔÏó)Éè¼ÆÄ£Ê½  **************************************" << std::endl << std::endl;
+	std::cout << "***************  ä»¥ä¸‹ä¸ºExtensionObject(æ‰©å±•å¯¹è±¡)è®¾è®¡æ¨¡å¼  **************************************" << std::endl << std::endl;
 	Mask* mask;
 	Audience* audience = new Audience;
 	mask = (Mask*)audience->GetExtension("Mask");
@@ -67,5 +74,5 @@ void extensionObjectTest()
 	{
 		mask->putOnMask();
 	}
-	std::cout << std::endl << "***************  ExtensionObject(À©Õ¹¶ÔÏó)Éè¼ÆÄ£Ê½½áÊø  **************************************" << std::endl << std::endl;
+	std::cout << std::endl << "***************  ExtensionObject(æ‰©å±•å¯¹è±¡)è®¾è®¡æ¨¡å¼ç»“æŸ  **************************************" << std::endl << std::endl;
 }
