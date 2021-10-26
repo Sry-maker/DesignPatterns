@@ -1,4 +1,5 @@
-#include "singleton.h"
+﻿#include "singleton.h"
+
 int main()
 {
 

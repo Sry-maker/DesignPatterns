@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <mutex>
 #include <string>
@@ -32,7 +32,7 @@ public:
 
 	void recorddeclaration()   //记录打印
 	{
-		std::cout << "Singleton::recorddeclaration : " << std::endl << "奥林匹克运动会项目: " << Olympicname << std::endl << "纪录保持者: " << recordholder << std::endl << "记录: " << record << std::endl;
+		std::cout << "Singleton::recorddeclaration : " << std::endl << "奥林匹克运动会项目: " << Olympicname << std::endl << "纪录保持者: " << recordholder << std::endl << "记录: " << record <<std:: endl;
 	}
 
 
