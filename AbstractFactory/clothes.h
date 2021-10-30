@@ -1,4 +1,4 @@
-//
+﻿//
 //  clothes.h
 //  DesignPatterns
 //
