@@ -3,8 +3,8 @@
 #include "../Builder/builder.h"
 #include "../Interpreter/interpreter.h"
 //#include "../Memento/memento.h"
-//#include "../Proxy/proxy.h"
-//#include "../Facade/facade.h"
+#include "../Proxy/proxy.h"
+#include "../Facade/facade.h"
 //#include "../Flyweight/flyweight.h"
 #include"../Observer/Observer.h"
 #include "../MVC/MVC.h"
@@ -100,7 +100,7 @@ void menuAthlete() {
         int type;
         std::cout << "input:";
         std::cin >> type;
-/*     if(type!=0){
+        if(type!=0){
        RealHandle* real_handle = new RealHandle;
         Client(*real_handle);
         std::cout << "\n";
@@ -108,7 +108,7 @@ void menuAthlete() {
         Proxy* proxy = new Proxy(real_handle);
         Client(*proxy);
         delete real_handle;
-        delete proxy;}*/
+        delete proxy;}
         switch (type) {
             case 1:
                 //报名
@@ -224,11 +224,11 @@ void StartGame() {
     std::cout << "\n-------参加本次奥林匹克运动会的运动员有-----------\n";
     //通过迭代器啥的输出比赛选手
     //初始化比赛
-    //Fencing* fencing = new Fencing;
-    //Swimming* swimming = new Swimming;
-    //Facade* facade = new Facade(fencing, swimming);
-    //Init(facade);
-    //delete facade;
+    Fencing* fencing = new Fencing;
+    Swimming* swimming = new Swimming;
+    Facade* facade = new Facade(fencing, swimming);
+    Init(facade);
+    delete facade;
     std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
     //观众审核流程输出
     std::cout << "\n--------比赛正式开始--------------\n";

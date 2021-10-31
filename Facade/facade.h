@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <iostream>
 using namespace std;
 /***************************************************************************
@@ -61,14 +61,16 @@ public:
 		delete swimming_;
 	}
 	
-	std::string Init() {
-		std::string result = "Facade::Init: 初始化比赛项目:\n";
-		result += this->fencing_->enterAthlete();
-		result += this->swimming_->enterAthlete();
-		result += this->fencing_->generateCompetition();
-		result += this->swimming_->generateCompetition();
-		return result;
-	}
+    std::string Init() {
+        std::string result = "Facade::Init: 初始化比赛项目:\n";
+        result += this->fencing_->enterAthlete();
+        result += "...\n";
+        result += this->swimming_->enterAthlete();
+        result += this->fencing_->generateCompetition();
+        result += "...\n";
+        result += this->swimming_->generateCompetition();
+        return result;
+    }
 };
 
 
