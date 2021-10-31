@@ -1,5 +1,7 @@
 #include "../TemplateMethod/setPersonnelTemplateTest.h"
 #include "../Visitor/grantVisitorTest.h"
+#include "../Builder/builder.h"
+#include "../Interpreter/interpreter.h"
 //#include "../Memento/memento.h"
 //#include "../Proxy/proxy.h"
 //#include "../Facade/facade.h"
@@ -7,6 +9,8 @@
 #include"../Observer/Observer.h"
 #include "../MVC/MVC.h"
 #include "../FactoryMethod/factoryMethod.h"
+#include "../AbstractFactory/abstractFactory.h"
+#include "../Prototype/prototype.h"
 #include "../Callback/callBackTest.h"
 #include <iostream>
 #include <stdlib.h>
@@ -22,6 +26,8 @@ void menuCostomer();
 void StartGame();
 
 void MenuEnd();
+
+void Buysouvenirtest();
 
 void menuMain() {
     while (1) {
@@ -112,6 +118,7 @@ void menuAthlete() {
                 break;
             case 3:
                 //纪念品预定
+                Buysouvenirtest();
                 break;
            // case 4:
                 //发起请求
@@ -142,21 +149,21 @@ void menuWorker() {
             case 1:
                 //提交运动员数据
 /*FlyweightFactory* factory = new FlyweightFactory({ {"游泳", "中国"}, {"击剑", "中国"}, {"游泳", "美国"}, {"击剑", "美国"} });
-	factory->ListFlyweights();
+    factory->ListFlyweights();
 
-	AddAthleteToPoliceDatabase(*factory,
-		"张三",
-		"30256",
-		"游泳",
-		"中国");
+    AddAthleteToPoliceDatabase(*factory,
+        "张三",
+        "30256",
+        "游泳",
+        "中国");
 
-	AddAthleteToPoliceDatabase(*factory,
-		"詹姆斯",
-		"33654",
-		"击剑",
-		"法国");
-	factory->ListFlyweights();
-	delete factory;*/
+    AddAthleteToPoliceDatabase(*factory,
+        "詹姆斯",
+        "33654",
+        "击剑",
+        "法国");
+    factory->ListFlyweights();
+    delete factory;*/
                 break;
             case 2:
                 //添加部门
@@ -170,6 +177,7 @@ void menuWorker() {
                 break;
             case 5:
                 //查看比赛信息
+                prototypeTest();
                 break;
             case 6:
                 //安排比赛次序
@@ -198,6 +206,7 @@ void menuCostomer() {
                 break;
             case 2:
                 //纪念品预定
+                Buysouvenirtest();
                 break;
             case 0:
                 break;
@@ -255,7 +264,7 @@ void MenuEnd() {
                 break;
             case 2:
                 //打印报告
-                callbackTest();
+//                callbackTest();
                 break;
             case 0:
                 return;
@@ -267,6 +276,53 @@ void MenuEnd() {
             break;
     }
     return;
+}
+
+void Buysouvenirtest()
+{
+    int chose;
+    int chose1 = 0;
+    int chose2 = 0;
+    int chose3 = 0;
+    int chose4 = 0;
+    std::cout << "纪念品列表：" << std::endl;
+    std::cout << "1.乒乓球拍纪念品" << std::endl;
+    std::cout << "2.羽毛球拍纪念品" << std::endl;
+    std::cout << "3.篮球系列纪念品" << std::endl;
+    std::cout << "4.足球系列纪念品" << std::endl;
+    std::cout << "0.退出纪念品预定" << std::endl;
+    std::cout << "请选择需要预定的纪念品" << std::endl;
+    for (;;) {
+        std::cin >> chose;
+        std::cout << std::endl;
+        if (chose == 0) {
+            break;
+        }
+        switch (chose)
+        {
+        case 1:
+            chose1++;
+            buTest(chose);
+            break;
+        case 2:
+            chose2++;
+            buTest(chose);
+            break;
+        case 3:
+            chose3++;
+            abstractFactoryTest1();
+            
+            break;
+        case 4:
+            chose4++;
+            
+            abstractFactoryTest2();
+            break;
+        default:
+            break;
+        }
+    }
+    interpreter(chose1, chose2, chose3, chose4);
 }
 
 int main(int argc, const char *argv[]) {
