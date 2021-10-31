@@ -1,7 +1,6 @@
 #pragma once
 #include<iostream>
 #include<string>
-using namespace std;
 
 //抽象构件角色：给出一个抽象接口，以规范准备接收附加责任的对象。
 class Diving {
@@ -14,7 +13,7 @@ public:
 class Straight : public Diving {
 public:
     Straight() {
-        cout << "Straight::Operation() : Creat a basic action 直体" << endl;
+        std:: cout << "Straight::Operation() : Creat a basic action 直体\n";
     }
     //返回动作类型
     string Operation() const override {
@@ -26,7 +25,7 @@ public:
 class Pike : public Diving {
 public:
     Pike() {
-        cout << "Pike::Operation(): Creat a basic action 屈体" << endl;
+        std:: cout << "Pike::Operation(): Creat a basic action 屈体\n";
     }
     //返回动作类型
     string Operation() const override {
@@ -38,7 +37,7 @@ public:
 class Tuck : public Diving {
 public:
     Tuck() {
-        cout << "Tuck::Operation(): Creat a basic action 抱膝" << endl;
+        std:: cout << "Tuck::Operation(): Creat a basic action 抱膝\n";
     }
     //返回动作类型
     string Operation() const override {
@@ -50,7 +49,7 @@ public:
 class TAT : public Diving {
 public:
     TAT() {
-        cout << "TAT::Operation(): Creat a basic action: 翻腾兼转体" << endl;
+        std:: cout << "TAT::Operation(): Creat a basic action: 翻腾兼转体\n";
     }
     //返回动作类型
     string Operation() const override {

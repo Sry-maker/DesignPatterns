@@ -10,6 +10,7 @@
 
 #include <string>
 #include <iomanip>
+#include <iostream>
 
 
 const int WIDTH = 10;
