@@ -1,5 +1,5 @@
 ﻿#include"interpreter.h"
-
+void interpreter(int, int, int, int);
 void interpreterTest() {
 	cout << "***************  以下为Interpreter(解释器)设计模式  **************************************" << endl << endl;
 	//创建环境对象
@@ -27,6 +27,44 @@ void interpreterTest() {
 	cout << "对抽象语法树进行解释（计算）" << endl;
 	int result = expression->interpret(context);
 	cout << expression->toString() << " 之后剩" << result<<endl;
+	cout << endl << "*************** Interpreter(解释器)设计模式结束  **************************************" << endl << endl;
+}
+
+void interpreter(int num1,int num2,int num3 ,int num4) {
+	cout << "***************  以下为Interpreter(解释器)设计模式  **************************************" << endl << endl;
+	//创建环境对象
+	Context* context = new Context();
+	cout << endl;
+	//创建多个变量对象
+	Variable* init = new Variable("当前的钱");
+	Variable* a = new Variable("乒乓球拍");
+	Variable* b = new Variable("羽毛球拍");
+	Variable* c = new Variable("篮球系列");
+	Variable* d = new Variable("足球系列");
+	cout << endl;
+	//将变量存储到环境对象中
+	context->assign(init, 1000);
+	context->assign(a, 50);
+	context->assign(b, 30);
+	context->assign(c, 15);
+	context->assign(d, 12);
+	cout << endl;
+	//获取抽象语法树  :  当前的钱出售了网球拍,出售了羽毛球拍,购买了篮球,购买了足球,
+	AbstractExpression* last = init;
+	for (int i = 0; i < num1; i++)
+		last=new Buy(last, a);
+	for (int i = 0; i < num2; i++)
+		last = new Buy(last, b);
+	for (int i = 0; i < num3; i++)
+		last = new Buy(last, c);
+	for (int i = 0; i < num4; i++)
+		last = new Buy(last, d);
+	cout << "AbstractExpression::toString : 获取抽象语法树: " << last->toString() << endl;
+	cout << endl;
+	//解释（计算）
+	cout << "对抽象语法树进行解释（计算）" << endl;
+	int result = last->interpret(context);
+	cout << last->toString() << " 之后剩" << result << endl;
 	cout << endl << "*************** Interpreter(解释器)设计模式结束  **************************************" << endl << endl;
 }
 
