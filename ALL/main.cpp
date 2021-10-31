@@ -12,9 +12,9 @@
 #include "../AbstractFactory/abstractFactory.h"
 #include "../Prototype/prototype.h"
 #include "../Callback/callBackTest.h"
+#include "../Composite/componentTest.h"
 #include <iostream>
 #include <stdlib.h>
-
 void menuRole();
 
 void menuAthlete();
@@ -166,10 +166,10 @@ void menuWorker() {
     delete factory;*/
                 break;
             case 2:
-                //添加部门
+                componentAddDepartment();//添加部门
                 break;
             case 3:
-                //添加职工
+                componentAddClient();//添加职工
                 break;
             case 4:
                 //更改体育项目场地
