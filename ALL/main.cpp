@@ -13,6 +13,9 @@
 #include "../Prototype/prototype.h"
 #include "../Callback/callBackTest.h"
 #include "../Composite/componentTest.h"
+#include "../ChainOfResponsibility/chainOfResponsibility.h"
+#include "../Command/command.h"
+#include "../ExtensionObject/extensionObject.h"
 #include <iostream>
 #include <stdlib.h>
 void menuRole();
@@ -203,6 +206,9 @@ void menuCostomer() {
         switch (type) {
             case 1:
                 //入场
+                extensionObjectTest();
+                commandTest();
+                chainOfResponsibilityTest();
                 break;
             case 2:
                 //纪念品预定
