@@ -6,9 +6,50 @@
 #include"Component.h"
 
 
+Component* COC = new Department("中国奥委会");
+int componentAddDepartment() {
+    std::cout << "****************以下为Composite（组合）设计模式****************:\n";
+    Component* Staff_2 = new Staff("中国奥委会主席");
+    Component* Staff_3 = new Staff("中国奥委会副主席");
+    Component* Department6 = new Department("新闻委员会");
+    Component* Department7 = new Department("秘书部");
+    Component* Department8 = new Department("法律事务部");
+    COC->Add(Staff_2);
+    COC->Add(Staff_3);
+    COC->Add(Department6);
+    COC->Add(Department7);
+    COC->Add(Department8);
+    std::cout << "\n\n北京奥组委部门结构:\n";
+    std::cout << "component::Operation(): " << COC->Operation();
+    std::cout << "\n\n";
+    std::cout << "请输入添加部门名称:\n";
+    char name[20];
+    std::cin >> name;
+    Component* Department9 = new Department(name);
+    COC->Add(Department9);
+    std::cout << "component::Operation(): " << COC->Operation();
+    std::cout << "\n";
+    std::cout << "\n****************Composite（组合）设计模式结束****************:\n";
+    return 0;
+}
 
-int componentTest()  {
-    std:: cout << "****************以下为Composite（组合）设计模式****************:\n";
+int componentAddClient() {
+    std::cout << "****************以下为Composite（组合）设计模式****************:\n";
+    std::cout << "\n\n北京奥组委部门结构:\n";
+    std::cout << "component::Operation(): " << COC->Operation();
+    std::cout << "\n\n";
+    std::cout << "请输入添加员工名称:\n";
+    char name[20];
+    std::cin >> name;
+    Component* staff_4 = new Staff(name);
+    COC->Add(staff_4);
+    std::cout << "component::Operation(): " << COC->Operation();
+    std::cout << "\n";
+    std::cout << "\n****************Composite（组合）设计模式结束****************:\n";
+    return 0;
+}
+int componentTest() {
+    cout << "****************以下为Composite（组合）设计模式****************:\n";
     Component* Department1 = new Department("国际奥委会");
     Component* Department2 = new Department("国际奥委会全体委员会");
     Component* Department3 = new Department("执行委员会");
@@ -30,13 +71,13 @@ int componentTest()  {
     Department4->Add(Department6);
     Department4->Add(Department7);
     Department4->Add(Department8);
-    std:: cout << "\n\n奥组委部门结构:\n";
-    std:: cout << "component::Operation(): " << Department1->Operation();
-    std:: cout << "\n\n";
-    std:: cout << "调整部门结构时不需要考虑是部门还是职工:\n";
+    cout << "\n\n奥组委部门结构:\n";
+    cout << "component::Operation(): " << Department1->Operation();
+    cout << "\n\n";
+    cout << "调整部门结构时不需要考虑是部门还是职工:\n";
     Department1->Remove(Staff_1);
-    std:: cout << "component::Operation(): " << Department1->Operation();
-    std:: cout << "\n";
+    cout << "component::Operation(): " << Department1->Operation();
+    cout << "\n";
     delete Department1;
     delete Department2;
     delete Department3;
@@ -48,6 +89,8 @@ int componentTest()  {
     delete Staff_1;
     delete Staff_2;
     delete Staff_3;
-    std:: cout << "\n****************Composite（组合）设计模式结束****************:\n";
+    cout << "\n****************Composite（组合）设计模式结束****************:\n";
+    componentAddDepartment();
+    componentAddClient();
     return 0;
 }
