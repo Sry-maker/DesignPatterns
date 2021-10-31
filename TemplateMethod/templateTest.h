@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _Template_test_H
 #define _Template_test_H
 #include "airgun.h"

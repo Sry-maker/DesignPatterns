@@ -1,10 +1,9 @@
-//#include "../TemplateMethod/setPersonnelTemplateTest.h"
-//#include "../Visitor/grantVisitorTest.h"
+#include "../TemplateMethod/setPersonnelTemplateTest.h"
+#include "../Visitor/grantVisitorTest.h"
 //#include "../Proxy/proxy.h"
 //#include "../Memento/memento.h"
-#include"Observer/Observer.h"
-#include "MVC/MVC.h"
-#include "FactoryMethod/factoryMethod.h"
+#include "../Observer/Observer.h"
+#include "../MVC/MVC.h"
 #include <iostream>
 #include <stdlib.h>
 
