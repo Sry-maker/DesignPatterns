@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _Template_test_H
 #define _Template_test_H
 #include "worker.h"
@@ -8,8 +8,8 @@ worker Worker1;
 customer Customer1;
 athlete Athlete1;
 void setPersonnel(int tp) {
-	std::cout << "***************  以下为Template(模板)设计模式  ***************\n\n";
-	if(tp == 1)
+	std::cout << "**************  以下为Template(模板)设计模式  ***************\n\n";
+	if (tp == 1)
 	{
 		Athlete1.IDSet("0001");
 		Athlete1.nameSet("马小龙");
@@ -17,7 +17,7 @@ void setPersonnel(int tp) {
 		Athlete1.countrySet("中国");
 		Athlete1.ShowInfo();
 	}
-	if(tp == 2)
+	if (tp == 2)
 	{
 		Worker1.IDSet("1001");
 		Worker1.nameSet("陈小洁");
@@ -25,7 +25,7 @@ void setPersonnel(int tp) {
 		Worker1.typeSet("赛事管理员");
 		Worker1.ShowInfo();
 	}
-	if(tp == 3)
+	if (tp == 3)
 	{
 		Customer1.IDSet("2001");
 		Customer1.nameSet("王小咩");

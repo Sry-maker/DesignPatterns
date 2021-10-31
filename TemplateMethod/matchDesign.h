@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 #ifndef _MatchDesign_H
 #define _MatchDesign_H
 #include <iostream>
 #include <string>
 //比赛设计模板父类
 class MatchDesign {
+public:
     MatchDesign(){
        std::cout << "MatchDesign::MatchDesign : created a template, name is MatchDesign\n"; 
     }

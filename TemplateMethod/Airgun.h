@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 #ifndef _Airgun_H
 #define _Airgun_H
 
 #include "matchDesign.h"
 //气枪子类
 class Airgun : public MatchDesign {
+public:
     Airgun(){
         std::cout << "Airgun::Airgun : created a subclass, name is Airgun\n"; 
     }

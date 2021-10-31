@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 #ifndef _Pingpong_single_H
 #define _Pingpong_single_H
 
 #include "matchDesign.h"
 //单打乒乓球子类
 class Pingpong_single : public MatchDesign {
+public:
     Pingpong_single(){
         std::cout << "Pingpong_single::Pingpong_single : created a subclass, name is Pingpong_single\n"; 
     }
