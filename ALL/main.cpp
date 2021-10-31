@@ -1,13 +1,13 @@
-//#include "../TemplateMethod/setPersonnelTemplateTest.h"
+#include "../TemplateMethod/setPersonnelTemplateTest.h"
 //#include "../Visitor/grantVisitorTest.h"
 //#include "../Memento/memento.h"
 //#include "../Proxy/proxy.h"
 //#include "../Facade/facade.h"
 //#include "../Flyweight/flyweight.h"
-#include"Observer/Observer.h"
-#include "MVC/MVC.h"
-#include "FactoryMethod/factoryMethod.h"
-#include "Callback/callBackTest.h"
+#include"../Observer/Observer.h"
+#include "../MVC/MVC.h"
+#include "../FactoryMethod/factoryMethod.h"
+#include "../Callback/callBackTest.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -63,17 +63,17 @@ void menuRole() {
     std::cin >> type;
     switch (type) {
         case 1:
-            //setPersonnel(1);//TemplateMethod
+            setPersonnel(1);//TemplateMethod
             //grantVisitorTest(1);//VisitorMethod
             menuAthlete();
             break;
         case 2:
-            //setPersonnel(2);//TemplateMethod
+            setPersonnel(2);//TemplateMethod
             //grantVisitorTest(2);//VisitorMethod
             menuWorker();
             break;
         case 3:
-            //setPersonnel(3);//TemplateMethod
+            setPersonnel(3);//TemplateMethod
             //grantVisitorTest(3);//VisitorMethod
             menuCostomer();
             break;
