@@ -1,14 +1,14 @@
+#pragma once
 #include <algorithm>
 #include <iostream>
 #include <list>
 #include <string>
 #include"Component.h"
-using namespace std;
 
 
 
 int componentTest()  {
-    cout << "****************以下为Composite（组合）设计模式****************:\n";
+    std:: cout << "****************以下为Composite（组合）设计模式****************:\n";
     Component* Department1 = new Department("国际奥委会");
     Component* Department2 = new Department("国际奥委会全体委员会");
     Component* Department3 = new Department("执行委员会");
@@ -30,13 +30,13 @@ int componentTest()  {
     Department4->Add(Department6);
     Department4->Add(Department7);
     Department4->Add(Department8);
-    cout << "\n\n奥组委部门结构:\n";
-    cout << "component::Operation(): " << Department1->Operation();
-    cout << "\n\n";
-    cout << "调整部门结构时不需要考虑是部门还是职工:\n";
+    std:: cout << "\n\n奥组委部门结构:\n";
+    std:: cout << "component::Operation(): " << Department1->Operation();
+    std:: cout << "\n\n";
+    std:: cout << "调整部门结构时不需要考虑是部门还是职工:\n";
     Department1->Remove(Staff_1);
-    cout << "component::Operation(): " << Department1->Operation();
-    cout << "\n";
+    std:: cout << "component::Operation(): " << Department1->Operation();
+    std:: cout << "\n";
     delete Department1;
     delete Department2;
     delete Department3;
@@ -48,6 +48,6 @@ int componentTest()  {
     delete Staff_1;
     delete Staff_2;
     delete Staff_3;
-    cout << "\n****************Composite（组合）设计模式结束****************:\n";
+    std:: cout << "\n****************Composite（组合）设计模式结束****************:\n";
     return 0;
 }

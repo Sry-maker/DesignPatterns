@@ -1,9 +1,13 @@
-#include "../TemplateMethod/setPersonnelTemplateTest.h"
-#include "../Visitor/grantVisitorTest.h"
-//#include "../Proxy/proxy.h"
+//#include "../TemplateMethod/setPersonnelTemplateTest.h"
+//#include "../Visitor/grantVisitorTest.h"
 //#include "../Memento/memento.h"
-#include "../Observer/Observer.h"
-#include "../MVC/MVC.h"
+//#include "../Proxy/proxy.h"
+//#include "../Facade/facade.h"
+//#include "../Flyweight/flyweight.h"
+#include"Observer/Observer.h"
+#include "MVC/MVC.h"
+#include "FactoryMethod/factoryMethod.h"
+#include "Callback/callBackTest.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -85,11 +89,20 @@ void menuAthlete() {
         std::cout << "1.报名\n";
         std::cout << "2.比赛信息查询\n";
         std::cout << "3.纪念品预定\n";
-        std::cout << "4.发起请求\n";
+        //std::cout << "4.发起请求\n";
         std::cout << "0.返回\n";
         int type;
         std::cout << "input:";
         std::cin >> type;
+/*     if(type!=0){
+       RealHandle* real_handle = new RealHandle;
+        Client(*real_handle);
+        std::cout << "\n";
+        std::cout << "通过proxy处理请求:\n";
+        Proxy* proxy = new Proxy(real_handle);
+        Client(*proxy);
+        delete real_handle;
+        delete proxy;}*/
         switch (type) {
             case 1:
                 //报名
@@ -100,9 +113,9 @@ void menuAthlete() {
             case 3:
                 //纪念品预定
                 break;
-            case 4:
+           // case 4:
                 //发起请求
-                break;
+              //  break;
             case 0:
                 break;
         }
@@ -128,6 +141,22 @@ void menuWorker() {
         switch (type) {
             case 1:
                 //提交运动员数据
+/*FlyweightFactory* factory = new FlyweightFactory({ {"游泳", "中国"}, {"击剑", "中国"}, {"游泳", "美国"}, {"击剑", "美国"} });
+	factory->ListFlyweights();
+
+	AddAthleteToPoliceDatabase(*factory,
+		"张三",
+		"30256",
+		"游泳",
+		"中国");
+
+	AddAthleteToPoliceDatabase(*factory,
+		"詹姆斯",
+		"33654",
+		"击剑",
+		"法国");
+	factory->ListFlyweights();
+	delete factory;*/
                 break;
             case 2:
                 //添加部门
@@ -185,6 +214,12 @@ void StartGame() {
     //通过迭代器啥的输出比赛项目
     std::cout << "\n-------参加本次奥林匹克运动会的运动员有-----------\n";
     //通过迭代器啥的输出比赛选手
+    //初始化比赛
+    //Fencing* fencing = new Fencing;
+    //Swimming* swimming = new Swimming;
+    //Facade* facade = new Facade(fencing, swimming);
+    //Init(facade);
+    //delete facade;
     std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
     //观众审核流程输出
     std::cout << "\n--------比赛正式开始--------------\n";
@@ -220,7 +255,7 @@ void MenuEnd() {
                 break;
             case 2:
                 //打印报告
-                // PrintReport();
+                callbackTest();
                 break;
             case 0:
                 return;
