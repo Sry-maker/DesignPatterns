@@ -28,7 +28,7 @@ class Staff : public Component {
 public:
     Staff(string name) {
         Name = name;
-        cout << "Staff::Staff():create a staff: " << name<<endl;
+        std:: cout << "Staff::Staff():create a staff: " << name<<"\n";
     }
     //输出职工身份
     string Operation() const override {
@@ -43,7 +43,7 @@ protected:
 public:
     Department(string name) {
         Name = name;
-        cout << "Department::Department():create a department: " << name<<endl;
+        std:: cout << "Department::Department():create a department: " << name<<"\n";
     }
     //添加部件的从属
     void Add(Component* component) override {
