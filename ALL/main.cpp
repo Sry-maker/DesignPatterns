@@ -1,5 +1,5 @@
 #include "../TemplateMethod/setPersonnelTemplateTest.h"
-//#include "../Visitor/grantVisitorTest.h"
+#include "../Visitor/grantVisitorTest.h"
 //#include "../Memento/memento.h"
 //#include "../Proxy/proxy.h"
 //#include "../Facade/facade.h"
@@ -64,17 +64,17 @@ void menuRole() {
     switch (type) {
         case 1:
             setPersonnel(1);//TemplateMethod
-            //grantVisitorTest(1);//VisitorMethod
+            grantVisitorTest(1);//VisitorMethod
             menuAthlete();
             break;
         case 2:
             setPersonnel(2);//TemplateMethod
-            //grantVisitorTest(2);//VisitorMethod
+            grantVisitorTest(2);//VisitorMethod
             menuWorker();
             break;
         case 3:
             setPersonnel(3);//TemplateMethod
-            //grantVisitorTest(3);//VisitorMethod
+            grantVisitorTest(3);//VisitorMethod
             menuCostomer();
             break;
         default:

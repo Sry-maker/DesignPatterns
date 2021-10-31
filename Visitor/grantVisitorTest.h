@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _grantVisitorTest_H
 #define _grantVisitorTest_H
 #include "grantAuthorizationVisitor.h"
@@ -25,6 +25,6 @@ void grantVisitorTest(int tp) {
     permit->Accept(grantAuthorizationVisitor);
     delete grantAuthorizationVisitor;
     delete permit;
-    std::cout << "***************  Visitor(访问者)设计模式结束  ***************\n\n";
+    std::cout << "\n***************  Visitor(访问者)设计模式结束  ***************\n\n";
 };
 #endif

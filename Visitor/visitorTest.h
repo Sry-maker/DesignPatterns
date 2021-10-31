@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _Visitor_test_H
 #define _Visitor_test_H
 #include "grantAuthorizationVisitor.h"
