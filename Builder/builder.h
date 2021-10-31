@@ -278,3 +278,32 @@ void builderTest() {//测试接口
 	delete director;
 	std::cout << "**************************************************" << std::endl;
 }
+void buTest(int chose) {//测试接口
+	if (chose != 1 && chose != 2) {
+		return;
+	}
+	std::cout << "*****************Builder(生成器)设计模式**********" << std::endl;
+	Director* director = new Director();
+	if (chose == 1) {
+		tabletennisBatsBuilder* pingpong = new tabletennisBatsBuilder();
+		(*director).set_builder(pingpong);
+		std::cout << "乒乓球拍制作过程:\n";
+		(*director).BuildRacket();
+
+		pingpong->Get();
+
+		delete pingpong;
+	}
+	if (chose == 2) {
+		badmintonBuilder* badminton = new  badmintonBuilder();
+		(*director).set_builder(badminton);
+		std::cout << "羽毛球拍制作过程:\n";
+		(*director).BuildRacket();
+
+		badminton->Get();
+
+		delete  badminton;
+	}
+	delete director;
+	std::cout << "**************************************************" << std::endl << std::endl;
+}
