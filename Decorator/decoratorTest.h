@@ -1,7 +1,7 @@
+#pragma once
 #include<iostream>
 #include<string>
 #include"Decorator.h"
-using namespace std;
 
 //装饰器1，向前起跳
 class Front : public Decorator {
@@ -9,7 +9,7 @@ class Front : public Decorator {
 public:
 
 	Front(Diving* Diving) : Decorator(Diving) {
-		cout << "Front:: Create a motion 向前" << endl;
+		std:: cout << "Front:: Create a motion 向前\n";
 	}
 
 	//该装饰器在调用父类operation的基础上实现自己的操作
@@ -21,7 +21,7 @@ public:
 class Back : public Decorator {
 public:
 	Back(Diving* Diving) : Decorator(Diving) {
-		cout << "Back:: Create a motion 向后" << endl;
+		std:: cout << "Back:: Create a motion 向后\n";
 	}
 
 	//该装饰器在调用父类operation的基础上实现自己的操作
@@ -35,7 +35,7 @@ public:
 class Reverse : public Decorator {
 public:
 	Reverse(Diving* Diving) : Decorator(Diving) {
-		cout << "Reverse:: Create a motion 反身" << endl;
+		std:: cout << "Reverse:: Create a motion 反身\n";
 	}
 
 	//该装饰器在调用父类operation的基础上实现自己的操作
@@ -47,7 +47,7 @@ public:
 class doubleAxel : public Decorator {
 public:
 	doubleAxel(Diving* Diving) : Decorator(Diving) {
-		cout << "doubleAxel:: Create a motion 翻腾三周半" << endl;
+		std:: cout << "doubleAxel:: Create a motion 翻腾三周半\n";
 	}
 
 	//该装饰器在调用父类operation的基础上实现自己的操作
@@ -59,7 +59,7 @@ public:
 class Tumble : public Decorator {
 public:
 	Tumble(Diving* Diving) : Decorator(Diving) {
-		cout << "Front:: Create a motion 转体1周半" << endl;
+		std:: cout << "Front:: Create a motion 转体1周半\n";
 	}
 
 	//该装饰器在调用父类operation的基础上实现自己的操作
@@ -69,10 +69,10 @@ public:
 };
 
 void Operation(Diving* Diving) {
-	cout << "选手动作:\n" << Diving->Operation(); //返回动作描述
+	std:: cout << "选手动作:\n" << Diving->Operation(); //返回动作描述
 }
 int decoratorTest() {
-	cout << "****************以下为Decorator（装饰）设计模式****************:\n";
+	std:: cout << "****************以下为Decorator（装饰）设计模式****************:\n";
 	Diving* simple1 = new Straight;//直体
 	Diving* simple2 = new Pike;//屈体
 	Diving* simple3 = new Tuck;//抱膝
@@ -84,16 +84,16 @@ int decoratorTest() {
 	Diving* decorator5 = new Front(decorator3);//向前翻腾三周半转体1周半直体
 	Diving* decorator6 = new Back(decorator2);//向后翻腾三周半屈体
 
-	cout << "第一位选手动作:\n";
-	cout <<"Reverse::Operation():" <<decorator4->Operation();
-	cout << "\n";
-	cout << "第二位选手动作:\n";
-	cout << "Front::Operation():" << decorator5->Operation();
-	cout << "\n";
-	cout << "第三位选手动作:\n";
-	cout << "Back::Operation():" << decorator6->Operation();
-	cout << "\n";
-	cout << "****************Decorator（装饰）设计模式结束****************:\n";
+	std:: cout << "第一位选手动作:\n";
+	std:: cout <<"Reverse::Operation():" <<decorator4->Operation();
+	std:: cout << "\n";
+	std:: cout << "第二位选手动作:\n";
+	std:: cout << "Front::Operation():" << decorator5->Operation();
+	std:: cout << "\n";
+	std:: cout << "第三位选手动作:\n";
+	std:: cout << "Back::Operation():" << decorator6->Operation();
+	std:: cout << "\n";
+	std:: cout << "****************Decorator（装饰）设计模式结束****************:\n";
 	delete simple1;
 	delete simple2;
 	delete simple3;
