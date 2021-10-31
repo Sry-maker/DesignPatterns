@@ -5,6 +5,7 @@
 #include"Observer/Observer.h"
 #include "MVC/MVC.h"
 #include "FactoryMethod/factoryMethod.h"
+#include "Callback/callBackTest.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -221,7 +222,7 @@ void MenuEnd() {
                 break;
             case 2:
                 //打印报告
-                // PrintReport();
+                callbackTest();
                 break;
             case 0:
                 return;
