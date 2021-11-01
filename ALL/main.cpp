@@ -15,6 +15,8 @@
 #include "../Composite/componentTest.h"
 #include "../ChainOfResponsibility/chainOfResponsibility.h"
 #include "../Command/command.h"
+#include "../State/state.h"
+#include "../Strategy/strategy.h"
 #include "../ExtensionObject/extensionObject.h"
 #include <iostream>
 #include <stdlib.h>
@@ -244,6 +246,12 @@ void menuCostomer() {
 
 void StartGame() {
     std::cout << "\n\n---------------奥林匹克运动会正式开始！---------------\n\n";
+    std::cout << "请输入比赛顺序算法策略：\n";
+    std::cout << "1.顺序\n";
+    std::cout << "2.倒序\n";
+    int strategy_order;
+    std::cout << "input:";
+    std::cin >> strategy_order;
     std::cout << "\n--------本次奥林匹克运动会的比赛项目有-----------\n";
     //通过迭代器啥的输出比赛项目
     std::cout << "\n-------参加本次奥林匹克运动会的运动员有-----------\n";
@@ -254,21 +262,45 @@ void StartGame() {
     Facade* facade = new Facade(fencing, swimming);
     Init(facade);
     delete facade;
-    std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
-    //观众审核流程输出
-    std::cout << "\n--------比赛正式开始--------------\n";
-    std::cout << "\n--------首先进行乒乓球比赛--------------\n";
-    //XXX比赛输出
-    factoryMethodTest1();
-    std::cout << "\n--------接下来进行跳水比赛--------------\n";
-    //XXX比赛输出
-    factoryMethodTest2();
-    std::cout << "\n--------接下来进行羽毛球比赛--------------\n";
-    //XXX比赛输出
-    factoryMethodTest3();
-    std::cout << "\n--------最后进行XXX比赛--------------\n";
-    //XXX比赛输出
-    std::cout << "\n--------所有比赛项目顺利结束--------------\n";
+    switch (strategy_order) {
+        case 1:
+            strategy_1();
+            std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
+            //观众审核流程输出
+            std::cout << "\n--------比赛正式开始--------------\n";
+            event_start_state();
+            std::cout << "\n--------首先进行羽毛球比赛--------------\n";
+            //XXX比赛输出
+            factoryMethodTest3();
+            std::cout << "\n--------接下来进行跳水比赛--------------\n";
+            //XXX比赛输出
+            factoryMethodTest2();
+            std::cout << "\n--------接下来进行乒乓球球比赛--------------\n";
+            //XXX比赛输出
+            factoryMethodTest1();
+            std::cout << "\n--------所有比赛项目顺利结束--------------\n";
+            break;
+        case 2:
+            strategy_2();
+            std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
+            //观众审核流程输出
+            std::cout << "\n--------比赛正式开始--------------\n";
+            event_start_state();
+            std::cout << "\n--------首先进行乒乓球比赛--------------\n";
+            //XXX比赛输出
+            factoryMethodTest1();
+            std::cout << "\n--------接下来进行跳水比赛--------------\n";
+            //XXX比赛输出
+            factoryMethodTest2();
+            std::cout << "\n--------接下来进行羽毛球比赛--------------\n";
+            //XXX比赛输出
+            factoryMethodTest3();
+            
+            std::cout << "\n--------所有比赛项目顺利结束--------------\n";
+            break;
+    }
+    
+    event_end_state();
     MenuEnd();
 }
 
