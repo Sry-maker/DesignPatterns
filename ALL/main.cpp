@@ -108,7 +108,6 @@ void menuAthlete() {
         std::cin >> type;
         if(type!=0){
        RealHandle* real_handle = new RealHandle;
-        Client(*real_handle);
         std::cout << "\n";
         std::cout << "通过proxy处理请求:\n";
         Proxy* proxy = new Proxy(real_handle);
@@ -119,6 +118,15 @@ void menuAthlete() {
             case 1:
             {//报名
                 memento(athlete);
+/*FlyweightFactory* factory = new FlyweightFactory();
+    factory->ListFlyweights();
+    AddAthleteToPoliceDatabase(*factory,
+        athlete->getName(),
+         athlete->getId(),
+        athlete->getMatch(),
+         athlete->getCountry());
+    factory->ListFlyweights();
+    delete factory;*/
             }
                 break;
             case 2:
