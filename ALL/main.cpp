@@ -1,11 +1,11 @@
-#include "../TemplateMethod/setPersonnelTemplateTest.h"
+﻿#include "../TemplateMethod/setPersonnelTemplateTest.h"
 #include "../Visitor/grantVisitorTest.h"
 #include "../Builder/builder.h"
 #include "../Interpreter/interpreter.h"
 #include "../Memento/memento.cpp"
 #include "../Proxy/proxy.h"
 #include "../Facade/facade.h"
-//#include "../Flyweight/flyweight.h"
+#include "../Flyweight/flyweight.h"
 #include"../Observer/Observer.h"
 #include "../MVC/MVC.h"
 #include "../FactoryMethod/factoryMethod.h"
@@ -18,6 +18,8 @@
 #include "../ExtensionObject/extensionObject.h"
 #include <iostream>
 #include <stdlib.h>
+
+
 void menuRole();
 
 void menuAthlete();
@@ -44,18 +46,18 @@ void menuMain() {
         std::cout << "input:";
         std::cin >> type;
         switch (type) {
-            case 1:
-                menuRole();
-                break;
-            case 2:
-                //进行比赛
-                StartGame();
-                break;
-            case 0:
-                return;
-                break;
-            default:
-                break;
+        case 1:
+            menuRole();
+            break;
+        case 2:
+            //进行比赛
+            StartGame();
+            break;
+        case 0:
+            return;
+            break;
+        default:
+            break;
         }
         if (type == 2 || type == 0)
             break;
@@ -73,23 +75,23 @@ void menuRole() {
     std::cout << "input:";
     std::cin >> type;
     switch (type) {
-        case 1:
-            setPersonnel(1);//TemplateMethod
-            grantVisitorTest(1);//VisitorMethod
-            menuAthlete();
-            break;
-        case 2:
-            setPersonnel(2);//TemplateMethod
-            grantVisitorTest(2);//VisitorMethod
-            menuWorker();
-            break;
-        case 3:
-            setPersonnel(3);//TemplateMethod
-            grantVisitorTest(3);//VisitorMethod
-            menuCostomer();
-            break;
-        default:
-            break;
+    case 1:
+        setPersonnel(1);//TemplateMethod
+        grantVisitorTest(1);//VisitorMethod
+        menuAthlete();
+        break;
+    case 2:
+        setPersonnel(2);//TemplateMethod
+        grantVisitorTest(2);//VisitorMethod
+        menuWorker();
+        break;
+    case 3:
+        setPersonnel(3);//TemplateMethod
+        grantVisitorTest(3);//VisitorMethod
+        menuCostomer();
+        break;
+    default:
+        break;
     }
     return;
 }
@@ -106,44 +108,45 @@ void menuAthlete() {
         int type;
         std::cout << "input:";
         std::cin >> type;
-        if(type!=0){
-       RealHandle* real_handle = new RealHandle;
-        std::cout << "\n";
-        std::cout << "通过proxy处理请求:\n";
-        Proxy* proxy = new Proxy(real_handle);
-        Client(*proxy);
-        delete real_handle;
-        delete proxy;}
+        if (type != 0) {
+            RealHandle* real_handle = new RealHandle;
+            std::cout << "\n";
+            std::cout << "通过proxy处理请求:\n";
+            Proxy* proxy = new Proxy(real_handle);
+            Client(*proxy);
+            delete real_handle;
+            delete proxy;
+        }
         switch (type) {
-            case 1:
-            {//报名
-                memento(athlete);
-/*FlyweightFactory* factory = new FlyweightFactory();
-    factory->ListFlyweights();
-    AddAthleteToPoliceDatabase(*factory,
-        athlete->getName(),
-         athlete->getId(),
-        athlete->getMatch(),
-         athlete->getCountry());
-    factory->ListFlyweights();
-    delete factory;*/
-            }
-                break;
-            case 2:
-            {
-                //比赛信息查询
-                ShowEvent(athlete);
-            }
-                break;
-            case 3:
-                //纪念品预定
-                Buysouvenirtest();
-                break;
-           // case 4:
-                //发起请求
-              //  break;
-            case 0:
-                break;
+        case 1:
+        {//报名
+            memento(athlete);
+            /*FlyweightFactory* factory = new FlyweightFactory();
+                factory->ListFlyweights();
+                AddAthleteToPoliceDatabase(*factory,
+                    athlete->getName(),
+                     athlete->getId(),
+                    athlete->getMatch(),
+                     athlete->getCountry());
+                factory->ListFlyweights();
+                delete factory;*/
+        }
+        break;
+        case 2:
+        {
+            //比赛信息查询
+            ShowEvent(athlete);
+        }
+        break;
+        case 3:
+            //纪念品预定
+            Buysouvenirtest();
+            break;
+            // case 4:
+                 //发起请求
+               //  break;
+        case 0:
+            break;
         }
         if (type == 0)
             break;
@@ -165,8 +168,8 @@ void menuWorker() {
         std::cout << "input:";
         std::cin >> type;
         switch (type) {
-            case 1:
-                //提交运动员数据
+        case 1:
+            //提交运动员数据
 /*FlyweightFactory* factory = new FlyweightFactory({ {"游泳", "中国"}, {"击剑", "中国"}, {"游泳", "美国"}, {"击剑", "美国"} });
     factory->ListFlyweights();
 
@@ -183,26 +186,26 @@ void menuWorker() {
         "法国");
     factory->ListFlyweights();
     delete factory;*/
-                break;
-            case 2:
-                componentAddDepartment();//添加部门
-                break;
-            case 3:
-                componentAddClient();//添加职工
-                break;
-            case 4:
-                //更改体育项目场地
-                //observerTest();
-                break;
-            case 5:
-                //查看比赛信息
-                prototypeTest();
-                break;
-            case 6:
-                //安排比赛次序
-                break;
-            case 0:
-                break;
+            break;
+        case 2:
+            componentAddDepartment();//添加部门
+            break;
+        case 3:
+            componentAddClient();//添加职工
+            break;
+        case 4:
+            //更改体育项目场地
+            //observerTest();
+            break;
+        case 5:
+            //查看比赛信息
+            prototypeTest();
+            break;
+        case 6:
+            //安排比赛次序
+            break;
+        case 0:
+            break;
         }
         if (type == 0)
             break;
@@ -220,18 +223,18 @@ void menuCostomer() {
         std::cout << "input:";
         std::cin >> type;
         switch (type) {
-            case 1:
-                //入场
-                extensionObjectTest();
-                commandTest();
-                chainOfResponsibilityTest();
-                break;
-            case 2:
-                //纪念品预定
-                Buysouvenirtest();
-                break;
-            case 0:
-                break;
+        case 1:
+            //入场
+            extensionObjectTest();
+            commandTest();
+            chainOfResponsibilityTest();
+            break;
+        case 2:
+            //纪念品预定
+            Buysouvenirtest();
+            break;
+        case 0:
+            break;
         }
         if (type == 0)
             break;
@@ -279,20 +282,20 @@ void MenuEnd() {
         std::cout << "input:";
         std::cin >> type;
         switch (type) {
-            case 1:
-                //打印奖牌榜
-                // PrintMedalTally();
-                MVCTest();
-                break;
-            case 2:
-                //打印报告
+        case 1:
+            //打印奖牌榜
+            // PrintMedalTally();
+            MVCTest();
+            break;
+        case 2:
+            //打印报告
 //                callbackTest();
-                break;
-            case 0:
-                return;
-                break;
-            default:
-                break;
+            break;
+        case 0:
+            return;
+            break;
+        default:
+            break;
         }
         if (type == 0)
             break;
@@ -333,11 +336,11 @@ void Buysouvenirtest()
         case 3:
             chose3++;
             abstractFactoryTest1();
-            
+
             break;
         case 4:
             chose4++;
-            
+
             abstractFactoryTest2();
             break;
         default:
@@ -349,7 +352,7 @@ void Buysouvenirtest()
 void ShowEvent(Athlete* athlete) {
     std::cout << "\n选手 " << athlete->GetName() << "的运动项目是" << athlete->GetEvent();
 }
-int main(int argc, const char *argv[]) {
+int main(int argc, const char* argv[]) {
     menuMain();
     // Subject temp1;
     //temp1.Notify();

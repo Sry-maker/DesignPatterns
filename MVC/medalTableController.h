@@ -1,4 +1,4 @@
-//
+﻿//
 //  medalTableController.h
 //  DesignPatterns
 //

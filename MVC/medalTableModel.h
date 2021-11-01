@@ -1,4 +1,4 @@
-//
+﻿//
 //  medalTableModel.h
 //  DesignPatterns
 //

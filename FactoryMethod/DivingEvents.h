@@ -6,7 +6,7 @@
 #define MYDESIGNPATTERNS_DIVINGEVENTS_H
 
 #include "events.h"
-#include "Decorator/decoratorTest.h"
+#include "../Decorator/decoratorTest.h"
 #include <iostream>
 
 class DivingEvents : public Events {
