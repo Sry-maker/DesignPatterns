@@ -19,6 +19,8 @@
 #include <iostream>
 #include <stdlib.h>
 
+FlyweightFactory* factory = new FlyweightFactory({});//存储已有的flyweight
+
 
 void menuRole();
 
@@ -121,15 +123,15 @@ void menuAthlete() {
         case 1:
         {//报名
             memento(athlete);
-            /*FlyweightFactory* factory = new FlyweightFactory();
+			
                 factory->ListFlyweights();
                 AddAthleteToPoliceDatabase(*factory,
-                    athlete->getName(),
-                     athlete->getId(),
-                    athlete->getMatch(),
-                     athlete->getCountry());
+                    athlete->GetName(),
+                     athlete->GetId(),
+                    athlete->GetEvent(),
+                     athlete->GetContury());
                 factory->ListFlyweights();
-                delete factory;*/
+              
         }
         break;
         case 2:
@@ -157,51 +159,31 @@ void menuAthlete() {
 void menuWorker() {
     while (1) {
         std::cout << "\n---------------请您要进行的操作---------------\n";
-        std::cout << "1.提交运动员数据\n";
-        std::cout << "2.添加部门\n";
-        std::cout << "3.添加职工\n";
-        std::cout << "4.更改体育项目场地\n";
-        std::cout << "5.查看比赛信息\n";
-        std::cout << "6.安排比赛次序\n";
+        std::cout << "1.添加部门\n";
+        std::cout << "2.添加职工\n";
+        std::cout << "3.更改体育项目场地\n";
+        std::cout << "4.查看比赛信息\n";
+        std::cout << "5.安排比赛次序\n";
         std::cout << "0.返回\n";
         int type;
         std::cout << "input:";
         std::cin >> type;
         switch (type) {
         case 1:
-            //提交运动员数据
-/*FlyweightFactory* factory = new FlyweightFactory({ {"游泳", "中国"}, {"击剑", "中国"}, {"游泳", "美国"}, {"击剑", "美国"} });
-    factory->ListFlyweights();
-
-    AddAthleteToPoliceDatabase(*factory,
-        "张三",
-        "30256",
-        "游泳",
-        "中国");
-
-    AddAthleteToPoliceDatabase(*factory,
-        "詹姆斯",
-        "33654",
-        "击剑",
-        "法国");
-    factory->ListFlyweights();
-    delete factory;*/
-            break;
-        case 2:
             componentAddDepartment();//添加部门
             break;
-        case 3:
+        case 2:
             componentAddClient();//添加职工
             break;
-        case 4:
+        case 3:
             //更改体育项目场地
             //observerTest();
             break;
-        case 5:
+        case 4:
             //查看比赛信息
             prototypeTest();
             break;
-        case 6:
+        case 5:
             //安排比赛次序
             break;
         case 0:
@@ -356,5 +338,6 @@ int main(int argc, const char* argv[]) {
     menuMain();
     // Subject temp1;
     //temp1.Notify();
+	delete factory;
     return 0;
 }
