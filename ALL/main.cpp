@@ -2,7 +2,7 @@
 #include "../Visitor/grantVisitorTest.h"
 #include "../Builder/builder.h"
 #include "../Interpreter/interpreter.h"
-//#include "../Memento/memento.h"
+#include "../Memento/memento.cpp"
 #include "../Proxy/proxy.h"
 #include "../Facade/facade.h"
 //#include "../Flyweight/flyweight.h"
@@ -31,6 +31,8 @@ void StartGame();
 void MenuEnd();
 
 void Buysouvenirtest();
+
+void ShowEvent(Athlete* athlete);
 
 void menuMain() {
     while (1) {
@@ -93,6 +95,7 @@ void menuRole() {
 }
 
 void menuAthlete() {
+    Athlete* athlete = new Athlete("001", "张三", "中国");
     while (1) {
         std::cout << "\n---------------请您要进行的操作---------------\n";
         std::cout << "1.报名\n";
@@ -114,10 +117,15 @@ void menuAthlete() {
         delete proxy;}
         switch (type) {
             case 1:
-                //报名
+            {//报名
+                memento(athlete);
+            }
                 break;
             case 2:
+            {
                 //比赛信息查询
+                ShowEvent(athlete);
+            }
                 break;
             case 3:
                 //纪念品预定
@@ -330,7 +338,9 @@ void Buysouvenirtest()
     }
     interpreter(chose1, chose2, chose3, chose4);
 }
-
+void ShowEvent(Athlete* athlete) {
+    std::cout << "\n选手 " << athlete->GetName() << "的运动项目是" << athlete->GetEvent();
+}
 int main(int argc, const char *argv[]) {
     menuMain();
     // Subject temp1;

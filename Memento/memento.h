@@ -2,7 +2,12 @@
 #include<cstring>
 #include<vector>
 #include<iostream>
+
+#include"../Athlete.h"
+
 using namespace std;
+
+
 
 void mementoTest();
 //备忘录
@@ -23,7 +28,7 @@ public:
 也可以在需要时通过快照恢复自身状态*/
 class EventOriginator {
 private:
-     string event_;
+    Athlete* athlete_;
     //定义在EventOriginator类中，对 EventOriginator提供宽接口，对其他类提供窄接口
     class ConcreteMemento : public Memento {
     private:
@@ -40,7 +45,7 @@ private:
 
 public:
     //EventOriginator类的构造函数，初始化EventOriginator
-    EventOriginator(string);
+    EventOriginator(Athlete*);
     //改变报名的项目名称
     void ChangeEvent(string);
     //展示报名的项目名称
