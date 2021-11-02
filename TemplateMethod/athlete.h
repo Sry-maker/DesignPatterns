@@ -29,8 +29,8 @@ public:
     }
     //参加比赛设定
     void matchSet(std::string match) {
-        Match = match;
-        std::cout << "athlete::countrySet : 国籍已设定,为:" << Match << "\n";
+       Match = match;
+        std::cout << "athlete::matchSet : 参赛项目已设定,为:" << Match << "\n";
     }
     std::string getMatch() {
         return Match;

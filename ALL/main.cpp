@@ -2,7 +2,7 @@
 #include "../Visitor/grantVisitorTest.h"
 #include "../Builder/builder.h"
 #include "../Interpreter/interpreter.h"
-#include "../Memento/memento.cpp"
+#include "../Memento/memento.h"
 #include "../Proxy/proxy.h"
 #include "../Facade/facade.h"
 #include "../Flyweight/flyweight.h"
@@ -23,6 +23,9 @@
 
 FlyweightFactory* factory = new FlyweightFactory({});//存储已有的flyweight
 
+static vector<Match*>matchvector;
+
+void initial();
 
 void menuRole();
 
@@ -38,7 +41,13 @@ void MenuEnd();
 
 void Buysouvenirtest();
 
-void ShowEvent(Athlete* athlete);
+void ShowEvent(athlete* athlete);
+
+void initial() {
+    matchvector.push_back(new Match("羽毛球"));
+    matchvector.push_back(new Match("乒乓球"));
+    matchvector.push_back(new Match("跳水"));
+}
 
 void menuMain() {
     while (1) {
@@ -101,7 +110,6 @@ void menuRole() {
 }
 
 void menuAthlete() {
-    Athlete* athlete = new Athlete("001", "张三", "中国");
     while (1) {
         std::cout << "\n---------------请您要进行的操作---------------\n";
         std::cout << "1.报名\n";
@@ -124,14 +132,13 @@ void menuAthlete() {
         switch (type) {
         case 1:
         {//报名
-            memento(athlete);
-			
+               memento(&Athlete1);
                 factory->ListFlyweights();
                 AddAthleteToPoliceDatabase(*factory,
-                    athlete->GetName(),
-                     athlete->GetId(),
-                    athlete->GetEvent(),
-                     athlete->GetContury());
+                    Athlete1.getName(),
+                    Athlete1.getId(),
+                    Athlete1.getMatch(),
+                    Athlete1.getCountry());
                 factory->ListFlyweights();
               
         }
@@ -139,7 +146,7 @@ void menuAthlete() {
         case 2:
         {
             //比赛信息查询
-            ShowEvent(athlete);
+            ShowEvent(&Athlete1);
         }
         break;
         case 3:
@@ -179,8 +186,8 @@ void menuWorker() {
             break;
         case 3:
             //更改体育项目场地
-            //observerTest();
-            break;
+            observer(matchvector);
+            break; 
         case 4:
             //查看比赛信息
             prototypeTest();
@@ -363,10 +370,11 @@ void Buysouvenirtest()
     }
     interpreter(chose1, chose2, chose3, chose4);
 }
-void ShowEvent(Athlete* athlete) {
-    std::cout << "\n选手 " << athlete->GetName() << "的运动项目是" << athlete->GetEvent();
+void ShowEvent(athlete* athlete) {
+    std::cout << "\n选手 " << athlete->getName() << "的运动项目是" << athlete->getMatch();
 }
 int main(int argc, const char* argv[]) {
+    initial();
     menuMain();
     // Subject temp1;
     //temp1.Notify();

@@ -1,71 +1,109 @@
 ﻿#pragma once
-#include<iostream>
-#include<cstring>
-#include<list>
-using namespace std;
-class Observer;
-class Subject;
-class EventObserver;
-class PlaceSubject;
+#include"classObserver.h"
 
-void observerTest();
+void observerTest() {
+	std::cout << "***************  以下为Observer(观察者)设计模式  **************************************" << std::endl << std::endl;
+	//创建MatchObject对象
+	PlaceSubject* placesubject = new PlaceSubject("鸟巢");
+	//创建观察者对象，进行附着观察
+	MatchObserver* matchobserver1 = new MatchObserver(placesubject, new Match("跳高"));
+	MatchObserver* matchobserver2 = new MatchObserver(placesubject, new Match("跳远"));
+	MatchObserver* matchobserver3 = new MatchObserver(placesubject, new Match("男子100米跑"));
+	placesubject->HowManyObserver();
+	std::cout << std::endl;
+	//MatchObject更新，发出消息给观察者
+	placesubject->SetPlace("五棵松篮球馆");
+	std::cout << std::endl;
+	std::cout << "Now detach the MatchObserver named " << matchobserver1->GetMatchObserverName() << std::endl;
+	placesubject->detach(matchobserver1);
+	std::cout << std::endl;
+	placesubject->HowManyObserver();
+	std::cout << std::endl;
+	placesubject->SetPlace("水立方");
+	std::cout << std::endl;
+	std::cout << "Now detach the MatchObserver named " << matchobserver2->GetMatchObserverName() << std::endl;
+	placesubject->detach(matchobserver2);
+	std::cout << "Now detach the MatchObserver named " << matchobserver3->GetMatchObserverName() << std::endl;
+	placesubject->detach(matchobserver3);
+	std::cout << std::endl;
+	placesubject->HowManyObserver();
+	std::cout << std::endl << "***************  Observer(观察者)设计模式结束  **************************************" << std::endl << std::endl;
+}
 
-//Observer观察者抽象类
-class Observer {
-public:
-	virtual ~Observer();
-	//Observer的update虚函数，监听事件发生后进行数据修改
-	virtual void update()=0;
-};
-//Subject发布者抽象类
-class Subject {
-public:
-	//Subject的构造函数。赋值changed_为false
-	Subject();
-	//添加观察者对象
-	void attach(Observer* observer);
-	//删除观察者对象
-	void detach(Observer* observer);
-	//通知观察者更新消息
-	void Notify();
-	//有数据改变了，更改changed_
-	void DataChange();
-	//输出有多少个观察者附着在发布者上
-	void HowManyObserver();
-private:
-	//定义一个集合，用来存储多个观察者对象
-	list<Observer*> observers_;
-	//存储数值是否发生了变化
-	bool changed_;
-};
 
-//具体Observer观察者实现类
-class EventObserver :public Observer {
-private:
-	string place_;
-	string eventname_;
-	PlaceSubject* placesubject_;
-public:
-	//EventObserver的构造函数，进行赋值和绑定PlaceSubject
-	EventObserver(PlaceSubject*, string);
-	//EventObserver的析造函数，输出相应提示语句
-	~EventObserver();
-	//监听到通知后进行数据修改
-	void update();
-	//得到该EventObserver存储的eventname
-	string GetEventObserverName();
-};
+MatchObserver* AttachMatch(PlaceSubject* placesubject, std::vector<Match*>matchvector, std::string place) {
+	std::cout << "\n------请输入您要添加的比赛名称:----------\n";
+	std::string match;
+	std::cin >> match;
+	int i = 0;
+	for (; i < matchvector.size(); i++)
+		if (matchvector[i]->GetName() == match)
+		{
+			break;
+		}
+	MatchObserver* matchobserver = new MatchObserver(placesubject, matchvector[i]);
+	return matchobserver;
+}
+void DetachMatch(PlaceSubject* placesubject, std::vector<Match*>matchvector, std::list<MatchObserver*> observers) {
+	std::cout << "\n------请输入您要删除的比赛名称:----------\n";
+	std::string match;
+	std::cin >> match;
+	for (auto temp = observers.begin(); temp != observers.end(); temp++)
+	{
+		if ((*temp)->GetMatchObserverName() == match)
+		{
+			std::cout << "Now detach the MatchObserver named " << (*temp)->GetMatchObserverName() << std::endl;
+			placesubject->detach(*temp);
+			observers.remove(*temp);
+			break;
+		}
+	}
+}
+void ChangePlace(PlaceSubject* placesubject, std::vector<Match*>matchvector) {
+	std::cout << "\n------请输入您要修改成的地点:----------\n";
+	std::string place;
+	std::cin >> place;
+	placesubject->SetPlace(place);
+}
 
-//发布者抽象子实现类
-class PlaceSubject :public Subject {
-private:
-	//比赛地点
-	string place_;
-public:
-	//PlaceSubject的构造函数，创建地点
-	PlaceSubject(string);
-	//设置Event
-	void SetPlace(string);
-	//得到Event
-	string GetPlace();
-};
+void observer(std::vector<Match*>matchvector) {
+	std::cout << "***************  以下为Observer(观察者)设计模式  **************************************" << std::endl << std::endl;
+	std::list<MatchObserver*> observers;
+	std::cout << "请输入需要管理的比赛场地\n";
+	std::string place;
+	std::cin >> place;
+	//创建MatchObject对象
+	PlaceSubject* placesubject = new PlaceSubject(place);
+	//创建观察者对象，进行附着观察
+	while (1) {
+		std::cout << "\n------请输入您想要进行的操作:----------\n";
+		std::cout << "1.添加在这个场地进行的比赛\n";
+		std::cout << "2.删除在这个场地进行的比赛\n";
+		std::cout << "3.修改比赛场地\n";
+		std::cout << "0.返回\n";
+		int type;
+		std::cout << "input:";
+		std::cin >> type;
+		switch (type)
+		{
+		case 1:
+			//添加在这个场地进行的比赛
+			observers.push_back(AttachMatch(placesubject, matchvector, place));
+			break;
+		case 2:
+			//删除在这个场地进行的比赛
+			DetachMatch(placesubject, matchvector, observers);
+			break;
+		case 3:
+			//修改比赛场地
+			ChangePlace(placesubject, matchvector);
+			break;
+		case 0:
+			//管理体育项目场地
+			return;
+		}
+	}
+	std::cout << std::endl << "***************  memento(备忘率)设计模式结束  **************************************" << std::endl << std::endl;
+}
+
+
