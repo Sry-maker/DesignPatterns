@@ -7,15 +7,15 @@ using namespace std;
 
 
 //抽象类，既能代表职工，又能代表奥组委各部门
-class Component {
+class Composite {
 protected:
     string Name;
 public:
-    virtual ~Component() {}
+    virtual ~Composite() {}
     //添加部件的从属
-    virtual void Add(Component* component) {}
+    virtual void Add(Composite* composite) {}
     //移除部件的从属
-    virtual void Remove(Component* component) {}
+    virtual void Remove(Composite* composite) {}
     //判断是否是奥组委部门
     virtual bool IsDepartment() const {
         return false;
@@ -24,7 +24,7 @@ public:
     virtual string Operation() const = 0;
 };
 
-class Staff : public Component {
+class Staff : public Composite {
 public:
     Staff(string name) {
         Name = name;
@@ -36,22 +36,22 @@ public:
     }
 };
 
-class Department : public Component {
+class Department : public Composite {
 
 protected:
-    list<Component*> children_;
+    list<Composite*> children_;
 public:
     Department(string name) {
         Name = name;
         std:: cout << "Department::Department():create a department: " << name<<"\n";
     }
     //添加部件的从属
-    void Add(Component* component) override {
-        this->children_.push_back(component);
+    void Add(Composite* composite) override {
+        this->children_.push_back(composite);
     }
     //移除部件的从属
-    void Remove(Component* component) override {
-        children_.remove(component);
+    void Remove(Composite* composite) override {
+        children_.remove(composite);
     }
     //判断是否是奥组委部门
     bool IsDepartment() const override {
@@ -60,7 +60,7 @@ public:
     //输出该奥组委部门的结构树
     string Operation() const override {
         string result;
-        for (const Component* c : children_) {
+        for (const Composite* c : children_) {
             if (c == children_.back()) {
                 result += c->Operation();
             }

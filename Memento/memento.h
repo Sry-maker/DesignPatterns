@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include"classMemento.h"
-
+#include"../NullObject/NullObject.h"
 void Enroll(EventOriginator* eventoriginator, Caretaker* caretaker, athlete* athlete) {
     if (athlete->getMatch() != "")
     {
@@ -10,6 +10,9 @@ void Enroll(EventOriginator* eventoriginator, Caretaker* caretaker, athlete* ath
     std::cout << "\n请输入您要报名的项目：" << std::endl;
     std::string temp_event;
     std::cin >> temp_event;
+    if (true) {
+        nullObjectTest(temp_event);
+    }
     eventoriginator->ChangeEvent(temp_event);
     caretaker->Backup();
 }

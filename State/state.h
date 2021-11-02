@@ -136,4 +136,9 @@ void event_end_state()
     delete Context_state2;
 }
 
+void stateTest(){
+    std::cout << "***************  以下为state(状态)设计模式  *********************************" << endl;
+    AthleteCode();
+    std::cout << std::endl;
+}
  

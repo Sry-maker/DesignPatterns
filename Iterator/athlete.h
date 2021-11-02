@@ -1,9 +1,10 @@
-ï»¿#pragma once
+#pragma once
 #ifndef _athlete_H
 #define _athlete_H
 
 #include "personnel.h"
-//è¿åŠ¨å‘˜ç±»å‹
+//ÔË¶¯Ô±ÀàĞÍ
+#include<string>
 class athlete : public personnel {
 private:
     std::string Country;
@@ -18,40 +19,34 @@ public:
         Country = country;
         std::cout << "athlete::athlete : created a subclass, name is athlete\n";
     }
-    athlete(std::string id, std::string name, std::string country,std::string match) {
-        ID = id;
-        Name = name;
-        Country = country;
-        Match=match;
-        std::cout << "athlete::athlete : created a subclass, name is athlete\n";
-    }
 public:
-    //å›½ç±è®¾å®š
+    //¹ú¼®Éè¶¨
     void countrySet(std::string country) {
         Country = country;
-        std::cout << "athlete::countrySet : å›½ç±å·²è®¾å®š,ä¸º:" << Country << "\n";
+        std::cout << "athlete::countrySet : ¹ú¼®ÒÑÉè¶¨,Îª:" << Country << "\n";
     }
     std::string getCountry() {
         return Country;
     }
-    //å‚åŠ æ¯”èµ›è®¾å®š
+    //²Î¼Ó±ÈÈüÉè¶¨
     void matchSet(std::string match) {
-       Match = match;
-        std::cout << "athlete::matchSet : å‚èµ›é¡¹ç›®å·²è®¾å®š,ä¸º:" << Match << "\n";
+        Match = match;
+        std::cout << "athlete::countrySet : ¹ú¼®ÒÑÉè¶¨,Îª:" << Match << "\n";
     }
     std::string getMatch() {
         return Match;
     }
-    //ä¿¡æ¯æŸ¥è¯¢
+    //ĞÅÏ¢²éÑ¯
     void ShowInfo() override {
-        std::cout << "athlete::ShowInfo : å§“å:" << Name << "\n";
+        std::cout << "athlete::ShowInfo : ĞÕÃû:" << Name << "\n";
         std::cout << "athlete::ShowInfo : ID:" << ID << "\n";
-        std::cout << "athlete::ShowInfo : æ€§åˆ«:" << Gender << "\n";
-        std::cout << "athlete::ShowInfo : å›½ç±:" << Country << "\n";
-        std::cout << "athlete::ShowInfo : å‚èµ›é¡¹ç›®:" << Match << "\n";
+        std::cout << "athlete::ShowInfo : ĞÔ±ğ:" << Gender << "\n";
+        std::cout << "athlete::ShowInfo : ¹ú¼®:" << Country << "\n";
+        std::cout << "athlete::ShowInfo : ²ÎÈüÏîÄ¿:" << Match << "\n";
     }
     std::string _athlete() {
         return ID + " " + Name + " " + Country+" "+Match;
     }
+           
 };
 #endif

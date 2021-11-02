@@ -97,3 +97,9 @@ void strategy_1()
     context2->DoSomeBusinessLogic();
     delete context2;
 }
+
+void strategyTest(){
+    std::cout << "***************  以下为strategy(策略)设计模式  ******************************" << std::endl;
+    AthleteCode_strategy();
+    std::cout << std::endl;
+}

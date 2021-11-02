@@ -12,7 +12,7 @@ void templateTest() {
 	M1->PlayerSet();
 	M1->RuleSet("乒乓球规则");
 	M1->ShowInfo();
-	cout<<"\n";
+	std::cout<<"\n";
 	MatchDesign* M2 = new Airgun;
 	M2->TimeSet("2021/10/20");
 	M2->AreaSet("气枪馆");
@@ -20,7 +20,7 @@ void templateTest() {
 	M2->PlayerSet();
 	M2->RuleSet("气枪规则");
 	M2->ShowInfo();
-	cout<<"\n";
+	std::cout<<"\n";
 	delete M1;
 	delete M2;
 	std::cout << "***************  Template(模板)设计模式结束  ***************\n\n";

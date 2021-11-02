@@ -28,7 +28,7 @@ class ConcreteAthlete : public Colleague {
 public:
     void DoA() {
         std::cout << "";
-        this->mediator_->Notify(this, "请你尽快准备参赛");
+        this->mediator_->Notify(this, "\n-------接下来请观众进行审核并入场进入观众席-----------\n");
     }
    /* void DoB() {
         std::cout << "Component 1 does B.\n";
@@ -69,7 +69,7 @@ public:
         }*/
         if (sender == ConcreteAthlete_) {
             
-            std::cout << "运动员已收到消息";
+            std::cout << "\n-------工作人员通知观众进行审核并入场进入观众席-----------\n";
            // this->ConcreteCoach_->DoC();
         }
        /* if (event == "D") {
@@ -91,8 +91,9 @@ void mediatorTest() {
     cout << "ConcreteMediator : created a mediator between concreteAthlete and concreteCommittee" << endl;
 
 
-    std::cout << "组委会通知选手参赛" << endl;
+    
     c1->DoA();
+    std::cout << "观众已入场" << endl;
     /*std::cout << "\n";
     std::cout << "Client triggers operation D.\n";
     c2->DoD();*/

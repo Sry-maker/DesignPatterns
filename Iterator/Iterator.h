@@ -3,7 +3,9 @@
 #include<string>
 #include<cstring>
 #include<vector>
-
+#include"personnel.h"
+#include"athlete.h"
+#include"../Match.h"
 using namespace std;
 template <typename T, typename U>
 class Iterator {
@@ -53,57 +55,106 @@ private:
     std::vector<T> m_data_;
 };
 
-class Athlete {
-public:
-    Athlete(string a = " ") : m_data_(a) {}
 
-    void set_data(string a) {
-        m_data_ = a;
-    }
 
-    string athlete() {
-        return m_data_;
-    }
 
-private:
-    string m_data_;
-};
+//class Athlete {
+//private:
+//    string id_;
+//    string name_;
+//    string contury_;
+//    string match_;
+//public:
+//    Athlete(string id, string name, string contury) :id_(id), name_(name), contury_(contury) { match_ = ""; }
+//    string GetId() {
+//        return id_;
+//    }
+//    string GetName() {
+//        return name_;
+//    }
+//    string GetContury() {
+//        return contury_;
+//    }
+//    string GetMatch() {
+//        return match_;
+//    }
+//    void SetId(string id) {
+//        id_ = id;
+//    }
+//    void SetName(string name) {
+//        name_ = name;
+//    }
+//    void SetContury(string contury) {
+//        contury_ = contury;
+//    }
+//    void SetMatch(string match) {
+//        match_ = match;
+//    }
+//    string athlete() {
+//        return id_ +" "+ name_ +" "+ contury_;
+//    }
+//};
 
 
 
 void iteratorTest() {
-    //std::cout << "采用迭代器模式对运动员进行遍历" << std::endl;
-    //Container<int> cont;
-   /* Container<string> conthk;
-    conthk.Add("博尔特");
-    conthk.Add("加特林");
-    conthk.Add("洪浩凯");*/
-   /* for (int i = 0; i < 10; i++) {
-        cont.Add(i);
-    }*/
+    vector<Match*> match;
+    //Match _match1("羽毛球"), _match2("跳水"), _match3("乒乓球");
+    Match* _match1 = new Match("羽毛球");
+    Match* _match2 = new Match("跳水");
+    Match* _match3 = new Match("乒乓球");
 
-    /*Iterator<int, Container<int>>* it = cont.CreateIterator();
-    for (it->First(); !it->IsDone(); it->Next()) {
-        std::cout << *it->Current() << std::endl;
-    }*/
+    match.push_back(_match1);
+    match.push_back(_match2);
+    match.push_back(_match3);
+    Container<Match> sport_name;
+    for (int i = 0; i < match.size(); i++)
+    {
+        sport_name.Add(*match[i]);
+    }
+    cout << endl;
+    vector<athlete*> sport;
+   // athlete a("01", "运动员1", "China"), b("02", "运动员2", "USA"), c("03", "运动员3", "UK");
+    athlete* temp = new athlete("01", "运动员1", "China");
+    athlete* temp1 = new athlete("02", "运动员2", "China");
+    athlete* temp2 = new athlete("03", "运动员3", "China");
+    
+    sport.push_back(temp);
+    sport.push_back(temp1);
+    sport.push_back(temp2);
+    Container<athlete> cont2;
+    for (int i = 0; i < sport.size(); i++)
+    {
+        cont2.Add(*sport[i]);
+    }
 
-    /*Iterator<string, Container<string>>* it3 = conthk.CreateIterator();
-    for (it3->First(); !it3->IsDone(); it3->Next()) {
-        std::cout << *it3->Current() << std::endl;
-    }*/
 
-    Container<Athlete> cont2;
-    Athlete a("运动员1"), b("运动员2"), c("运动员3");
-    cont2.Add(a);
+   /* Container<Match> cont;
+    Match e1("篮球"), e2("足球");
+    cont.Add(e1);
+    cont.Add(e2);
+    Iterator<Match, Container<Match>>* it1 = cont.CreateIterator();
+    for (it1->First(); !it1->IsDone(); it1->Next()) {
+        std::cout << it1->Current()->_match() << std::endl;
+    }*/
+    cout << endl << endl;
+   // Container<athlete> cont2;
+   // athlete a("01","运动员1","China"), b("02","运动员2","USA"), c("03","运动员3","UK");
+   /* cont2.Add(a);
     cont2.Add(b);
-    cont2.Add(c);
+    cont2.Add(c);*/
 
     std::cout << "****************  以下为Iterator（迭代器）设计模式  ******************" << std::endl;
     cout << "Container::Add : created a container named Athlete" << endl;
     cout << "Iterator : created a iterator to visit container" << endl;
-    Iterator<Athlete, Container<Athlete>>* it2 = cont2.CreateIterator();
+    Iterator<Match, Container<Match>>* it1 = sport_name.CreateIterator();
+    for (it1->First(); !it1->IsDone(); it1->Next()) {
+        std::cout << it1->Current()->GetName() << std::endl;
+    }
+
+    Iterator<athlete, Container<athlete>>* it2 = cont2.CreateIterator();
     for (it2->First(); !it2->IsDone(); it2->Next()) {
-        std::cout << it2->Current()->athlete() << std::endl;
+        std::cout << it2->Current()->_athlete() << std::endl;
     }
     //delete it;
     delete it2;

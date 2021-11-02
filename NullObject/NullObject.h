@@ -34,7 +34,7 @@ public:
 	NullCustomer() {};
 	~NullCustomer() {};
 	bool isNull() { return true; };
-	string getName() { return "Not Available in coustomer database"; };
+	string getName() { return "本次比赛没有该项目，请重新输入项目名称"};
 };
 
 //创建CustomerFactory类，用来获取实体类或空类的实例
@@ -47,7 +47,7 @@ public:
 	static AbstractCustomer* getCustomer(string tname);
 };
 
-string CustomerFactory::name[3] = { "Rob","Joe","Julie" };
+string CustomerFactory::name[3] = { "羽毛球","跳水","乒乓球" };
 
 AbstractCustomer* CustomerFactory::getCustomer(string tname)
 {
@@ -62,19 +62,19 @@ AbstractCustomer* CustomerFactory::getCustomer(string tname)
 	return (AbstractCustomer*)new NullCustomer();
 }
 
-void nullObjectTest()
+void nullObjectTest(string name)
 {
 	std::cout << "****************  以下为NullObject（空对象）设计模式  ******************" << std::endl;
 	cout << "CustomerFactory::getCustomer : created a AbstractCustomerFactory" << endl;
-	AbstractCustomer* c1 = CustomerFactory::getCustomer("Rob");
-	AbstractCustomer* c2 = CustomerFactory::getCustomer("Mickel");
-	AbstractCustomer* c3 = CustomerFactory::getCustomer("Joe");
-	AbstractCustomer* c4 = CustomerFactory::getCustomer("Julie");
+	AbstractCustomer* c1 = CustomerFactory::getCustomer("羽毛球");
+	AbstractCustomer* c2 = CustomerFactory::getCustomer(name);
+	AbstractCustomer* c3 = CustomerFactory::getCustomer("跳水");5
+	AbstractCustomer* c4 = CustomerFactory::getCustomer("乒乓球");
 	cout << "AbstractCustomer::getName : get object" << endl;
-	cout << "Rob: " << c1->getName() << endl;
-	cout << "Mickel: " << c2->getName() <<" "<<"This is a null object"<<endl;
-	cout << "Joe: " << c3->getName() << endl;
-	cout << "Juile: " << c4->getName() << endl;
+	cout << "羽毛球: " << c1->getName() << endl;
+	cout <<name<<": "<< c2->getName() <<" "<<"This is a null object"<<endl;
+	cout << "跳水: " << c3->getName() << endl;
+	cout << "乒乓球: " << c4->getName() << endl;
 
 	delete c1;
 	c1 = NULL;
