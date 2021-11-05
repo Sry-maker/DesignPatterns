@@ -58,7 +58,7 @@ void initial() {
 	matchvector.push_back(new Match("跳水"));
 
 
-	athletevector.push_back(new athlete("0001","林小丹","中国","羽毛球"));
+	athletevector.push_back(new athlete("0001", "林小丹", "中国", "羽毛球"));
 	athletevector.push_back(new athlete("0002", "Bob", "美国", "跳水"));
 	athletevector.push_back(new athlete("0003", "村上树", "日本", "乒乓球"));
 }
@@ -121,7 +121,6 @@ void menuRole() {
 	default:
 		break;
 	}
-	//athletevector.push_back(Athlete1);
 	return;
 }
 
@@ -147,7 +146,7 @@ void menuAthlete() {
 		switch (type) {
 		case 1:
 		{//报名
-			memento(Athlete1,matchvector);
+			memento(Athlete1, matchvector);
 			factory->ListFlyweights();
 			AddAthleteToPoliceDatabase(*factory,
 				Athlete1->getName(),
@@ -197,7 +196,7 @@ void menuWorker() {
 			break;
 		case 3:
 			//更改体育项目场地
-			//observer(matchvector);
+			observer(matchvector);
 			break;
 		case 4:
 			//查看比赛信息
@@ -292,46 +291,74 @@ void StartGame() {
 	Context_state* Context_state2 = new Context_state(new ConcreteStateA_state);
 	switch (strategy_order) {
 	case 1:
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		strategy_1();
 		std::cout << "\n------接下来请观众进行审核并入场进入观众席--------\n";
 		mediatorTest();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		//观众审核流程输出
 		std::cout << "\n------------------比赛正式开始-------------------------\n";
 		event_start_state(Context_state2);
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n---------------首先进行羽毛球比赛---------------------\n";
 		//XXX比赛输出
 		factoryMethodTest3();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n----------------接下来进行跳水比赛--------------------\n";
 		//XXX比赛输出
 		factoryMethodTest2();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n--------------接下来进行乒乓球球比赛-----------------\n";
 		//XXX比赛输出
 		factoryMethodTest1();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n----------------所有比赛项目顺利结束-----------------\n";
 		bridgeTest();
 		event_end_state(Context_state2);
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		break;
 	case 2:
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		strategy_2();
 		std::cout << "\n------接下来请观众进行审核并入场进入观众席--------\n";
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		//观众审核流程输出
 		std::cout << "\n------------------比赛正式开始-------------------------\n";
 		event_start_state(Context_state2);
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n--------------接下来进行乒乓球球比赛-----------------\n";
 		//XXX比赛输出
 		factoryMethodTest1();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n----------------接下来进行跳水比赛--------------------\n";
 		//XXX比赛输出
 		factoryMethodTest2();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		std::cout << "\n---------------首先进行羽毛球比赛---------------------\n";
 		//XXX比赛输出
 		factoryMethodTest3();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 
 		std::cout << "\n--------所有比赛项目顺利结束--------------\n";
 		bridgeTest();
+		std::cout << "\n按下任意键继续";
+		cin.get();
 		break;
 	}
-	event_end_state(Context_state2);
+	event_start_state(Context_state2);
 	MenuEnd();
 }
 
