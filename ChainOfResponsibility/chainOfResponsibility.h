@@ -86,7 +86,7 @@ void chainOfResponsibilityTest() {
      * The client should be able to send a request to any handler, not just the
      * first one in the chain.
      */
-    std::cout << "本程序模拟奥林匹克运动会观众身份核验-安检-验票入场场景，使用了CoR--责任链模式" << std::endl << std::endl;
+    std::cout << "****************  以下为CoR(责任链)设计模式  ******************" << std::endl;
     std::cout << "观众开始入场" << std::endl << std::endl;
     ClientCode(*IdentityAuthentication);
     

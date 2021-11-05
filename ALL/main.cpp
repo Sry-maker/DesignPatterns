@@ -428,8 +428,8 @@ void Fixed() {
 	proxyTest();
 	chainOfResponsibilityTest();
 	commandTest();
-	//iteratorTest();
-	//mediatorTest();
+	iteratorTest();
+	mediatorTest();
 	mementoTest();
 	observerTest();
 	stateTest();
@@ -438,7 +438,7 @@ void Fixed() {
 	visitorTest();
 	interpreterTest();
 	callBackTest();
-	//nullObjectTest();
+	nullObjectTest();
 	extensionObjectTest();
 	MVCTest();
 }

@@ -6,59 +6,63 @@
 #include"Composite.h"
 
 
-Composite* COC = new Department("ÖÐ¹ú°ÂÎ¯»á");
+Composite* COC =NULL;
 int compositeAddDepartment() {
-    std::cout << "****************ÒÔÏÂÎªComposite£¨×éºÏ£©Éè¼ÆÄ£Ê½****************:\n";
-    Composite* Staff_2 = new Staff("ÖÐ¹ú°ÂÎ¯»áÖ÷Ï¯");
-    Composite* Staff_3 = new Staff("ÖÐ¹ú°ÂÎ¯»á¸±Ö÷Ï¯");
-    Composite* Department6 = new Department("ÐÂÎÅÎ¯Ô±»á");
-    Composite* Department7 = new Department("ÃØÊé²¿");
-    Composite* Department8 = new Department("·¨ÂÉÊÂÎñ²¿");
+    std::cout << "****************ä»¥ä¸‹ä¸ºCompositeï¼ˆç»„åˆï¼‰è®¾è®¡æ¨¡å¼****************:\n";
+    COC = new Department("ä¸­å›½å¥¥å§”ä¼š");
+    Composite* Staff_2 = new Staff("ä¸­å›½å¥¥å§”ä¼šä¸»å¸­");
+    Composite* Staff_3 = new Staff("ä¸­å›½å¥¥å§”ä¼šå‰¯ä¸»å¸­");
+    Composite* Department6 = new Department("æ–°é—»å§”å‘˜ä¼š");
+    Composite* Department7 = new Department("ç§˜ä¹¦éƒ¨");
+    Composite* Department8 = new Department("æ³•å¾‹äº‹åŠ¡éƒ¨");
     COC->Add(Staff_2);
     COC->Add(Staff_3);
     COC->Add(Department6);
     COC->Add(Department7);
     COC->Add(Department8);
-    std::cout << "\n\n±±¾©°Â×éÎ¯²¿ÃÅ½á¹¹:\n";
+    std::cout << "\n\nåŒ—äº¬å¥¥ç»„å§”éƒ¨é—¨ç»“æž„:\n";
     std::cout << "composite::Operation(): " << COC->Operation();
     std::cout << "\n\n";
-    std::cout << "ÇëÊäÈëÌí¼Ó²¿ÃÅÃû³Æ:\n¼Æ»®²ÆÎñ²¿\n";
-    char name[20]="¼Æ»®²ÆÎñ²¿";
+    std::cout << "è¯·è¾“å…¥æ·»åŠ éƒ¨é—¨åç§°:\nè®¡åˆ’è´¢åŠ¡éƒ¨\n";
+    char name[20]="è®¡åˆ’è´¢åŠ¡éƒ¨";
     Composite* Department9 = new Department(name);
     COC->Add(Department9);
     std::cout << "composite::Operation(): " << COC->Operation();
     std::cout << "\n";
-    std::cout << "\n****************Composite£¨×éºÏ£©Éè¼ÆÄ£Ê½½áÊø****************:\n";
+    std::cout << "\n****************Compositeï¼ˆç»„åˆï¼‰è®¾è®¡æ¨¡å¼ç»“æŸ****************:\n";
     return 0;
 }
 
 int compositeAddClient() {
-    std::cout << "****************ÒÔÏÂÎªComposite£¨×éºÏ£©Éè¼ÆÄ£Ê½****************:\n";
-    std::cout << "\n\n±±¾©°Â×éÎ¯²¿ÃÅ½á¹¹:\n";
+    std::cout << "****************ä»¥ä¸‹ä¸ºCompositeï¼ˆç»„åˆï¼‰è®¾è®¡æ¨¡å¼****************:\n";
+    if (COC == NULL) {
+        COC = new Department("ä¸­å›½å¥¥å§”ä¼š");
+    }
+    std::cout << "\n\nåŒ—äº¬å¥¥ç»„å§”éƒ¨é—¨ç»“æž„:\n";
     std::cout << "composite::Operation(): " << COC->Operation();
     std::cout << "\n\n";
-    std::cout << "ÇëÊäÈëÌí¼ÓÔ±¹¤Ãû³Æ:\nÕÅÈý\n";
-    char name[20]="ÕÅÈý";
+    std::cout << "è¯·è¾“å…¥æ·»åŠ å‘˜å·¥åç§°:\nå¼ ä¸‰\n";
+    char name[20]="å¼ ä¸‰";
     Composite* staff_4 = new Staff(name);
     COC->Add(staff_4);
     std::cout << "composite::Operation(): " << COC->Operation();
     std::cout << "\n";
-    std::cout << "\n****************Composite£¨×éºÏ£©Éè¼ÆÄ£Ê½½áÊø****************:\n";
+    std::cout << "\n****************Compositeï¼ˆç»„åˆï¼‰è®¾è®¡æ¨¡å¼ç»“æŸ****************:\n";
     return 0;
 }
 int compositeTest() {
-    cout << "****************ÒÔÏÂÎªComposite£¨×éºÏ£©Éè¼ÆÄ£Ê½****************:\n";
-    Composite* Department1 = new Department("¹ú¼Ê°ÂÎ¯»á");
-    Composite* Department2 = new Department("¹ú¼Ê°ÂÎ¯»áÈ«ÌåÎ¯Ô±»á");
-    Composite* Department3 = new Department("Ö´ÐÐÎ¯Ô±»á");
-    Composite* Staff_1 = new Staff("¹ú¼Ê°ÂÎ¯»áÖ÷Ï¯");
-    Composite* Department4 = new Department("ÖÐ¹ú°ÂÎ¯»á");
-    Composite* Staff_2 = new Staff("ÖÐ¹ú°ÂÎ¯»áÖ÷Ï¯");
-    Composite* Staff_3 = new Staff("ÖÐ¹ú°ÂÎ¯»á¸±Ö÷Ï¯");
-    Composite* Department5 = new Department("ÈÕ±¾°ÂÎ¯»á");
-    Composite* Department6 = new Department("ÐÂÎÅÎ¯Ô±»á");
-    Composite* Department7 = new Department("ÃØÊé²¿");
-    Composite* Department8 = new Department("·¨ÂÉÊÂÎñ²¿");
+    cout << "****************ä»¥ä¸‹ä¸ºCompositeï¼ˆç»„åˆï¼‰è®¾è®¡æ¨¡å¼****************:\n";
+    Composite* Department1 = new Department("å›½é™…å¥¥å§”ä¼š");
+    Composite* Department2 = new Department("å›½é™…å¥¥å§”ä¼šå…¨ä½“å§”å‘˜ä¼š");
+    Composite* Department3 = new Department("æ‰§è¡Œå§”å‘˜ä¼š");
+    Composite* Staff_1 = new Staff("å›½é™…å¥¥å§”ä¼šä¸»å¸­");
+    Composite* Department4 = new Department("ä¸­å›½å¥¥å§”ä¼š");
+    Composite* Staff_2 = new Staff("ä¸­å›½å¥¥å§”ä¼šä¸»å¸­");
+    Composite* Staff_3 = new Staff("ä¸­å›½å¥¥å§”ä¼šå‰¯ä¸»å¸­");
+    Composite* Department5 = new Department("æ—¥æœ¬å¥¥å§”ä¼š");
+    Composite* Department6 = new Department("æ–°é—»å§”å‘˜ä¼š");
+    Composite* Department7 = new Department("ç§˜ä¹¦éƒ¨");
+    Composite* Department8 = new Department("æ³•å¾‹äº‹åŠ¡éƒ¨");
     Department1->Add(Department2);
     Department1->Add(Department3);
     Department1->Add(Staff_1);
@@ -69,10 +73,10 @@ int compositeTest() {
     Department4->Add(Department6);
     Department4->Add(Department7);
     Department4->Add(Department8);
-    cout << "\n\n°Â×éÎ¯²¿ÃÅ½á¹¹:\n";
+    cout << "\n\nå¥¥ç»„å§”éƒ¨é—¨ç»“æž„:\n";
     cout << "composite::Operation(): " << Department1->Operation();
     cout << "\n\n";
-    cout << "µ÷Õû²¿ÃÅ½á¹¹Ê±²»ÐèÒª¿¼ÂÇÊÇ²¿ÃÅ»¹ÊÇÖ°¹¤:\n";
+    cout << "è°ƒæ•´éƒ¨é—¨ç»“æž„æ—¶ä¸éœ€è¦è€ƒè™‘æ˜¯éƒ¨é—¨è¿˜æ˜¯èŒå·¥:\n";
     Department1->Remove(Staff_1);
     cout << "composite::Operation(): " << Department1->Operation();
     cout << "\n";
@@ -87,8 +91,9 @@ int compositeTest() {
     delete Staff_1;
     delete Staff_2;
     delete Staff_3;
-    cout << "\n****************Composite£¨×éºÏ£©Éè¼ÆÄ£Ê½½áÊø****************:\n";
+    cout << "\n****************Compositeï¼ˆç»„åˆï¼‰è®¾è®¡æ¨¡å¼ç»“æŸ****************:\n";
     compositeAddDepartment();
     compositeAddClient();
     return 0;
 }
+

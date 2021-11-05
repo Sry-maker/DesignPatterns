@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include<string>
 
 using namespace std;
 
-//´´½¨Ò»¸ö³éÏóÀàAbstractCustomer¡£
+//åˆ›å»ºä¸€ä¸ªæŠ½è±¡ç±»AbstractCustomerã€‚
 class AbstractCustomer
 {
 public:
@@ -17,7 +17,7 @@ protected:
 	string name;
 };
 
-//´´½¨À©Õ¹ÁË³éÏóÀàAbstractCustomerµÄÊµÌåÀàRealCustomer¡£
+//åˆ›å»ºæ‰©å±•äº†æŠ½è±¡ç±»AbstractCustomerçš„å®ä½“ç±»RealCustomerã€‚
 class RealCustomer :AbstractCustomer
 {
 public:
@@ -27,17 +27,17 @@ public:
 	string getName() { return name; };
 };
 
-//´´½¨À©Õ¹ÁË³éÏóÀàAbstractCustomerµÄ¿ÕÀàNullCustomer¡£
+//åˆ›å»ºæ‰©å±•äº†æŠ½è±¡ç±»AbstractCustomerçš„ç©ºç±»NullCustomerã€‚
 class NullCustomer :AbstractCustomer
 {
 public:
 	NullCustomer() {};
 	~NullCustomer() {};
 	bool isNull() { return true; };
-	string getName() { return "±¾´Î±ÈÈüÃ»ÓĞ¸ÃÏîÄ¿£¬ÇëÖØĞÂÊäÈëÏîÄ¿Ãû³Æ"; };
+	string getName() { return "æœ¬æ¬¡æ¯”èµ›æ²¡æœ‰è¯¥é¡¹ç›®ï¼Œè¯·é‡æ–°è¾“å…¥é¡¹ç›®åç§°"; };
 };
 
-//´´½¨CustomerFactoryÀà£¬ÓÃÀ´»ñÈ¡ÊµÌåÀà»ò¿ÕÀàµÄÊµÀı
+//åˆ›å»ºCustomerFactoryç±»ï¼Œç”¨æ¥è·å–å®ä½“ç±»æˆ–ç©ºç±»çš„å®ä¾‹
 class CustomerFactory
 {
 public:
@@ -47,7 +47,7 @@ public:
 	static AbstractCustomer* getCustomer(string tname);
 };
 
-string CustomerFactory::name[3] = { "ÓğÃ«Çò","ÌøË®","Æ¹ÅÒÇò" };
+string CustomerFactory::name[3] = { "ç¾½æ¯›çƒ","è·³æ°´","ä¹’ä¹“çƒ" };
 
 AbstractCustomer* CustomerFactory::getCustomer(string tname)
 {
@@ -64,17 +64,17 @@ AbstractCustomer* CustomerFactory::getCustomer(string tname)
 
 void nullObjectTest(string name)
 {
-	std::cout << "****************  ÒÔÏÂÎªNullObject£¨¿Õ¶ÔÏó£©Éè¼ÆÄ£Ê½  ******************" << std::endl;
-	cout << "CustomerFactory::getCustomer : created a AbstractCustomerFactory" << endl;
-	AbstractCustomer* c1 = CustomerFactory::getCustomer("ÓğÃ«Çò");
+	std::cout << "****************  ä»¥ä¸‹ä¸ºNullObjectï¼ˆç©ºå¯¹è±¡ï¼‰è®¾è®¡æ¨¡å¼  ******************" << std::endl;
+	std::cout << "CustomerFactory::getCustomer : created a AbstractCustomerFactory" << endl;
+	AbstractCustomer* c1 = CustomerFactory::getCustomer("ç¾½æ¯›çƒ");
 	AbstractCustomer* c2 = CustomerFactory::getCustomer(name);
-	AbstractCustomer* c3 = CustomerFactory::getCustomer("ÌøË®");
-	AbstractCustomer* c4 = CustomerFactory::getCustomer("Æ¹ÅÒÇò");
-	cout << "AbstractCustomer::getName : get object" << endl;
-	cout << "ÓğÃ«Çò: " << c1->getName() << endl;
-	cout <<name<<": "<< c2->getName() <<" "<<"This is a null object"<<endl;
-	cout << "ÌøË®: " << c3->getName() << endl;
-	cout << "Æ¹ÅÒÇò: " << c4->getName() << endl;
+	AbstractCustomer* c3 = CustomerFactory::getCustomer("è·³æ°´");
+	AbstractCustomer* c4 = CustomerFactory::getCustomer("ä¹’ä¹“çƒ");
+	std::cout << "AbstractCustomer::getName : get object" << endl;
+	std::cout << "ç¾½æ¯›çƒ: " << c1->getName() << endl;
+	std::cout <<name<<": "<< c2->getName() <<" "<<"This is a null object"<<endl;
+	std::cout << "è·³æ°´: " << c3->getName() << endl;
+	std::cout << "ä¹’ä¹“çƒ: " << c4->getName() << endl;
 
 	delete c1;
 	c1 = NULL;
@@ -88,6 +88,35 @@ void nullObjectTest(string name)
 	delete c4;
 	c4 = NULL;
 
-	std::cout << "****************  NullObject£¨¿Õ¶ÔÏó£©Éè¼ÆÄ£Ê½½áÊø  ******************" << std::endl;
+	std::cout << "****************  NullObjectï¼ˆç©ºå¯¹è±¡ï¼‰è®¾è®¡æ¨¡å¼ç»“æŸ  ******************" << std::endl;
+
+}
+void nullObjectTest()
+{
+	std::cout << "****************  ä»¥ä¸‹ä¸ºNullObjectï¼ˆç©ºå¯¹è±¡ï¼‰è®¾è®¡æ¨¡å¼  ******************" << std::endl;
+	std::cout << "CustomerFactory::getCustomer : created a AbstractCustomerFactory" << endl;
+	AbstractCustomer* c1 = CustomerFactory::getCustomer("ç¾½æ¯›çƒ");
+	AbstractCustomer* c2 = CustomerFactory::getCustomer("ç¯®çƒ");
+	AbstractCustomer* c3 = CustomerFactory::getCustomer("è·³æ°´");
+	AbstractCustomer* c4 = CustomerFactory::getCustomer("ä¹’ä¹“çƒ");
+	std::cout << "AbstractCustomer::getName : get object" << endl;
+	std::cout << "ç¾½æ¯›çƒ: " << c1->getName() << endl;
+	std::cout << "ç¯®çƒ" << ": " << c2->getName() << " " << "This is a null object" << endl;
+	std::cout << "è·³æ°´: " << c3->getName() << endl;
+	std::cout << "ä¹’ä¹“çƒ: " << c4->getName() << endl;
+
+	delete c1;
+	c1 = NULL;
+
+	delete c2;
+	c2 = NULL;
+
+	delete c3;
+	c3 = NULL;
+
+	delete c4;
+	c4 = NULL;
+
+	std::cout << "****************  NullObjectï¼ˆç©ºå¯¹è±¡ï¼‰è®¾è®¡æ¨¡å¼ç»“æŸ  ******************" << std::endl;
 
 }
