@@ -94,8 +94,6 @@ int compositeTest() {
     delete Staff_2;
     delete Staff_3;
     cout << "\n****************Composite（组合）设计模式结束****************:\n";
-    compositeAddDepartment();
-    compositeAddClient();
     return 0;
 }
 
