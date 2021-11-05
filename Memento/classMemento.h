@@ -5,7 +5,7 @@
 #include"../TemplateMethod/athlete.h"
 
 class Memento;
-class EventOriginator;
+class MatchOriginator;
 class Caretaker;
 //备忘录
 /*备忘录是原发器状态快照的值对象 （value object）。 
@@ -23,20 +23,20 @@ public:
 //原发器
 /*原发器类可以生成自身状态的快照， 
 也可以在需要时通过快照恢复自身状态*/
-class EventOriginator {
+class MatchOriginator {
 private:
     athlete* athlete_;
-    //定义在EventOriginator类中，对 EventOriginator提供宽接口，对其他类提供窄接口
+    //定义在MatchOriginator类中，对 MatchOriginator提供宽接口，对其他类提供窄接口
     class ConcreteMemento : public Memento {
     private:
-        std::string event_;
+        std::string match_;
         std::string operation_;
     public:
         //ConcreteMemento的构造函数，生成一个备忘录
-        ConcreteMemento(std::string event, std::string operation) : event_(event), operation_(operation) {}
+        ConcreteMemento(std::string match, std::string operation) : match_(match), operation_(operation) {}
         //得到报名的项目名称
-        std::string GetEvent() {
-            return event_;
+        std::string GetMatch() {
+            return match_;
         }
         //得到备忘录记录的操作名称
         std::string GetOperation() {
@@ -44,19 +44,24 @@ private:
         }
     };
 public:
-    //EventOriginator类的构造函数，初始化EventOriginator
-    EventOriginator(athlete* athlete) {
+    //MatchOriginator类的构造函数，初始化MatchOriginator
+    MatchOriginator(athlete* athlete) {
         athlete_ = athlete;
-        std::cout << "Originator:" << athlete->getName() << "'s initial event is: " << athlete_->getMatch() << "\n";
+        if(athlete_->getMatch()!="")
+            std::cout << "Originator:" << athlete->getName() << "'s initial match is: " << athlete_->getMatch() << "\n";
+        else
+        {
+            std::cout << "Originator:" << athlete->getName() << " has no match\n";
+        }
     }
     //改变报名的项目名称
-    void ChangeEvent(std::string newevent) {
-        std::cout << "Originator: I'm changing the event.\n";
-        athlete_->matchSet(newevent);
-        std::cout << "Originator: and my event has changed to: " << athlete_->getMatch() << "\n";
+    void ChangeMatch(std::string newmatch) {
+        std::cout << "Originator: I'm changing the match.\n";
+        athlete_->matchSet(newmatch);
+        std::cout << "Originator: and my match has changed to: " << athlete_->getMatch() << "\n";
     }
     //展示报名的项目名称
-    std::string ShowEvent() {
+    std::string ShowMatch() {
         return athlete_->getMatch();
     }
     //将当前项目名称记录在备忘录中
@@ -67,8 +72,8 @@ public:
     void Restore(Memento* memento) {
         //将Memento* 类型转变成ConcreteMemento* 类型，实现窄接口变宽接口
         ConcreteMemento* concretememento = (ConcreteMemento*)memento;
-        athlete_->matchSet(concretememento->GetEvent());
-        std::cout << "Originator:" << athlete_->getName() << "'s event has changed to: " << athlete_->getMatch() << "\n";
+        athlete_->matchSet(concretememento->GetMatch());
+        std::cout << "Originator:" << athlete_->getName() << "'s match has changed to: " << athlete_->getMatch() << "\n";
     }
 };
 
@@ -80,10 +85,10 @@ public:
 class Caretaker {
 private:
      std::vector<Memento*> mementos_;
-    EventOriginator* originator_;
+    MatchOriginator* originator_;
 public:
     //生成对于原发器的负责人
-    Caretaker(EventOriginator* originator) : originator_(originator) {
+    Caretaker(MatchOriginator* originator) : originator_(originator) {
         this->originator_ = originator;
     }
     //保存原发器的当前状态，记录在备忘录中
@@ -100,7 +105,7 @@ public:
         Memento* memento = this->mementos_.back();
         try {
             this->originator_->Restore(memento);
-            std::cout << "Caretaker: Restoring event to: " << originator_->ShowEvent();
+            std::cout << "Caretaker: Restoring match to: " << originator_->ShowMatch();
         }
         catch (...) {
             this->Undo();

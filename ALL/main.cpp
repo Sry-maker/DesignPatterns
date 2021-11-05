@@ -58,14 +58,14 @@ void initial() {
 	matchvector.push_back(new Match("跳水"));
 
 
-	athletevector.push_back(new athlete("0002","林小丹","中国","羽毛球"));
-	athletevector.push_back(new athlete("0003", "Bob", "美国", "跳水"));
-	athletevector.push_back(new athlete("0004", "村上树", "日本", "乒乓球"));
+	athletevector.push_back(new athlete("0001","林小丹","中国","羽毛球"));
+	athletevector.push_back(new athlete("0002", "Bob", "美国", "跳水"));
+	athletevector.push_back(new athlete("0003", "村上树", "日本", "乒乓球"));
 }
 
 void menuMain() {
 	while (1) {
-		std::cout << "\n\n---------------欢迎进入奥林匹克运动会！---------------\n";
+		std::cout << "\n\n---------------欢迎进入奥林匹克运动会！-------------\n";
 		std::cout << "1.选择用户类型\n";
 		std::cout << "2.进行比赛\n";
 		std::cout << "0.退出系统\n";
@@ -93,7 +93,7 @@ void menuMain() {
 }
 
 void menuRole() {
-	std::cout << "\n---------------请选择用户类型---------------\n";
+	std::cout << "\n--------------------请选择用户类型--------------------\n";
 	std::cout << "1.运动员\n";
 	std::cout << "2.管理员\n";
 	std::cout << "3.观众\n";
@@ -103,7 +103,7 @@ void menuRole() {
 	std::cin >> type;
 	switch (type) {
 	case 1:
-		Athlete1 = new athlete("0001", "林小丹", "中国", "羽毛球");
+		Athlete1 = new athlete("0004", "马小龙", "中国");
 		grantVisitorTest(1);//VisitorMethod
 		athletevector.push_back(Athlete1);
 		menuAthlete();
@@ -127,8 +127,8 @@ void menuRole() {
 
 void menuAthlete() {
 	while (1) {
-		std::cout << "\n---------------请您要进行的操作---------------\n";
-		std::cout << "1.报名\n";
+		std::cout << "\n------------请选择您要进行的操作---------------------- \n";
+		std::cout << "1.比赛项目管理\n";
 		std::cout << "2.比赛信息查询\n";
 		std::cout << "3.纪念品预定\n";
 		std::cout << "0.返回\n";
@@ -147,7 +147,7 @@ void menuAthlete() {
 		switch (type) {
 		case 1:
 		{//报名
-			memento(Athlete1);
+			memento(Athlete1,matchvector);
 			factory->ListFlyweights();
 			AddAthleteToPoliceDatabase(*factory,
 				Athlete1->getName(),
@@ -179,7 +179,7 @@ void menuAthlete() {
 
 void menuWorker() {
 	while (1) {
-		std::cout << "\n---------------请您要进行的操作---------------\n";
+		std::cout << "\n------------请选择您要进行的操作---------------------\n";
 		std::cout << "1.添加部门\n";
 		std::cout << "2.添加职工\n";
 		std::cout << "3.更改体育项目场地\n";
@@ -214,7 +214,7 @@ void menuWorker() {
 
 void menuCostomer() {
 	while (1) {
-		std::cout << "\n---------------请您要进行的操作---------------\n";
+		std::cout << "\n------------请选择您要进行的操作---------------------\n";
 		std::cout << "1.入场\n";
 		std::cout << "2.纪念品预定\n";
 		std::cout << "0.返回\n";
@@ -242,8 +242,8 @@ void menuCostomer() {
 }
 
 void StartGame() {
-	std::cout << "\n\n---------------奥林匹克运动会正式开始！---------------\n\n";
-	std::cout << "\n--------本次奥林匹克运动会的比赛项目有-----------\n";
+	std::cout << "\n\n---------------奥林匹克运动会正式开始！-------------\n\n";
+	std::cout << "\n--------本次奥林匹克运动会的比赛项目有-------------\n";
 	//通过迭代器啥的输出比赛项目
 	Container<Match> cont1;
 	for (int i = 0; i < matchvector.size(); i++)
@@ -254,7 +254,7 @@ void StartGame() {
 	for (it1->First(); !it1->IsDone(); it1->Next()) {
 		std::cout << it1->Current()->GetName() << std::endl;
 	}
-	std::cout << "\n-------参加本次奥林匹克运动会的运动员有-----------\n";
+	std::cout << "\n-------参加本次奥林匹克运动会的运动员有------------\n";
 	//通过迭代器啥的输出比赛选手
 	cout << "Container::Add : created a container named Athlete" << endl;
 	cout << "Iterator : created a iterator to visit container" << endl;
@@ -292,36 +292,36 @@ void StartGame() {
 	switch (strategy_order) {
 	case 1:
 		strategy_1();
-		//std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
+		std::cout << "\n------接下来请观众进行审核并入场进入观众席--------\n";
 		mediatorTest();
 		//观众审核流程输出
-		std::cout << "\n--------比赛正式开始--------------\n";
+		std::cout << "\n------------------比赛正式开始-------------------------\n";
 		event_start_state();
-		std::cout << "\n--------首先进行羽毛球比赛--------------\n";
+		std::cout << "\n---------------首先进行羽毛球比赛---------------------\n";
 		//XXX比赛输出
 		factoryMethodTest3();
-		std::cout << "\n--------接下来进行跳水比赛--------------\n";
+		std::cout << "\n----------------接下来进行跳水比赛--------------------\n";
 		//XXX比赛输出
 		factoryMethodTest2();
-		std::cout << "\n--------接下来进行乒乓球球比赛--------------\n";
+		std::cout << "\n--------------接下来进行乒乓球球比赛-----------------\n";
 		//XXX比赛输出
 		factoryMethodTest1();
-		std::cout << "\n--------所有比赛项目顺利结束--------------\n";
+		std::cout << "\n----------------所有比赛项目顺利结束-----------------\n";
 		bridgeTest();
 		break;
 	case 2:
 		strategy_2();
-		std::cout << "\n-------接下来请观众进行审核并入场进入观众席-----------\n";
+		std::cout << "\n------接下来请观众进行审核并入场进入观众席--------\n";
 		//观众审核流程输出
-		std::cout << "\n--------比赛正式开始--------------\n";
+		std::cout << "\n------------------比赛正式开始-------------------------\n";
 		event_start_state();
-		std::cout << "\n--------首先进行乒乓球比赛--------------\n";
+		std::cout << "\n--------------接下来进行乒乓球球比赛-----------------\n";
 		//XXX比赛输出
 		factoryMethodTest1();
-		std::cout << "\n--------接下来进行跳水比赛--------------\n";
+		std::cout << "\n----------------接下来进行跳水比赛--------------------\n";
 		//XXX比赛输出
 		factoryMethodTest2();
-		std::cout << "\n--------接下来进行羽毛球比赛--------------\n";
+		std::cout << "\n---------------首先进行羽毛球比赛---------------------\n";
 		//XXX比赛输出
 		factoryMethodTest3();
 
@@ -335,7 +335,7 @@ void StartGame() {
 
 void MenuEnd() {
 	while (1) {
-		std::cout << "\n\n-----------奥林匹克结束菜单-------------\n\n";
+		std::cout << "\n\n------------------奥林匹克结束菜单--------------------\n\n";
 		std::cout << "1.打印奖牌榜\n";
 		std::cout << "2.打印报告\n";
 		std::cout << "0.退出系统\n";

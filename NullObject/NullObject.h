@@ -34,7 +34,7 @@ public:
 	NullCustomer() {};
 	~NullCustomer() {};
 	bool isNull() { return true; };
-	string getName() { return "本次比赛没有该项目，请重新输入项目名称"};
+	string getName() { return "本次比赛没有该项目，请重新输入项目名称"; };
 };
 
 //创建CustomerFactory类，用来获取实体类或空类的实例
@@ -68,7 +68,7 @@ void nullObjectTest(string name)
 	cout << "CustomerFactory::getCustomer : created a AbstractCustomerFactory" << endl;
 	AbstractCustomer* c1 = CustomerFactory::getCustomer("羽毛球");
 	AbstractCustomer* c2 = CustomerFactory::getCustomer(name);
-	AbstractCustomer* c3 = CustomerFactory::getCustomer("跳水");5
+	AbstractCustomer* c3 = CustomerFactory::getCustomer("跳水");
 	AbstractCustomer* c4 = CustomerFactory::getCustomer("乒乓球");
 	cout << "AbstractCustomer::getName : get object" << endl;
 	cout << "羽毛球: " << c1->getName() << endl;
