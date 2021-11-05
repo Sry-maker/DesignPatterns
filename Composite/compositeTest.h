@@ -23,8 +23,9 @@ int compositeAddDepartment() {
     std::cout << "\n\n北京奥组委部门结构:\n";
     std::cout << "composite::Operation(): " << COC->Operation();
     std::cout << "\n\n";
-    std::cout << "请输入添加部门名称:\n计划财务部\n";
-    char name[20]="计划财务部";
+    std::cout << "请输入添加部门名称:\n";
+    char name[20]="";
+    std::cin >> name;
     Composite* Department9 = new Department(name);
     COC->Add(Department9);
     std::cout << "composite::Operation(): " << COC->Operation();
@@ -41,8 +42,9 @@ int compositeAddClient() {
     std::cout << "\n\n北京奥组委部门结构:\n";
     std::cout << "composite::Operation(): " << COC->Operation();
     std::cout << "\n\n";
-    std::cout << "请输入添加员工名称:\n张三\n";
-    char name[20]="张三";
+    std::cout << "请输入添加员工名称:\n";
+    char name[20] = "";
+    std::cin >> name;
     Composite* staff_4 = new Staff(name);
     COC->Add(staff_4);
     std::cout << "composite::Operation(): " << COC->Operation();
