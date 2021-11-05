@@ -6,6 +6,7 @@
 //设计模式测试代码
 void commandTest()
 {
+	std::cout << "****************  以下为Command（命令）设计模式  ******************" << std::endl;
 	Invoker* invoker=new Invoker;
 	VipPassage vip_passage;
 	NormalPassage normal_passage;
@@ -21,4 +22,5 @@ void commandTest()
 	delete cmd1;
 	delete cmd2;
 	delete cmd3;
+	std::cout << "****************  Command（命令）设计模式结束  ******************" << std::endl;
 }
