@@ -125,12 +125,12 @@ void AthleteCode() {
     Context_state1->Request3();
     delete Context_state1;
 }
-Context_state* Context_state2 = new Context_state(new ConcreteStateA_state);
-void event_start_state()
+//Context_state* Context_state2 = new Context_state(new ConcreteStateA_state);
+void event_start_state(Context_state* Context_state2)
 {
     Context_state2->Request1();
 }
-void event_end_state()
+void event_end_state(Context_state* Context_state2)
 {
     Context_state2->Request2();
     delete Context_state2;

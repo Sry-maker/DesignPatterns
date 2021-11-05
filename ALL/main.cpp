@@ -289,6 +289,7 @@ void StartGame() {
 	Facade* facade = new Facade(fencing, swimming);
 	Init(facade);
 	delete facade;
+	Context_state* Context_state2 = new Context_state(new ConcreteStateA_state);
 	switch (strategy_order) {
 	case 1:
 		strategy_1();
@@ -296,7 +297,7 @@ void StartGame() {
 		mediatorTest();
 		//观众审核流程输出
 		std::cout << "\n------------------比赛正式开始-------------------------\n";
-		event_start_state();
+		event_start_state(Context_state2);
 		std::cout << "\n---------------首先进行羽毛球比赛---------------------\n";
 		//XXX比赛输出
 		factoryMethodTest3();
@@ -308,13 +309,14 @@ void StartGame() {
 		factoryMethodTest1();
 		std::cout << "\n----------------所有比赛项目顺利结束-----------------\n";
 		bridgeTest();
+		event_end_state(Context_state2);
 		break;
 	case 2:
 		strategy_2();
 		std::cout << "\n------接下来请观众进行审核并入场进入观众席--------\n";
 		//观众审核流程输出
 		std::cout << "\n------------------比赛正式开始-------------------------\n";
-		event_start_state();
+		event_start_state(Context_state2);
 		std::cout << "\n--------------接下来进行乒乓球球比赛-----------------\n";
 		//XXX比赛输出
 		factoryMethodTest1();
@@ -329,7 +331,7 @@ void StartGame() {
 		bridgeTest();
 		break;
 	}
-	event_end_state();
+	event_end_state(Context_state2);
 	MenuEnd();
 }
 
